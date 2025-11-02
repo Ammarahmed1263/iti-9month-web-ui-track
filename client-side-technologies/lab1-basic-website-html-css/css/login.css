@@ -1,0 +1,48 @@
+* {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: #c0e5fa;
+}
+
+#login-form {
+  margin: 200px auto;
+  width: 60%;
+}
+
+fieldset {
+  border: 6px solid lightskyblue;
+  border-radius: 5px;
+  padding: 30px 20px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 20pt;
+  color: darkred;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 97%;
+  margin: 5px 0 10px 0;
+  padding: 10px 8px;
+  border: 2px solid lightgrey;
+}
+
+input[type="submit"] {
+  padding: 12px 20px;
+  border: 2px solid #b3b3b3;
+  border-radius: 4px;
+  color: darkred;
+  background: #ebebeb;
+}
+
+.submit {
+  text-align: center;
+}

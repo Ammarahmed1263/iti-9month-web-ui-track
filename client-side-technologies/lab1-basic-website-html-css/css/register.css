@@ -1,0 +1,117 @@
+* {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: #e6fffc;
+}
+
+caption {
+  font-size: 24pt;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+table {
+  margin: 20px auto;
+}
+
+table,
+th,
+td {
+  width: 600px;
+  border: 4px solid #cacaca;
+  border-collapse: collapse;
+  padding: 20px;
+}
+
+td {
+  text-align: center;
+}
+
+td * {
+  width: 84%;
+}
+
+th {
+  text-align: start;
+  color: darkred;
+  font-size: 16pt;
+}
+
+.center-label {
+  text-align: center;
+  text-decoration: underline;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.gender {
+  text-align: start;
+}
+
+.gender > input[type="radio"] {
+  width: unset;
+}
+
+select {
+  width: 100%;
+  padding: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cta {
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.cta input {
+  padding: 10px 15px;
+  background-color: #e4e4e4;
+  border: none;
+  border-radius: 5px;
+  width: unset;
+}
+
+.cta > input[type="submit"] {
+  margin-right: 50px;
+}
+
+textarea {
+  resize: none;
+}
+
+.interests table,
+.interests th,
+.interests td {
+  border: none;
+  width: unset;
+}
+
+.interests input {
+  width: unset;
+}
+
+.interests {
+  text-align: center;
+  padding: 0;
+}
+
+.interests table {
+  margin: 0;
+  width: 600px;
+}
+
+.interests td {
+  margin: 0;
+  text-align: start;
+}
