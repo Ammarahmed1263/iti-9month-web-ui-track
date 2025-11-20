@@ -1,41 +1,41 @@
 #include <iostream>
-// #include "stack.h"
+#include "stack.h"
 #include "complex_numbers.h"
-// #include "banking_system.h"
+#include "banking_system.h"
 
-// int Stack::count = 0;
-// int BankingSystem::count = 0;
-// long long int BankingSystem::accountIncrementer = 303101000000;
+int Stack::count = 0;
+int BankingSystem::count = 0;
+long long int BankingSystem::accountIncrementer = 303101000000;
 int ComplexNumbers::count = 0;
 
 using namespace std;
 
 int main () {
-    // Stack s1;
-    // Stack s2(10);
+    Stack s1;
+    Stack s2(10);
 
-    // s2.push(5).push(10).push(12).pop().push(15).push(20);
-    // s2.showStackItems();
+    s2.push(5).push(10).push(12).pop().push(15).push(20);
+    s2.showStackItems();
 
 
-    // Stack::showStacksCount();
+    Stack::showStacksCount();
 
-    // BankingSystem b1("Ahmed", 5000);
-    // BankingSystem b2("mohamed", 8000);
-    // BankingSystem b3;
+    BankingSystem b1("Ahmed", 5000);
+    BankingSystem b2("mohamed", 8000);
+    BankingSystem b3;
 
     
-    // b1.deposit(2000).withdraw(1000);
-    // b2.deposit(3000).withdraw(500);
+    b1.deposit(2000).withdraw(1000);
+    b2.deposit(3000).withdraw(500);
     
-    // double balance = b1.getBalance();
-    // cout << "Balance of b1: " << balance << endl;
-    // cout << "Balance of b3: " << b3.getBalance() << endl;
+    double balance = b1.getBalance();
+    cout << "Balance of b1: " << balance << endl;
+    cout << "Balance of b3: " << b3.getBalance() << endl;
 
-    // b1.showAccount();
-    // b2.showAccount();
-    // BankingSystem::showCounter();
-    // b3.showAccount();
+    b1.showAccount();
+    b2.showAccount();
+    BankingSystem::showCounter();
+    b3.showAccount();
 
     ComplexNumbers c1(3.5, 2.5);
     ComplexNumbers c2(4.0);
