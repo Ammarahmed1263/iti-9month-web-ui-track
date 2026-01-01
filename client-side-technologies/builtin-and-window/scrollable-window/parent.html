@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="javascript:scroll()" onclick="startScrolling()"
+      >press window to start scrolling</a
+    >
+
+    <script>
+      let child;
+      let timerID;
+
+      function startScrolling() {
+        child = open(
+          "child.html",
+          "",
+          "width=700,height=400,top=50,left=50,scrollbars=yes"
+        );
+
+        // let timerID = setInterval(function () {
+        //   if (
+        //     child.scrollY + child.innerHeight >=
+        //     child.document.documentElement.scrollHeight - 1
+        //   ) {
+        //     clearInterval(timerID);
+        //     child.close();
+        //   } else {
+        //     child.scrollBy(0, 10);
+        //   }
+        // }, 80);
+
+        function callback() {
+          console.log("callback called");
+          if (
+            child.scrollY + child.innerHeight >=
+            child.document.documentElement.scrollHeight - 1
+          ) {
+            child.close();
+          } else {
+            child.scrollBy(0, 10);
+            setTimeout(callback, 60);
+          }
+        }
+
+        setTimeout(callback, 60);
+      }
+    </script>
+  </body>
+</html>
