@@ -1,19 +1,20 @@
 let index = 0;
-const count = 5;
+const count = document.images.length;
 let timerID;
 
 let speed = 400;
 let step = -50;
 
-function stop() {
-  clearInterval(timerID);
+for (let i = 0; i < count; i++) {
+  document.images[i].mouseover = stop;
+  document.images[i].mouseout = start;
 }
 
 function start() {
   function callback() {
-    document.querySelectorAll("img")[index].src = "images/marble1.jpg";
+    document.images[index].src = "images/marble1.jpg";
     index = (index + 1) % count;
-    document.querySelectorAll("img")[index].src = "images/marble3.jpg";
+    document.images[index].src = "images/marble3.jpg";
 
     if (index === count - 1) {
       clearInterval(timerID);
@@ -26,8 +27,6 @@ function start() {
 
       speed += step;
 
-      console.log(`Current Speed: ${speed}ms`);
-
       timerID = setInterval(callback, speed);
     }
 
@@ -35,6 +34,10 @@ function start() {
   }
 
   timerID = setInterval(callback, speed);
+}
+
+function stop() {
+  clearInterval(timerID);
 }
 
 start();
