@@ -1,0 +1,55 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+}
+
+.profile-card {
+  background: white;
+  width: 400px;
+  margin: 25% auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #00d0a7;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.card-header p {
+  margin: 5px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.data-row {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.data-row .value {
+    float: right;
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.value {
+  color: #333;
+}
