@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <pre>
+
+
+
+
+
+      
+    </pre>
+    <div class="grid-container">
+      <h2 class="game-title">Memory Game</h2>
+      <p class="winner-message"></p>
+      <div class="grid-board">
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(0)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(1)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(2)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(3)"
+          draggable="false"
+        />
+
+        <br />
+
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(4)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(5)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(6)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(7)"
+          draggable="false"
+        />
+
+        <br />
+
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(8)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(9)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(10)"
+          draggable="false"
+        />
+        <img
+          src="images/Moon.gif"
+          alt="Board Image"
+          onclick="onCardClick(11)"
+          draggable="false"
+        />
+      </div>
+
+      <div class="game-info">
+        <button type="button" onclick="resetGame()">
+          Reset Game
+        </button>
+        <p id="game-score">score: 0</p>
+      </div>
+    </div>
+  </body>
+</html>
