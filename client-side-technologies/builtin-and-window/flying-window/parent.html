@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" onclick="startFloating()">Start</button>
+    <button type="button" onclick="stopFloating()">Stop</button>
+
+    <script>
+      let child;
+      const viewportHeight = window.outerHeight;
+      let timerID;
+      let direction = 1;
+
+      function startFloating() {
+        if (child) child.close();
+        if (timerID) return;
+
+        child = open("child.html", "", "width=200, height=200, left=0, top=0");
+
+        // timerID = setInterval(function () {
+        //   child.resizeTo(200, 200);
+        //   const step = 10;
+        //   const multiply = direction * step;
+
+        //   if (
+        //     child.screenY + child.outerHeight >= viewportHeight &&
+        //     direction == 1
+        //   )
+        //     direction = -1;
+        //   if (child.screenY <= 0 && direction == -1) direction = 1;
+
+        //   child.moveBy(multiply, multiply);
+        // }, 50);
+
+        function callback() {
+          if (!timerID) return;
+
+          if (child.closed) {
+            stopFloating();
+            return;
+          }
+
+          child.resizeTo(200, 200);
+          const step = 10;
+          const multiply = direction * step;
+
+          if (
+            child.screenY + child.outerHeight >= viewportHeight &&
+            direction == 1
+          )
+            direction = -1;
+
+          if (child.screenY <= 0 && direction == -1) direction = 1;
+
+          child.moveBy(multiply, multiply);
+          timerID = setTimeout(callback, 60);
+        }
+
+        timerID = setTimeout(callback, 60);
+      }
+
+      function stopFloating() {
+        // clearInterval(timerID);
+        clearTimeout(timerID);
+        timerID = null;
+        child.focus();
+      }
+    </script>
+  </body>
+</html>
