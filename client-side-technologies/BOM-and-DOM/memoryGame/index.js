@@ -1,4 +1,4 @@
-const images = document.getElementsByTagName("img");
+const images = document.images;
 const scoreTag = document.getElementById("game-score");
 const winnerMessage = document.querySelector(".winner-message");
 const moonImage = "images/Moon.gif";
@@ -19,18 +19,17 @@ function shuffleArray(arr) {
 }
 
 shuffleArray(answers);
-console.log(answers);
 
 let firstCard = null;
 let secondCard = null;
 let lockedBoard = false;
 
-function onCardClick(index) {
+function onCardClick(imgRef, index) {
   if (lockedBoard) return;
   if (firstCard == index) return;
-  if (!images[index].src.includes(moonImage)) return; // check user hasn't clicked a matched card
+  if (!imgRef.src.includes(moonImage)) return; // check if user has clicked an already matched card
 
-  images[index].src = "images/" + answers[index] + ".gif";
+  imgRef.src = "images/" + answers[index] + ".gif";
 
   if (firstCard == null) {
     firstCard = index;
@@ -38,7 +37,6 @@ function onCardClick(index) {
   } else {
     secondCard = index;
     checkMatch();
-    console.log("check match passed");
   }
 }
 
@@ -49,7 +47,6 @@ function checkMatch() {
 
     if (score === 6) {
       winnerMessage.innerHTML = winnerText;
-      console.log("score success");
     }
 
     firstCard = null;
