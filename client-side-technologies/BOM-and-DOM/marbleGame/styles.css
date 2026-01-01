@@ -1,0 +1,19 @@
+body {
+  background-color: rgb(48, 48, 48);
+}
+
+.marbles-container {
+  text-align: center;
+}
+
+.marbles-container > img {
+  margin: 0 15px;
+}
+
+p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}
