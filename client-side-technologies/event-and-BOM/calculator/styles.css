@@ -1,0 +1,60 @@
+body {
+  background-color: #ff7e42;
+}
+
+.button {
+  width: 55px;
+  height: 55px;
+  font-size: 1.6rem;
+  padding: 0;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #313638;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #50585e;
+}
+
+.operation {
+  background-color: #ff7e42;
+}
+
+.operation:hover {
+  background-color: #fe9d70;
+}
+
+table {
+  margin: 150px auto;
+  background-color: #272b2e;
+  padding: 8px;
+  border-radius: 10px;
+  border-spacing: 8px;
+}
+
+#td {
+  font-family: comic sans ms;
+  text-align: center;
+  color: white;
+  font-size: 16pt;
+}
+
+#answer {
+  width: 165px;
+  height: 48px;
+  text-align: right;
+  font-size: 18pt;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #313638;
+  color: white;
+  outline: none;
+}
+
+#clear {
+  color: #ff7e42;
+}
