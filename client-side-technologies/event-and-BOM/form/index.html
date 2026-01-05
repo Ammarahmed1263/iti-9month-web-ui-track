@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi Select</title>
+  </head>
+
+  <body>
+    <input type="button" value="  1  " onclick="displayNum(this)" />
+    <input type="button" value="  2  " onclick="displayNum(this)" />
+    <input type="button" value="  3  " onclick="displayNum(this)" />
+    <input type="button" value="  4  " onclick="displayNum(this)" />
+    <input type="button" value="  5  " onclick="displayNum(this)" />
+    <input type="button" value="  6  " onclick="displayNum(this)" />
+    <input type="button" value="  7  " onclick="displayNum(this)" />
+    <input type="text" id="numbers" title="numbers" readonly />
+    <input type="button" value=" AC " id="ac" />
+    <input type="button" value=" DEL " id="del" />
+    <br />
+    <br />
+
+    <select id="menu" multiple size="5" title="multiSelect">
+      <option value="o1">Egypt</option>
+      <option value="o2">Morocco</option>
+      <option value="o3">USA</option>
+      <option value="o4">UK</option>
+      <option value="o5">Switzerland</option>
+      <option value="o6">Germany</option>
+      <option value="o7">Austria</option>
+      <option value="o8">England</option>
+      <option value="o9">New zealand</option>
+    </select>
+
+    <input type="button" value="show options" id="displayBtn" />
+    <div id="div1id"></div>
+
+
+    <script src="index.js"></script>
+  </body>
+</html>
