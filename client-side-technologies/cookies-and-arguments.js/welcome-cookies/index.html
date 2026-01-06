@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" title="name" />
+
+    <br />
+    <br />
+
+    <label for="age">Enter your age:</label>
+    <input type="number" id="age" title="age" min="10" max="100" />
+
+    <p>Select your gender:</p>
+    <input type="radio" id="male" value="male" name="gender" />
+    <label for="male">
+      <img src="images/1.jpg" alt="male image" draggable="false" />
+    </label>
+
+    <input type="radio" id="female" value="female" name="gender" />
+    <label for="female">
+      <img src="images/2.jpg" alt="female image" draggable="false" />
+    </label>
+
+    <br />
+    <br />
+    <label for="colors">select your favorite color: </label>
+    <select id="colors">
+      <option value="#ff6f00">orange</option>
+      <option value="#00ffe1">cyan</option>
+      <option value="#8ef68e">light-green</option>
+      <option value="#921e1e">bloody-red</option>
+      <option value="#1025c1">vibrant-blue</option>
+      <option value="#428c42">dark-green</option>
+    </select>
+
+    <br />
+    <br />
+    <button type="button" id="submit">Register</button>
+
+    <script src="script.js"></script>
+    <script src="../cookie.js"></script>
+  </body>
+</html>
