@@ -21,3 +21,6 @@ function addParams() {
 }
 
 console.log(addParams(1, -4, 5));
+console.log(addParams(1, -4, 5, 10));
+console.log(addParams(1, "abc", 5, 10));
+console.log(addParams());

@@ -35,7 +35,7 @@ submitBtn.addEventListener("click", function () {
     setCookie("userName", nameInput.value, expiryDate);
     setCookie("age", ageInput.value, expiryDate);
     setCookie("visits", currentVisits, expiryDate);
-    setCookie("gender", selectedGender, expiryDate);
+    setCookie("gender", selectedGender.value, expiryDate);
     setCookie("favColor", favColor.value, expiryDate);
 
 

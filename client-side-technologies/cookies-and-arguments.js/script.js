@@ -8,6 +8,7 @@
 
 setCookie("userName", "Ammar", "1/11/2026");
 setCookie("sessionUser", "SessionValue");
+setCookie("age", "22", new Date("1/26/2026"));
 
 // getCookie();
 // getCookie(1);
@@ -24,7 +25,7 @@ deleteCookie("userName");
 try {
   getCookie("userName");
 } catch (e) {
-  console.log("Verification: Cookie deleted successfully");
+  console.log("Verification: Cookie deleted successfully", e.message);
 }
 
 showCookieList();

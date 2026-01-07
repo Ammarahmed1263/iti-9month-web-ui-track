@@ -8,6 +8,7 @@ const visitSpan = document.getElementById("visits");
 
 try {
   if (!hasCookie("userName") || !hasCookie("visits")) {
+    genderImage.alt = "No Gender Selected";
     throw new Error("No profile data found. Please register first.");
   }
 
