@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  background-color: #0d0d0d;
+  color: #d0d0d0;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  background-color: #0d0d0d;
+  color: inherit;
+  cursor: pointer;
+  border: 1px solid #00ffcc;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px;
+  font-family: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  display: block;
+  font-size: 18px;
+  margin: 12px 0 6px 0;
+}
+
+button:hover,
+button.active {
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+h1 {
+  margin: 0;
+}
+
+.wrapper {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.content-section {
+  display: none;
+  background: #1a1a1a;
+  padding: 30px;
+  border: 1px solid #333;
+}
+
+.nav {
+  position: relative;
+  padding: 25px 0;
+  border-end-end-radius: 20px;
+  border-end-start-radius: 20px;
+}
+
+.nav-button {
+  margin: 0 8px;
+}
+
+.nav-item {
+  display: inline-block;
+  position: relative;
+}
+
+.slide-button {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.slide-button:hover {
+  opacity: 0.4;
+}
+
+#main-img {
+  width: 350px;
+  height: 300px;
+  border: 4px solid #00ffcc;
+}
+
+.dropdown-menu {
+  position: absolute;
+  padding: 0px;
+  min-width: 150px;
+  background-color: #0d0d0d;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  border-radius: unset;
+  left: 40px;
+  top: 40px;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dropdown-menu li {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.dropdown-menu li:hover {
+  color: #0d0d0d;
+  background-color: #00ffcc;
+}
+
+#complaint-info {
+  display: none;
+}
+
+#submit-complaint, #edit-complaint {
+  margin-top: 16px;
+}

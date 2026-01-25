@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="nav">
+        <button type="button" class="nav-button" data-target="#about">
+          About
+        </button>
+        <button type="button" class="nav-button" data-target="#gallery">
+          Gallery
+        </button>
+
+        <div class="nav-item">
+          <button type="button" class="nav-button" data-target="#services">
+            Services
+          </button>
+
+          <div id="services" class="content-section dropdown-menu">
+            <ul>
+              <li>Frontend</li>
+              <li>Backend</li>
+              <li>Mobile</li>
+            </ul>
+          </div>
+        </div>
+
+        <button type="button" class="nav-button" data-target="#complaint">
+          Complaint
+        </button>
+      </div>
+
+      <div id="about" class="content-section">
+        <h1>Hello, World!</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
+          exercitationem aliquam obcaecati deleniti velit neque, vero
+          repudiandae fugiat numquam tempora quo pariatur odit placeat! Debitis
+          provident fugit quasi quis est?
+        </p>
+      </div>
+
+      <div id="gallery" class="content-section">
+        <img
+          src="images/left.png"
+          alt="prev_button"
+          id="prev-button"
+          class="slide-button"
+        />
+        <img src="images/1.jpg" alt="hero_image" id="main-img" />
+        <img
+          src="images/right.png"
+          alt="next_button"
+          id="next-button"
+          class="slide-button"
+        />
+        <h2>Images <span id="img-num">1</span> / 8</h2>
+      </div>
+
+      <div id="complaint" class="content-section">
+        <div id="complaint-form">
+          <h2>Customer Complaint</h2>
+          <label for="name"> Name: </label>
+          <input type="text" id="name" placeholder="Enter your name" />
+          <br />
+
+          <label for="email"> Email: </label>
+          <input type="email" id="email" placeholder="email@example.com" />
+          <br />
+
+          <label for="phone"> Phone: </label>
+          <input type="number" id="phone" placeholder="0123456789" />
+          <br />
+
+          <label for="complaint-text"> complaint: </label>
+          <textarea type="text" id="complaint-text" rows="5"></textarea>
+          <br />
+
+          <button type="button" id="submit-complaint">Submit</button>
+        </div>
+
+        <div id="complaint-info">
+          <h3>Preview Your complaint</h3>
+          <p>Name entered is <span id="view-name"></span></p>
+          <p>Email entered is <span id="view-email"></span></p>
+          <p>Phone entered is <span id="view-phone"></span></p>
+          <p>Your complaint is <span id="view-complaint"></span></p>
+          <button type="button" id="edit-complaint">Edit Info.</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
