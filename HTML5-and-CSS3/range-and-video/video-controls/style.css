@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #0a1929;
+  font-family: Arial, sans-serif;
+}
+
+.player-container {
+  width: 680px;
+  margin: 0 auto;
+  background-color: #1a2332;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background-color: #000000;
+}
+
+input[type="range"] {
+  accent-color: #00ffbb;
+}
+
+.progress-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#seek-bar {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+}
+
+.time-display {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #b0c4de;
+}
+
+#video-progress {
+  color: #00d9a3;
+  font-weight: bold;
+}
+
+.time-separator {
+  margin: 0 5px;
+  color: #5a6f87;
+}
+
+#video-duration {
+  color: #8095b0;
+}
+
+.controls-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.control-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  background-color: #2a3f55;
+  border: 1px solid #3d5670;
+  border-radius: 4px;
+  color: #c8d6e5;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.control-btn:hover {
+  background-color: #35506e;
+  border-color: #4a6a87;
+}
+
+.control-btn:active {
+  background-color: #1f3144;
+}
+
+.play-btn,
+.pause-btn {
+  background-color: #00a082;
+  color: #ffffff;
+  border-color: #008c6f;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.play-btn:hover,
+.pause-btn:hover {
+  background-color: #00b896;
+}
+
+.play-btn:active,
+.pause-btn:active {
+  background-color: #007d66;
+}
+
+.sliders-container {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #2d3e50;
+}
+
+.slider-group {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.slider-group label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+  margin-right: 10px;
+  color: #8fa9c1;
+  font-size: 14px;
+}
+
+.slider-group input[type="range"] {
+  display: inline-block;
+  width: 300px;
+  cursor: pointer;
+}
+
+.mute-btn {
+  margin-left: 10px;
+  padding: 8px 12px;
+}
+
+#speed-value {
+  display: inline-block;
+  width: 40px;
+  margin-left: 10px;
+  color: #00d9a3;
+  font-weight: bold;
+  font-size: 14px;
+}
