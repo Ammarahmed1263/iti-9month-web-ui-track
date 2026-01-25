@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding-top: 50px;
+}
+
+#draggable {
+  float: right;
+  text-align: center;
+  background-color: rgb(175, 240, 206);
+  padding: 16px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  right: 50px;
+}
+
+#draggable img {
+  width: 120px;
+  height: 120px;
+}
+
+#draggable p {
+  margin: 0;
+}
+
+#droppable {
+  float: left;
+}
