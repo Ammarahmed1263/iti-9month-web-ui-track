@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Validation</title>
+
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form id="change-mail" novalidate>
+      <h1>Change Email Address</h1>
+
+      <input type="text" placeholder="Username" pattern="[A-Za-z]+" required />
+      <p class="error-text">
+        The required user name may only be a series of alphabetical characters.
+      </p>
+
+      <input
+        type="text"
+        placeholder="Email"
+        pattern="[a-z0-9._%+\-]+@[a-z0-9\.\-]+\.[a-z]{2,}"
+        required
+      />
+      <p class="error-text">
+        The required email address may not include any special characters other
+        than the '@' sign.
+      </p>
+
+      <button type="submit">Change</button>
+    </form>
+  </body>
+</html>
