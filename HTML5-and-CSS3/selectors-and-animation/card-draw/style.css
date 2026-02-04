@@ -1,0 +1,66 @@
+.card {
+  position: relative;
+  width: 270px;
+  height: 440px;
+  border: 8px solid rgb(255, 0, 0);
+  border-radius: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-mark {
+  position: absolute;
+  top: 0;
+  left: 25px;
+}
+
+.bottom-mark {
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+  transform: rotateX(180deg);
+}
+
+.shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  margin: 0 auto;
+  transform: rotateX(180deg);
+}
+#heart:before,
+#heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: black;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+#triangle-up {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid black;
+  margin: 0 auto;
+  top: -20px;
+}
