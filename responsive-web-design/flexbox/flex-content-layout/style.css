@@ -1,0 +1,41 @@
+body {
+        color: white;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      header,
+      footer {
+        background-color: rgb(26, 96, 183);
+        text-align: center;
+        padding: 12px 0;
+      }
+
+      .body-row {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 400px;
+        gap: 4px;
+      }
+
+      .body-row > * {
+        min-height: 200px;
+      }
+
+      .body-row main {
+        flex: 2 1 400px;
+        background-color: rgb(67, 156, 67);
+        text-align: center;
+        padding-top: 12px;
+      }
+
+      .body-row aside {
+        flex: 1 1 200px;
+        background-color: rgb(169, 105, 45);
+        text-align: center;
+        padding-top: 12px;
+      }
