@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  background-color: #020617;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #0F172A;
+  display: flex;
+  flex-direction: column;
+  background-color: #0F172A;
+}
+
+.nav-row,
+.intro-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.intro-row {
+  align-items: flex-start;
+  margin-bottom: 28px;
+  margin-top: 36px;
+  gap: 50px;
+}
+
+.description,
+.carousel {
+  flex: 1 1 400px;
+}
+
+.description h1 {
+  margin: 0;
+}
+
+.description p {
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-item {
+  text-align: center;
+  flex: 1 0 200px;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  color: #10b981;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.carousel-img {
+  background-color: rgb(117, 117, 117);
+  width: 100%;
+  min-height: 250px;
+  border-radius: 8px;
+}
+
+.paging {
+  display: flex;
+  gap: 8px;
+}
+
+.paging-dot:first-child {
+  width: 20px;
+  border-radius: 10px;
+  background-color: #10b981;
+}
+
+.paging-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #020617;
+  border: 1px solid #10b981;
+  border-radius: 50%;
+}
+
+.paging-dot:hover {
+  background-color: #10b981;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 20px;
+}
+
+.projects > div {
+  padding: 64px 20px;
+  flex: 1 1 300px;
+  border-radius: 12px;
+  background-color: #0F172A;
+  border: 2px solid #0F172A;
+  text-shadow: 0 0 5px #10b981;
+  transition: all 1s;
+}
+
+.projects > div:hover {
+  border-color: #10b981;
+  transform: translateY(-5%);
+}
+
+.projects > div:last-child {
+  flex: 1 1 100%;
+  background-color: rgba(0, 195, 255, 0.5);
+  border: 2px solid rgb(0, 195, 255);
+  padding: 24px 20px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0F172A;
+  padding: 16px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.carousel-img-featured {
+  background-image: url("https://picsum.photos/seed/featured/500/300");
+}
+
+.project-jobconnect {
+  background-image: url("https://picsum.photos/seed/jobconnect/500/300");
+}
+
+.project-moviecorn {
+  background-image: url("https://picsum.photos/seed/moviecorn/500/300");
+}
+
+.project-homzmart {
+  background-image: url("https://picsum.photos/seed/homzmart/500/300");
+}
+
+.project-fluentum {
+  background-image: url("https://picsum.photos/seed/fluentum/500/300");
+}
+
+.project-freshcart {
+  background-image: url("https://picsum.photos/seed/freshcart/500/300");
+}
+
+.project-tasktrek {
+  background-image: url("https://picsum.photos/seed/tasktrek/500/300");
+}
