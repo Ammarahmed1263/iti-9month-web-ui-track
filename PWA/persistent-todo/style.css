@@ -187,7 +187,6 @@ input:focus {
 
   .input-group {
     grid-area: form;
-    top: 2.5rem;
     height: min-content;
   }
 
