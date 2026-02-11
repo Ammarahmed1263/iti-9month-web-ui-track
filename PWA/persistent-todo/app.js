@@ -186,7 +186,7 @@ async function handleDelete(id) {
   renderTasks();
 }
 
-setInterval(checkDeadlines, 15000);
+setInterval(checkDeadlines, 60000);
 
 window.addEventListener("load", () => {
   (async () => {
