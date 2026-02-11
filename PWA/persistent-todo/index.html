@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Trek</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/363894aecf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="idb.js"></script>
+    <script src="db.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Task Trek</h1>
+      <button type="button" id="notification" title="accept notification">
+        <i class="fa-solid fa-bell bell-icon"></i>
+      </button>
+    </header>
+
+    <main>
+      <section class="input-group">
+        <input type="text" id="task-details" placeholder="Task Details..." />
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="trip-start" />
+
+        <div class="time-inputs">
+          <input
+            type="number"
+            id="task-hours"
+            min="0"
+            max="23"
+            placeholder="HH"
+          />
+          <input
+            type="number"
+            id="task-mins"
+            min="0"
+            max="59"
+            placeholder="MM"
+          />
+        </div>
+
+        <button type="button" id="addTaskBtn">Add Task</button>
+      </section>
+
+      <section id="task-list-container">
+        <h2>Your Tasks</h2>
+        <ul id="task-list"></ul>
+      </section>
+
+      <section id="log-container">
+        <h2>Activity Logs</h2>
+        <div id="logs"></div>
+      </section>
+    </main>
+  </body>
+</html>
