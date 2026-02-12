@@ -3,7 +3,7 @@ const CACHE_KEY = "titan";
 const STATIC_ASSETS = [
   "/",
   "index.html",
-  // "pages/exercises.html",
+  "pages/exercises.html",
   "pages/profile.html",
   "pages/offline.html",
   "pages/404.html",
