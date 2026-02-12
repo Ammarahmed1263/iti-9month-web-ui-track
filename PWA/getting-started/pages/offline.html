@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No Internet</title>
+    <title>No Internet Connection</title>
+    <link rel="stylesheet" href="../css/offline.css" />
 
     <link rel="manifest" href="../manifest.json" />
 
@@ -19,6 +20,10 @@
       The weights don't need Wi-Fi. Your core data is safely stored locally, but
       some features are temporarily unavailable.
     </p>
-    <a href="../">Back to Home</a>
+
+    <div class="buttons-container">
+      <a href="/">Back to Home</a>
+      <button type="button" onclick="window.location.reload()" class="reload">Try Again</button>
+    </div>
   </body>
 </html>
