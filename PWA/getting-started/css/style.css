@@ -1,94 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: system-ui, sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #0a0a0a;
-  color: #ffffff;
-}
-
-input {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  border: 1px solid #2e2e2e;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-}
-
-button {
-  border: none;
-  border-radius: 8px;
-  background-color: #d32f2f;
-  color: white;
-  padding: 1rem 1.25rem;
-  font-size: 1.2rem;
-  font-family: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.logo {
-  max-width: 48px;
-  max-height: 48px;
-}
-
-.logo img {
-  max-width: 100%;
-  height: auto;
-}
-
-.sidebar {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.8rem 1rem;
-  background-color: #1a1a1a;
-}
-
-.nav-wrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #1a1a1a;
-  border-top: 1px solid #2e2e2e;
-  z-index: 1000;
-}
-
-.main-nav {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
-.main-nav a {
-  display: block;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  padding: 24px 0;
-  text-align: center;
-}
-
-.main-nav a:hover {
-  background-color: #ff5252;
-}
-
-.main-content {
-  display: grid;
-  padding: 80px 24px;
-  grid-template-columns: 1fr;
-}
-
 #rm-form {
   display: grid;
   grid-template-columns: 1fr;
@@ -98,6 +7,16 @@ button {
 
 #rm-form button[type="submit"] {
   grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
 }
 
 .result-display {
@@ -121,7 +40,7 @@ button {
 }
 
 .error {
-  color: #ef4444;
+  color: #d32f2f;
   text-align: center;
   margin: 2rem 0;
 }
@@ -204,12 +123,6 @@ button {
   margin-bottom: 1rem;
 }
 
-.formula-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
 .formula-item {
   display: flex;
   flex-direction: column;
@@ -252,56 +165,105 @@ button {
   margin-top: 0.125rem;
 }
 
-#install {
-  display: none;
-  background-color: #d32f2f;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 0.7rem 1rem;
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formula-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.formula-card {
+  background: #262626;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formula-card .name {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.formula-card .value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #d32f2f; /* Match the red from reference */
+}
+
+.formula-card .desc {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.3;
+}
+
+.percentages-box {
+  background: #262626;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.percentages-header {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.percentages-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.percentages-header p {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: #d9d9d9;
+}
+
+.percentage-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.percentage-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid #3c3c3c;
+  font-weight: 500;
+}
+
+.percentage-row:last-child {
+  border-bottom: none;
+}
+
+.percentage-row .label {
+  color: #f1f1f1;
+}
+
+.percentage-row .weight {
+  color: #f1f1f1;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  .logo {
-    max-width: 72px;
-    max-height: 72px;
-    margin: 1rem auto;
-  }
-
-  .container {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 0.5rem 0 2rem 0;
-  }
-
-  .nav-wrapper {
-    position: static;
-  }
-
-  .main-nav {
-    flex-direction: column;
-  }
-
-  .main-content {
-    padding: 2rem;
-  }
-
   .result-value {
     font-size: 2.5rem;
   }
 
-  .formula-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  .formula-cards {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .result-header {
@@ -310,12 +272,6 @@ button {
 
   #rm-form {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  #install {
-    display: block;
-    margin: 0 1rem;
-    margin-top: auto;
   }
 }
 

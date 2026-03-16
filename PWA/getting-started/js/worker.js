@@ -1,13 +1,12 @@
 self.onmessage = function (e) {
   const { weight, reps } = e?.data;
 
-  console.log("function called: ", weight, reps);
   if (reps > 10) {
     console.warn("Accuracy decreases significantly above 10 reps");
   }
 
   if (reps === 1) {
-    return {
+    self.postMessage({
       brzycki: weight,
       epley: weight,
       lander: weight,
@@ -17,7 +16,8 @@ self.onmessage = function (e) {
       max: weight,
       range: 0,
       confidence: "very-high",
-    };
+    });
+    return;
   }
 
   const brzycki = weight / (1.0278 - 0.0278 * reps);

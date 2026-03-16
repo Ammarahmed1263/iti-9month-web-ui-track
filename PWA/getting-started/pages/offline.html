@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No Internet Connection</title>
+    <title>Offline | Gym Titan</title>
+    <meta
+      name="description"
+      content="You are currently offline. Gym Titan continues to work without an internet connection so you can track your workouts anytime."
+    />
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="../css/offline.css" />
+    <script src="../js/offline.js" defer></script>
 
     <link rel="manifest" href="../manifest.json" />
 
@@ -22,8 +28,8 @@
     </p>
 
     <div class="buttons-container">
-      <a href="/">Back to Home</a>
-      <button type="button" onclick="window.location.reload()" class="reload">Try Again</button>
+      <a href="../index.html">Back to Home</a>
+      <button type="button" class="reload">Try Again</button>
     </div>
   </body>
 </html>
