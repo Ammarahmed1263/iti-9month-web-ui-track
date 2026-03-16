@@ -1,0 +1,52 @@
+@use "_variables.scss"as *;
+
+.main {
+    &-title {
+        color: $primary-color;
+    }
+
+    &-subtitle {
+        color: $secondary-color;
+    }
+
+    &-btn {
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+@each $value in $font-sizes {
+    .font-#{$value} {
+        font-size: $value;
+    }
+}
+
+.finish-btn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    display: block;
+
+    @media (min-width: $breakpoint-tablet) {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
