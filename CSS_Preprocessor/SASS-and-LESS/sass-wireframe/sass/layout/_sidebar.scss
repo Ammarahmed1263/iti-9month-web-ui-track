@@ -1,0 +1,64 @@
+@use '../abstracts/variables' as *;
+
+.bg-white   { background-color: $color-white   !important; }
+.bg-light   { background-color: $color-bg      !important; }
+.bg-primary { background-color: $color-primary  !important; }
+
+.shadow      { box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15)    !important; }
+.shadow-sm   { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+.shadow-lg   { box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175)     !important; }
+.shadow-none { box-shadow: none !important; }
+
+.border {
+    --border-width: 1px;
+    --border-color: #dee2e6;
+    border: var(--border-width) solid var(--border-color) !important;
+}
+.border-0  { border: 0 !important; }
+.border-top    { border-top:    1px solid #dee2e6 !important; }
+.border-bottom { border-bottom: 1px solid #dee2e6 !important; }
+.border-start {
+    --border-width: 1px;
+    --border-color: #dee2e6;
+    border: 0 !important;
+    border-left: var(--border-width) solid var(--border-color) !important;
+}
+.border-end {
+    --border-width: 1px;
+    --border-color: #dee2e6;
+    border: 0 !important;
+    border-right: var(--border-width) solid var(--border-color) !important;
+}
+
+.border-1 { --border-width: 1px; }
+.border-2 { --border-width: 2px; }
+.border-3 { --border-width: 3px; }
+.border-4 { --border-width: 4px; }
+.border-5 { --border-width: 5px; }
+
+.border-white   { --border-color: #{$color-white}; }
+.border-primary { --border-color: #{$color-primary}; }
+.border-info    { --border-color: #{$color-info}; }
+.border-dark    { --border-color: #{$color-dark}; }
+
+.rounded        { border-radius: 0.375rem !important; }
+.rounded-0      { border-radius: 0 !important; }
+.rounded-1      { border-radius: 0.25rem !important; }
+.rounded-2      { border-radius: 0.375rem !important; }
+.rounded-3      { border-radius: 0.5rem !important; }
+.rounded-4      { border-radius: 1rem !important; }
+.rounded-5      { border-radius: 2rem !important; }
+.rounded-circle { border-radius: 50% !important; }
+.rounded-pill   { border-radius: 50rem !important; }
+
+.w-25   { width: 25% !important; }
+.w-50   { width: 50% !important; }
+.w-75   { width: 75% !important; }
+.w-100  { width: 100% !important; }
+.w-auto { width: auto !important; }
+
+.h-25   { height: 25% !important; }
+.h-50   { height: 50% !important; }
+.h-75   { height: 75% !important; }
+.h-100  { height: 100% !important; }
+.h-auto { height: auto !important; }

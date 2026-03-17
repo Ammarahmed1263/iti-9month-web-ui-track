@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as *;
+
+
+@each $key, $value in $spacing-scale {
+    .p-#{$key}  { padding:              $value !important; }
+    .px-#{$key} { padding-left: $value  !important; padding-right:  $value !important; }
+    .py-#{$key} { padding-top:  $value  !important; padding-bottom: $value !important; }
+    .pt-#{$key} { padding-top:    $value !important; }
+    .pb-#{$key} { padding-bottom: $value !important; }
+    .ps-#{$key} { padding-left:   $value !important; }
+    .pe-#{$key} { padding-right:  $value !important; }
+
+    .m-#{$key}  { margin:              $value !important; }
+    .mx-#{$key} { margin-left: $value  !important; margin-right:  $value !important; }
+    .my-#{$key} { margin-top:  $value  !important; margin-bottom: $value !important; }
+    .mt-#{$key} { margin-top:    $value !important; }
+    .mb-#{$key} { margin-bottom: $value !important; }
+    .ms-#{$key} { margin-left:   $value !important; }
+    .me-#{$key} { margin-right:  $value !important; }
+}
+
+.m-auto  { margin: auto !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.ms-auto { margin-left:  auto !important; }
+.me-auto { margin-right: auto !important; }
+
+@each $bp, $min in $breakpoints {
+    @if $min != 0px {
+        @media (min-width: $min) {
+            @each $key, $value in $spacing-scale {
+                .mt-#{$bp}-#{$key} { margin-top:    $value !important; }
+                .mb-#{$bp}-#{$key} { margin-bottom: $value !important; }
+                .ms-#{$bp}-#{$key} { margin-left:   $value !important; }
+                .me-#{$bp}-#{$key} { margin-right:  $value !important; }
+                .pt-#{$bp}-#{$key} { padding-top:    $value !important; }
+                .pb-#{$bp}-#{$key} { padding-bottom: $value !important; }
+                .px-#{$bp}-#{$key} { padding-left: $value !important; padding-right: $value !important; }
+                .py-#{$bp}-#{$key} { padding-top:  $value !important; padding-bottom: $value !important; }
+            }
+        }
+    }
+}

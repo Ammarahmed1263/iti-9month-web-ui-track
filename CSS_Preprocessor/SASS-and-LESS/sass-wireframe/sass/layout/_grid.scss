@@ -1,0 +1,104 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:math';
+
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: math.div($gutter, 2);
+    padding-right: math.div($gutter, 2);
+
+    @each $bp, $min in $container-max-widths {
+        @include respond-to($bp) {
+            max-width: $min;
+        }
+    }
+}
+
+.row {
+    --gutter-x: #{$gutter};
+    --gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--gutter-y));
+    margin-left: calc(-0.5 * var(--gutter-x));
+    margin-right: calc(-0.5 * var(--gutter-x));
+}
+
+.g-0 { --gutter-x: 0; --gutter-y: 0; }
+.g-1 { --gutter-x: 0.25rem; --gutter-y: 0.25rem; }
+.g-2 { --gutter-x: 0.5rem; --gutter-y: 0.5rem; }
+.g-3 { --gutter-x: 1rem; --gutter-y: 1rem; }
+.g-4 { --gutter-x: 1.5rem; --gutter-y: 1.5rem; }
+.g-5 { --gutter-x: 3rem; --gutter-y: 3rem; }
+
+[class*="col-"] {
+    box-sizing: border-box;
+    padding-left: calc(var(--gutter-x) * 0.5);
+    padding-right: calc(var(--gutter-x) * 0.5);
+    margin-top: var(--gutter-y);
+    width: 100%;
+}
+
+@mixin make-col($breakpoint) {
+    @for $i from 1 through $grid-columns {
+        $selector: '.col-#{$breakpoint}-#{$i}';
+
+        @if $breakpoint == 'xs' {
+            $selector: '.col-#{$i}';
+        }
+
+        #{$selector} {
+            width: math.percentage(math.div($i, $grid-columns));
+        }
+    }
+}
+
+@each $breakpoint, $min in $breakpoints {
+    @if $min != 0px {
+        @media (min-width: $min) {
+            @include make-col($breakpoint);
+        }
+    } @else {
+        @include make-col($breakpoint);
+    }
+}
+
+.d-none         { display: none !important; }
+.d-block        { display: block !important; }
+.d-flex         { display: flex !important; }
+.d-inline       { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+
+@each $bp, $min in $breakpoints {
+    @if $min != 0px {
+        @media (min-width: $min) {
+            .d-#{$bp}-none         { display: none !important; }
+            .d-#{$bp}-block        { display: block !important; }
+            .d-#{$bp}-flex         { display: flex !important; }
+            .d-#{$bp}-inline-block { display: inline-block !important; }
+        }
+    }
+}
+
+.flex-wrap             { flex-wrap: wrap !important; }
+.flex-nowrap           { flex-wrap: nowrap !important; }
+.justify-content-start   { justify-content: flex-start !important; }
+.justify-content-end     { justify-content: flex-end !important; }
+.justify-content-center  { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around  { justify-content: space-around !important; }
+.align-items-start   { align-items: flex-start !important; }
+.align-items-end     { align-items: flex-end !important; }
+.align-items-center  { align-items: center !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.text-start  { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-end    { text-align: right !important; }
+
+.overflow-hidden { overflow: hidden !important; }
+.overflow-auto   { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }

@@ -1,0 +1,58 @@
+$color-primary: #c42d32;
+$color-bg: #f8f9fa;
+$color-white: #ffffff;
+$color-text: #212529;
+$color-text-muted: #6c757d;
+$color-info: #0dcaf0;
+$color-dark: #212529;
+
+$font-stack: system-ui,
+-apple-system,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+"Noto Sans",
+"Liberation Sans",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+"Noto Color Emoji";
+;
+
+$font-size-base: 1rem;
+
+$spacing: ('xs': 4px,
+  'sm': 8px,
+  'md': 16px,
+  'lg': 24px,
+  'xl': 32px,
+  'xxl': 48px,
+);
+
+$spacing-scale: (0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+);
+
+$grid-columns: 12;
+$gutter: 24px;
+
+$breakpoints: ('xs': 0px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);
+
+$container-max-widths: ('sm': 540px,
+  'md': 720px,
+  'lg': 960px,
+  'xl': 1140px,
+  'xxl': 1320px,
+);
