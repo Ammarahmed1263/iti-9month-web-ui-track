@@ -1,0 +1,36 @@
+@import "_variables.scss";
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -($gutter / 2);
+    margin-right: -($gutter / 2);
+}
+
+[class*="col-"] {
+    box-sizing: border-box;
+    padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
+    width: 100%;
+}
+
+@mixin make-col($breakpoint) {
+    @for $i from 1 through $grid-columns {
+        $selector: if($breakpoint=='xs', '.col-#{$i}', '.col-#{$breakpoint}-#{$i}');
+
+        #{$selector} {
+            width: percentage($i / $grid-columns);
+        }
+    }
+}
+
+@each $breakpoint, $min in $breakpoints {
+    @if $min != 0 {
+        @media (min-width: $min) {
+            @include make-col($breakpoint);
+        }
+    } @else {
+         @include make-col($breakpoint);
+    }
+}
+

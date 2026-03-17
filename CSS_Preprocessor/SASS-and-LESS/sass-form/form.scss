@@ -1,0 +1,53 @@
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  input {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: #534AB7;
+    }
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}
+
+button[type="submit"] {
+  margin-top: 8px;
+  padding: 11px 28px;
+  background: #534AB7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover { background: #3C3489; }
+}
