@@ -1,0 +1,29 @@
+@import "_variables.less";
+
+each(@breakpoints, {
+        .generate(@value) when (@value > 0) {
+            @media (min-width: @value) {
+                each(range(@grid-columns), .(@index) {
+                        .col-@{key}-@{index} {
+                            width: (100% / @grid-columns) * @index;
+                        }
+                    }
+
+                )
+            }
+        }
+
+        .generate(@value) when (@value = 0) {
+            each(range(@grid-columns), .(@index) {
+                    .col-@{index} {
+                        width: (100% / @grid-columns) * @index;
+                    }
+                }
+
+            )
+        }
+
+        .generate(@value)
+    }
+
+)
