@@ -6,13 +6,13 @@ async function createCategory(req, res, next) {
   if (!name) {
     return res
       .status(400)
-      .json({ success: false, message: "Name is required" });
+      .json({ status: "fail", message: "Name is required" });
   }
 
   try {
     const category = new Category({ name, description });
     await category.save();
-    res.status(201).json({ success: true, data: category });
+    res.status(201).json({ status: "success", data: { category } });
   } catch (error) {
     next(error);
   }
@@ -21,12 +21,10 @@ async function createCategory(req, res, next) {
 async function getCategories(req, res, next) {
   try {
     const categories = await Category.find();
-    res.status(200).json({ success: true, data: categories });
+    res.status(200).json({ status: "success", data: { categories } });
   } catch (error) {
     next(error);
   }
 }
-
-
 
 export { createCategory, getCategories };

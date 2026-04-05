@@ -3,7 +3,7 @@ function errorHandler(err, req, res, next) {
 
   if (err.name === "ValidationError") {
     return res.status(400).json({
-      success: false,
+      status: 'fail',
       message: Object.values(err.errors)
         .map((e) => e.message)
         .join(", "),
@@ -12,14 +12,14 @@ function errorHandler(err, req, res, next) {
 
   if (err.name === "CastError") {
     return res.status(400).json({
-      success: false,
+      status: 'fail',
       message: "Invalid ID format",
     });
   }
 
   res.status(500).json({
-    success: false,
-    message: err.message || "Server Error",
+    status: 'error',
+    message: "Internal Server Error",
   });
 }
 

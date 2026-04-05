@@ -3,7 +3,7 @@ import Product from "../models/product.model.js";
 async function getAllProducts(_, res, next) {
   try {
     const products = await Product.find().populate("category", "name  -_id");
-    res.status(200).json({ success: true, data: products });
+    res.status(200).json({ status: "success", data: { products } });
   } catch (error) {
     next(error);
   }
@@ -12,13 +12,18 @@ async function getAllProducts(_, res, next) {
 async function getProductById(req, res, next) {
   try {
     const targetId = req.params.id;
-    const product = await Product.findById(targetId).populate("category", "name description");;
+    const product = await Product.findById(targetId).populate(
+      "category",
+      "name description",
+    );
 
     if (!product) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ status: "fail", message: "Product not found" });
     }
 
-    res.status(200).json({ success: true, data: product });
+    res.status(200).json({ status: "success", data: { product } });
   } catch (error) {
     next(error);
   }
@@ -28,18 +33,12 @@ async function getProductsByCategory(req, res, next) {
   const { categoryId } = req.params;
 
   try {
-    const products = await Product.find({ category: categoryId }).populate("category", "name");
+    const products = await Product.find({ category: categoryId }).populate(
+      "category",
+      "name",
+    );
 
-    if (products.length === 0) {
-      return res
-        .status(404)
-        .json({
-          success: false,
-          message: "No products found for this category",
-        });
-    }
-
-    res.status(200).json({ success: true, data: products });
+    res.status(200).json({ status: "success", data: { products } });
   } catch (error) {
     next(error);
   }
@@ -49,7 +48,10 @@ async function createProduct(req, res, next) {
   const { name, price, quantity, category } = req.body;
 
   if (!name || price === undefined || !category) {
-    return res.status(400).json({ success: false, message: "Name, price, and category are required" });
+    return res.status(400).json({
+      status: "fail",
+      message: "Name, price, and category are required",
+    });
   }
 
   try {
@@ -60,7 +62,7 @@ async function createProduct(req, res, next) {
       category: category,
     });
 
-    res.status(201).json({ success: true, data: newProduct });
+    res.status(201).json({ status: "success", data: { product: newProduct } });
   } catch (error) {
     next(error);
   }
@@ -72,7 +74,7 @@ async function replaceProduct(req, res, next) {
 
   if (!name || price === undefined || quantity === undefined || !category) {
     return res.status(400).json({
-      success: false,
+      status: "fail",
       message: "PUT requires ALL fields: name, price, quantity, and category.",
     });
   }
@@ -89,14 +91,18 @@ async function replaceProduct(req, res, next) {
       {
         returnDocument: "after",
         runValidators: true,
-      }
+      },
     ).populate("category", "name");
 
     if (!replacedProduct) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ status: "fail", message: "Product not found" });
     }
 
-    res.status(200).json({ success: true, data: replacedProduct });
+    res
+      .status(200)
+      .json({ status: "success", data: { product: replacedProduct } });
   } catch (error) {
     next(error);
   }
@@ -108,7 +114,7 @@ async function updateProduct(req, res, next) {
 
   if (!name && price === undefined && quantity === undefined && !category) {
     return res.status(400).json({
-      success: false,
+      status: "fail",
       message: "Name, price, quantity, or category is required to update",
     });
   }
@@ -120,14 +126,18 @@ async function updateProduct(req, res, next) {
       {
         returnDocument: "after",
         runValidators: true,
-      }
+      },
     ).populate("category", "name");
 
     if (!updatedProduct) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ status: "fail", message: "Product not found" });
     }
 
-    res.status(200).json({ success: true, data: updatedProduct });
+    res
+      .status(200)
+      .json({ status: "success", data: { product: updatedProduct } });
   } catch (error) {
     next(error);
   }
@@ -139,10 +149,12 @@ async function deleteProduct(req, res, next) {
     const product = await Product.findByIdAndDelete(targetId);
 
     if (!product) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ status: "fail", message: "Product not found" });
     }
 
-    res.status(200).json({ success: true, data: product });
+    res.status(200).json({ status: "success", data: { product } });
   } catch (error) {
     next(error);
   }
