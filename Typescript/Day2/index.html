@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <header class="game-header">
+      <img src="assets/images/logo.png" alt="endgame-logo" />
+
+      <div class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <span class="progress-label">0/5</span>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="game-wrapper">
+        <section id="game-board" class="game-board"></section>
+
+        <div id="game-over" class="game-over hidden">
+          <div class="game-over__card">
+            <h2>You won!</h2>
+            <p>All pairs matched.</p>
+            <button type="button" id="restart-btn">Play again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
