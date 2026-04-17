@@ -1,0 +1,94 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.slide-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 8px;
+  color: var(--primary-hover);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.left-arrow,
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.left-arrow:hover,
+.right-arrow:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.left-arrow {
+  left: 0.75rem;
+}
+
+.right-arrow {
+  right: 0.75rem;
+}
+
+.arrow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--primary-hover);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.pagination .dot {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  cursor: pointer;
+}
+
+.pagination .dot:not(.active) {
+  transform: scale(0.65);
+}
+
+.pagination .dot.active {
+  background-color: var(--primary);
+}

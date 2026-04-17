@@ -1,0 +1,154 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #1c1e26;
+  --panel: #2a2d38;
+  --panel-soft: #242733;
+  --text: #e7e9ef;
+  --text-muted: #bfc5d6;
+  --border: #3d4253;
+  --primary: #00a96b;
+  --primary-hover: #00de8d;
+  --danger: #d65a5a;
+  --danger-hover: #bf4b4b;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+button {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn {
+  border: none;
+  border-radius: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover);
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+input[type='text'],
+textarea {
+  width: 100%;
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+}
+
+textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+input[type='text']:focus,
+textarea:focus {
+  outline: 2px solid #8cb2ff;
+  outline-offset: 1px;
+}
+
+select,
+input[type='date'] {
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+select option {
+  background: var(--panel-soft);
+  color: var(--text);
+}

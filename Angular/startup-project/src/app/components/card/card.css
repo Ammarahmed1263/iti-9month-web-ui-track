@@ -1,0 +1,52 @@
+.card {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.task-title {
+  margin: 0;
+}
+
+.task-priority {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.priority-high {
+  background: rgba(214, 90, 90, 0.2);
+  border: 1px solid rgba(214, 90, 90, 0.5);
+  color: #ffb6b6;
+}
+
+.task-description {
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.task-meta {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.task-meta p {
+  margin: 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}

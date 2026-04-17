@@ -1,0 +1,29 @@
+<section class="carousel">
+  <div class="slide-title">{{ slides[currentIndex].title }}</div>
+
+  <div class="image-wrapper">
+    <img
+      [src]="slides[currentIndex].image"
+      [alt]="slides[currentIndex].title"
+      title="{{ slides[currentIndex].title }}"
+      class="active"
+    />
+
+    <button title="left arrow" type="button" (click)="prevSlide()" class="left-arrow">
+      <svg viewBox="0 0 24 24" class="arrow-icon">
+        <path d="M14.5 6 8.5 12l6 6" />
+      </svg>
+    </button>
+    <button title="right arrow" type="button" (click)="nextSlide()" class="right-arrow">
+      <svg viewBox="0 0 24 24" class="arrow-icon">
+        <path d="m9.5 6 6 6-6 6" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="pagination">
+    <span (click)="goToSlide(0)" class="dot" [class.active]="currentIndex === 0"></span>
+    <span (click)="goToSlide(1)" class="dot" [class.active]="currentIndex === 1"></span>
+    <span (click)="goToSlide(2)" class="dot" [class.active]="currentIndex === 2"></span>
+  </div>
+</section>

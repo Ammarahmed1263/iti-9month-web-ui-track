@@ -1,0 +1,36 @@
+header {
+  background-color: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.header-content h1 {
+  font-size: 1.35rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 0.65rem;
+  padding: 0;
+}
+
+.nav-links li {
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.nav-links li:hover {
+  background-color: rgba(79, 140, 255, 0.15);
+  color: var(--text);
+}

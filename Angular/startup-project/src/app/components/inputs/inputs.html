@@ -1,0 +1,46 @@
+<aside class="inputs-container">
+  <h3>Add New Task</h3>
+  <div class="inputs">
+    <input
+      type="text"
+      id="task-title"
+      name="taskTitle"
+      placeholder="Task Title"
+      [(ngModel)]="task.title"
+    />
+    <textarea
+      id="task-description"
+      name="taskDescription"
+      placeholder="Task Description"
+      maxlength="150"
+      [(ngModel)]="task.description"
+    ></textarea>
+
+    <label for="priority">Priority:</label>
+    <select id="priority" name="priority" [(ngModel)]="task.priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <label for="due-date">Due Date:</label>
+    <input type="date" id="due-date" name="dueDate" [(ngModel)]="task.dueDate" />
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" [(ngModel)]="task.category">
+      <option value="work">Work</option>
+      <option value="personal">Personal</option>
+      <option value="study">Study</option>
+    </select>
+
+    <input
+      type="text"
+      id="task-tags"
+      name="tags"
+      placeholder="Tags (e.g. urgent, team, exam)"
+      [(ngModel)]="task.tags"
+    />
+  </div>
+  <button type="button" class="btn btn-primary" id="add-task-btn" (click)="addTask()">
+    Add Task
+  </button>
+</aside>
