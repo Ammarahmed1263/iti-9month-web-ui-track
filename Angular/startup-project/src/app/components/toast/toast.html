@@ -1,0 +1,26 @@
+@if (show) {
+  <div class="toast" [class]="type">
+    <div [class]="type + '-icon'" class="icon">
+      @switch (type) {
+        @case ('success') {
+          ✓
+        }
+        @case ('error') {
+          !
+        }
+        @case ('warning') {
+          ⚠
+        }
+        @default {
+          i
+        }
+      }
+    </div>
+
+    <div class="toast-content">
+      <p>{{ message }}</p>
+    </div>
+
+    <button type="button" class="btn close" (click)="hideToast()">x</button>
+  </div>
+}
