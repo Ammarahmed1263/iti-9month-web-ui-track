@@ -1,21 +1,140 @@
-<section class="card">
-  <div class="card-header">
-    <h3 class="task-title">Finish Angular Assignment</h3>
-    <span class="task-priority priority-high">High</span>
+<section
+  class="card"
+  [class.priority-low]="task.priority === 'low'"
+  [class.priority-medium]="task.priority === 'medium'"
+  [class.priority-high]="task.priority === 'high'"
+  [class.completed]="task.completed === true"
+>
+  <div class="header-content">
+    <div class="header-row">
+      <button
+        type="button"
+        (click)="toggleCompleted()"
+        class="btn complete-toggle-btn"
+        [class.is-completed]="task.completed === true"
+        title="{{ task.completed ? 'Mark as pending' : 'Mark as completed' }}"
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4 12.6111L8.92308 17.5L20 6.5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </button>
+      <div class="card-header">
+        <h3 class="task-title">{{ task.title }}</h3>
+        <span
+          class="task-priority"
+          [class.badge-low]="task.priority === 'low'"
+          [class.badge-medium]="task.priority === 'medium'"
+          [class.badge-high]="task.priority === 'high'"
+        >
+          {{ task.priority }}
+        </span>
+      </div>
+    </div>
+
+    <p class="task-description">
+      {{ task.description }}
+    </p>
   </div>
 
-  <p class="task-description">
-    Create all required components and build the static Task Manager UI.
-  </p>
-
   <div class="task-meta">
-    <p><strong>Due: </strong> <span class="task-due-date">2026-04-20</span></p>
-    <p><strong>Category: </strong> <span class="task-category">Study</span></p>
-    <p><strong>Tags: </strong> <span class="task-tags">angular, ui, practice</span></p>
+    <p class="meta-line">
+      <strong>Due:</strong> <span class="task-due-date">{{ task.dueDate }}</span>
+    </p>
+    <p class="meta-line">
+      <strong>Category:</strong> <span class="task-category">{{ task.category }}</span>
+    </p>
+    <p class="meta-line">
+      <strong>Status:</strong>
+      <span class="task-completed" [class.done]="task.completed">{{
+        task.completed ? 'Completed' : 'Pending'
+      }}</span>
+    </p>
+    <p class="meta-line tags-line">
+      <strong>Tags:</strong>
+      @if (task.tags.length !== 0) {
+        <span class="task-tags">{{ task.tags.join(', ') }}</span>
+      } @else {
+        <span class="task-tags muted">No tags</span>
+      }
+    </p>
   </div>
 
   <div class="card-actions">
-    <button type="button" class="btn btn-primary edit-task-btn">Edit</button>
-    <button type="button" class="btn btn-danger delete-task-btn">Delete</button>
+    <button
+      type="button"
+      (click)="updateTask(task)"
+      class="btn btn-primary edit-task-btn"
+      aria-label="Edit Task"
+      title="Edit Task"
+    >
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgEdit" stroke-width="0"></g>
+        <g id="SVGRepo_tracerEdit" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconEdit">
+          <path
+            d="M2 12C2 16.714 2 19.0711 3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12V10.5M13.5 2H12C7.28595 2 4.92893 2 3.46447 3.46447C2.49073 4.43821 2.16444 5.80655 2.0551 8"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M16.652 3.45506L17.3009 2.80624C18.3759 1.73125 20.1188 1.73125 21.1938 2.80624C22.2687 3.88124 22.2687 5.62415 21.1938 6.69914L20.5449 7.34795M16.652 3.45506C16.652 3.45506 16.7331 4.83379 17.9497 6.05032C19.1662 7.26685 20.5449 7.34795 20.5449 7.34795M16.652 3.45506L10.6872 9.41993C10.2832 9.82394 10.0812 10.0259 9.90743 10.2487C9.70249 10.5114 9.52679 10.7957 9.38344 11.0965C9.26191 11.3515 9.17157 11.6225 8.99089 12.1646L8.41242 13.9M20.5449 7.34795L17.5625 10.3304M14.5801 13.3128C14.1761 13.7168 13.9741 13.9188 13.7513 14.0926C13.4886 14.2975 13.2043 14.4732 12.9035 14.6166C12.6485 14.7381 12.3775 14.8284 11.8354 15.0091L10.1 15.5876M10.1 15.5876L8.97709 15.9619C8.71035 16.0508 8.41626 15.9814 8.21744 15.7826C8.01862 15.5837 7.9492 15.2897 8.03811 15.0229L8.41242 13.9M10.1 15.5876L8.41242 13.9"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+        </g>
+      </svg>
+    </button>
+    <button
+      type="button"
+      (click)="deleteTask(task.id)"
+      class="btn btn-danger delete-task-btn"
+      aria-label="Delete Task"
+      title="Delete Task"
+    >
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgDelete" stroke-width="0"></g>
+        <g id="SVGRepo_delete" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconDelete">
+          <path
+            d="M9.17065 4C9.58249 2.83481 10.6937 2 11.9999 2C13.3062 2 14.4174 2.83481 14.8292 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M20.5 6H3.49988"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5M18.8334 8.5L18.6334 11.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M9.5 11L10 16"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M14.5 11L14 16"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          ></path>
+        </g>
+      </svg>
+    </button>
   </div>
 </section>

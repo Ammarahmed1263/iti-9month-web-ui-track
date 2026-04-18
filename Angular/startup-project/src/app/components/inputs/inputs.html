@@ -1,5 +1,8 @@
 <aside class="inputs-container">
-  <h3>Add New Task</h3>
+  <h3>{{ editingTask ? 'Edit Task' : 'Add New Task' }}</h3>
+  @if (editingTask) {
+    <p class="edit-mode-text">You are editing: {{ editingTask.title }}</p>
+  }
   <div class="inputs">
     <input
       type="text"
@@ -41,6 +44,6 @@
     />
   </div>
   <button type="button" class="btn btn-primary" id="add-task-btn" (click)="addTask()">
-    Add Task
+    {{ editingTask ? 'Save Changes' : 'Add Task' }}
   </button>
 </aside>

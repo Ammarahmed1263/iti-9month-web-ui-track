@@ -45,6 +45,7 @@
   justify-content: center;
   padding: 12px;
   border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .left-arrow:hover,
@@ -64,7 +65,7 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: none;
-  stroke: var(--primary-hover);
+  stroke: var(--text);
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;

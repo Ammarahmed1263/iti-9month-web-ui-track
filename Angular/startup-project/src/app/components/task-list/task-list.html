@@ -1,0 +1,43 @@
+<section class="task-list">
+  <div class="filters">
+    <button
+      type="button"
+      class="btn filter-btn"
+      (click)="handleSetFilter('all')"
+      [class.active]="filter === 'all'"
+    >
+      All Tasks
+    </button>
+    <button
+      type="button"
+      class="btn filter-btn"
+      (click)="handleSetFilter('completed')"
+      [class.active]="filter === 'completed'"
+    >
+      Completed
+    </button>
+    <button
+      type="button"
+      class="btn filter-btn"
+      (click)="handleSetFilter('pending')"
+      [class.active]="filter === 'pending'"
+    >
+      Pending
+    </button>
+  </div>
+
+  <div class="tasks-container">
+    @for (task of tasks; track task.id) {
+      <app-card
+        [task]="task"
+        (deleteTaskEvent)="handleDeleteTask($event)"
+        (editTaskEvent)="handleEditTask($event)"
+        (updateTaskEvent)="handleUpdateTask($event)"
+      ></app-card>
+    } @empty {
+      <div class="empty-state">
+        <p>Start adding tasks to appear here</p>
+      </div>
+    }
+  </div>
+</section>

@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-type Priority = 'low' | 'medium' | 'high';
-type Category = 'work' | 'personal' | 'study';
+import { ToastType } from '../toast/types';
+import { Category, Priority, Task, ToastEvent } from '../todo-list/types';
 
 interface TaskForm {
   title: string;
@@ -13,16 +12,6 @@ interface TaskForm {
   tags: string;
 }
 
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  priority: Priority;
-  dueDate: string;
-  category: Category;
-  tags: string[];
-}
-
 @Component({
   selector: 'app-inputs',
   templateUrl: './inputs.html',
@@ -30,24 +19,46 @@ interface Task {
   imports: [FormsModule],
 })
 export class InputsComponent {
-  task: TaskForm = {
-    title: '',
-    description: '',
-    priority: 'low',
-    dueDate: new Date().toISOString().split('T')[0],
-    category: 'work',
-    tags: '',
-  };
+  private _editingTask: Task | null = null;
 
-  tasks: Task[] = [];
+  @Input()
+  set editingTask(value: Task | null) {
+    this._editingTask = value;
+
+    if (value) {
+      this.task = {
+        title: value.title,
+        description: value.description,
+        priority: value.priority,
+        dueDate: value.dueDate,
+        category: value.category,
+        tags: value.tags.join(', '),
+      };
+      return;
+    }
+
+    this.resetForm();
+  }
+
+  get editingTask(): Task | null {
+    return this._editingTask;
+  }
+
+  @Output() showToast = new EventEmitter<ToastEvent>();
+  @Output() addTaskEvent = new EventEmitter<Task>();
+
+  task: TaskForm = this.createEmptyForm();
 
   addTask() {
-    if (!this.task.title.trim()) return;
+    if (!this.task.title.trim()) {
+      this.showToast.emit({ message: 'Task title is required!', type: 'error' });
+      return;
+    }
 
     const { title, description, priority, dueDate, category, tags } = this.task;
 
-    this.tasks.push({
-      id: new Date().getTime(),
+    this.addTaskEvent.emit({
+      id: this.editingTask ? this.editingTask.id : new Date().getTime(),
       title,
       description,
       priority,
@@ -59,17 +70,24 @@ export class InputsComponent {
             .map((t) => t.trim())
             .filter(Boolean)
         : [],
+      completed: this.editingTask ? this.editingTask.completed : false,
     });
 
-    console.log('tasks here: ', this.tasks);
+    this.resetForm();
+  }
 
-    this.task = {
+  private createEmptyForm(): TaskForm {
+    return {
       title: '',
       description: '',
-      priority: 'low',
+      priority: 'medium',
       dueDate: new Date().toISOString().split('T')[0],
       category: 'work',
       tags: '',
     };
+  }
+
+  private resetForm(): void {
+    this.task = this.createEmptyForm();
   }
 }

@@ -13,10 +13,13 @@
   --text: #e7e9ef;
   --text-muted: #bfc5d6;
   --border: #3d4253;
+  --shadow: rgba(255, 255, 255, 0.2);
   --primary: #00a96b;
   --primary-hover: #00de8d;
   --danger: #d65a5a;
   --danger-hover: #bf4b4b;
+  --warning: #dca716;
+  --info: #5a9bd6;
 }
 
 body {
@@ -34,16 +37,6 @@ body {
     sans-serif;
   line-height: 1.6;
   margin: 0;
-}
-
-button {
-  background-color: var(--primary);
-  color: #ffffff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font: inherit;
 }
 
 button:hover {
