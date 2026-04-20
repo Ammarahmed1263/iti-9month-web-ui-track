@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FooterComponent } from './components/footer/footer';
 import { HeaderComponent } from './components/header/header';
 import { CarouselComponent } from './components/carousel/carousel';
@@ -12,7 +12,7 @@ import { TodoListComponent } from './components/todo-list/todo-list';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App implements OnDestroy {
   private toastTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   toastMessage: {
@@ -24,6 +24,10 @@ export class App {
     message: 'Default message',
     type: 'error',
   };
+
+  ngOnDestroy(): void {
+    this.clearToastTimeout();
+  }
 
   showToast(message: string, type: ToastType) {
     this.clearToastTimeout();

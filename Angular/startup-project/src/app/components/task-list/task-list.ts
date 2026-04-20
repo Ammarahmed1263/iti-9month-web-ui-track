@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CardComponent } from '../card/card';
-import { FilterType, Task } from '../todo-list/types';
+import { FilterType, Task, ToastEvent } from '../todo-list/types';
 
 @Component({
   selector: 'app-task-list',
@@ -8,13 +8,34 @@ import { FilterType, Task } from '../todo-list/types';
   styleUrls: ['./task-list.css'],
   imports: [CardComponent],
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnChanges {
   @Input() tasks: Task[] = [];
   @Input() filter: FilterType = 'all';
   @Output() deleteTask = new EventEmitter<number>();
   @Output() editTask = new EventEmitter<Task>();
   @Output() updateTask = new EventEmitter<Task>();
-  @Output() setFilter = new EventEmitter<FilterType>();
+  @Output() filterChange = new EventEmitter<FilterType>();
+  @Output() showToast = new EventEmitter<ToastEvent>();
+  visibleTasks: Task[] = [];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const tasksChange = changes['tasks'];
+    const filterChange = changes['filter'];
+
+    if (tasksChange || filterChange) {
+      this.updateVisibleTasks();
+    }
+  }
+
+  private updateVisibleTasks(): void {
+    if (this.filter === 'all') {
+      this.visibleTasks = this.tasks;
+    } else if (this.filter === 'completed') {
+      this.visibleTasks = this.tasks.filter((task) => task.completed);
+    } else {
+      this.visibleTasks = this.tasks.filter((task) => !task.completed);
+    }
+  }
 
   handleDeleteTask(taskId: number): void {
     this.deleteTask.emit(taskId);
@@ -29,6 +50,10 @@ export class TaskListComponent {
   }
 
   handleSetFilter(filter: FilterType): void {
-    this.setFilter.emit(filter);
+    this.filterChange.emit(filter);
+  }
+
+  handleShowToast(event: ToastEvent): void {
+    this.showToast.emit(event);
   }
 }

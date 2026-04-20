@@ -1,10 +1,10 @@
 <app-task-list
-  [tasks]="filteredTasks"
+  [tasks]="tasks"
   (deleteTask)="handleDeleteTask($event)"
   (editTask)="startEditingTask($event)"
   (updateTask)="handleUpdateTask($event)"
-  (setFilter)="handleFilterChange($event)"
-  [filter]="filter"
+  (showToast)="handleShowToast($event)"
+  [(filter)]="filter"
 ></app-task-list>
 <app-inputs
   [editingTask]="editingTask"

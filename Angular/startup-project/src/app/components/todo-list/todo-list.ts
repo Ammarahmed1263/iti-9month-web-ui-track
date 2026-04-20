@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { InputsComponent } from '../inputs/inputs';
 import { TaskListComponent } from '../task-list/task-list';
-import { ToastType } from '../toast/types';
 import { FilterType, Task, ToastEvent } from './types';
 
 @Component({
@@ -40,7 +39,6 @@ export class TodoListComponent {
 
   handleDeleteTask(taskId: number): void {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
-    this.showToast.emit({ message: 'Task deleted successfully!', type: 'info' });
   }
 
   startEditingTask(task: Task): void {
@@ -49,20 +47,9 @@ export class TodoListComponent {
 
   handleUpdateTask(updatedTask: Task): void {
     this.tasks = this.tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task));
-    this.showToast.emit({ message: 'Task updated successfully!', type: 'success' });
   }
 
   handleFilterChange(filter: FilterType): void {
     this.filter = filter;
-  }
-
-  get filteredTasks(): Task[] {
-    if (this.filter === 'all') {
-      return this.tasks;
-    } else if (this.filter === 'completed') {
-      return this.tasks.filter((task) => task.completed);
-    } else {
-      return this.tasks.filter((task) => !task.completed);
-    }
   }
 }

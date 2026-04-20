@@ -27,16 +27,27 @@
   </div>
 
   <div class="tasks-container">
-    @for (task of tasks; track task.id) {
+    @for (task of visibleTasks; track task.id) {
       <app-card
         [task]="task"
         (deleteTaskEvent)="handleDeleteTask($event)"
         (editTaskEvent)="handleEditTask($event)"
         (updateTaskEvent)="handleUpdateTask($event)"
+        (showToastEvent)="handleShowToast($event)"
       ></app-card>
     } @empty {
       <div class="empty-state">
-        <p>Start adding tasks to appear here</p>
+        @switch (filter) {
+          @case ('all') {
+            <p>Start adding tasks to appear here</p>
+          }
+          @case ('completed') {
+            <p>Let's finish today's tasks!</p>
+          }
+          @case ('pending') {
+            <p>Congratulation! You can enjoy your free time.</p>
+          }
+        }
       </div>
     }
   </div>
