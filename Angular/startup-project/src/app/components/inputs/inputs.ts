@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ToastType } from '../toast/types';
 import { Category, Priority, Task, ToastEvent } from '../todo-list/types';
 
 interface TaskForm {
@@ -18,13 +17,21 @@ interface TaskForm {
   styleUrl: './inputs.css',
   imports: [FormsModule],
 })
-export class InputsComponent {
-  private _editingTask: Task | null = null;
+export class InputsComponent implements OnChanges {
+  @Input() editingTask: Task | null = null;
 
-  @Input()
-  set editingTask(value: Task | null) {
-    this._editingTask = value;
+  @Output() showToast = new EventEmitter<ToastEvent>();
+  @Output() addTaskEvent = new EventEmitter<Task>();
 
+  task: TaskForm = this.createEmptyForm();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const editingTaskChange = changes['editingTask'];
+    if (!editingTaskChange) {
+      return;
+    }
+
+    const value = editingTaskChange.currentValue as Task | null;
     if (value) {
       this.task = {
         title: value.title,
@@ -39,15 +46,6 @@ export class InputsComponent {
 
     this.resetForm();
   }
-
-  get editingTask(): Task | null {
-    return this._editingTask;
-  }
-
-  @Output() showToast = new EventEmitter<ToastEvent>();
-  @Output() addTaskEvent = new EventEmitter<Task>();
-
-  task: TaskForm = this.createEmptyForm();
 
   addTask() {
     if (!this.task.title.trim()) {

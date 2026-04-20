@@ -1,4 +1,4 @@
-<aside class="inputs-container">
+<aside class="inputs-container" [class.editing-container]="editingTask">
   <h3>{{ editingTask ? 'Edit Task' : 'Add New Task' }}</h3>
   @if (editingTask) {
     <p class="edit-mode-text">You are editing: {{ editingTask.title }}</p>
