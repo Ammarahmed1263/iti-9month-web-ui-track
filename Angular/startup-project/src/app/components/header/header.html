@@ -1,13 +1,19 @@
 <header>
   <div class="container header-content">
-    <h1>Task Manager</h1>
-
-    <p class="timer">{{ formattedTimer }}</p>
+    <div class="brand">
+      <p class="timer">{{ formattedTimer }}</p>
+      <h1>Task Manager</h1>
+    </div>
 
     <ul class="nav-links">
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact</li>
+      <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+      <li><a routerLink="/add-task" routerLinkActive="active-link">Add Task</a></li>
+      <li><a routerLink="/my-tasks" routerLinkActive="active-link">My Tasks</a></li>
+    </ul>
+
+    <ul class="auth-links">
+      <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+      <li><a routerLink="/register" routerLinkActive="active-link">Register</a></li>
     </ul>
   </div>
 </header>

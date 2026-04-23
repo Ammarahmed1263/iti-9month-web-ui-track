@@ -7,9 +7,9 @@
 }
 
 :root {
-  --bg: #1c1e26;
-  --panel: #2a2d38;
-  --panel-soft: #242733;
+  --bg: #020617;
+  --panel: #13182b;
+  --panel-soft: #0F172A;
   --text: #e7e9ef;
   --text-muted: #bfc5d6;
   --border: #3d4253;
@@ -116,7 +116,7 @@ body {
   color: var(--text);
 }
 
-input[type='text'],
+input,
 textarea {
   width: 100%;
   background: var(--panel-soft);
@@ -132,7 +132,7 @@ textarea {
   resize: vertical;
 }
 
-input[type='text']:focus,
+input:focus,
 textarea:focus {
   outline: 2px solid var(--primary-hover);
   outline-offset: 1px;
