@@ -1,14 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/footer/footer';
 import { HeaderComponent } from './components/header/header';
-import { CarouselComponent } from './components/carousel/carousel';
 import { ToastComponent } from './components/toast/toast';
 import { ToastType } from './components/toast/types';
-import { TodoListComponent } from './components/todo-list/todo-list';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FooterComponent, TodoListComponent, CarouselComponent, ToastComponent],
+  imports: [HeaderComponent, FooterComponent, ToastComponent, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

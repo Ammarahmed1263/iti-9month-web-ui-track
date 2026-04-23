@@ -1,12 +1,12 @@
 <div class="root">
   <app-header></app-header>
-  <app-carousel />
-  <main class="container">
-    <app-todo-list
-    class="content"
-    (showToast)="showToast($event.message, $event.type)"
-    ></app-todo-list>
+
+  <main class="app-main">
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
   </main>
+
   <app-footer></app-footer>
 
   <app-toast
