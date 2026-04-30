@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-main: #fdfbf7;
+  --bg-secondary: #f4f2ec;
+  --text-main: #475569;
+  --text-heading: #0f172a;
+  --border: #e5e3dd;
+  --accent: #f97316;
+  --accent-hover: #ea580c;
+
+  --font-body:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
+
+  font-family: var(--font-heading);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #1d1d1d;
+    --bg-secondary: #2a2a2a;
+    --text-main: #e3e3e3;
+    --text-heading: #ebf0f5;
+    --border: #464b50;
+    --accent: #ff6334;
+    --accent-hover: #ff815f;
+  }
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100dvh;
+}
+
+
+h1,
+h2,
+h3 {
+  color: var(--text-heading);
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+p {
+  font-family: var(--font-body);
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.brand-dot {
+  color: var(--accent);
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+  h2 {
+    font-size: 1.85rem;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header,
+footer {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  text-align: center;
+}
+
+main {
+  padding: 2rem 0;
+}
