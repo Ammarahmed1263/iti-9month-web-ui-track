@@ -15,35 +15,35 @@ class Carousel extends Component {
     this.startAutoPlay();
   }
 
+  componentWillUnmount() {
+    this.stopAutoPlay();
+  }
+
   fetchSlides = async () => {
     try {
       const response = await fetch("http://localhost:3001/articles");
       if (!response.ok) throw new Error("Failed to fetch articles");
       const articles = await response.json();
-      
-      const slides = articles.slice(0, 3).map(article => ({
+
+      const slides = articles.slice(0, 3).map((article) => ({
         id: article.id,
         category: article.category,
         title: article.title,
         description: article.description,
         image: article.image.url,
-        link: article.link
+        link: article.link,
       }));
+
       this.setState({ slides, loading: false });
     } catch (error) {
       this.setState({ error: error.message, loading: false });
     }
   };
 
-  componentWillUnmount() {
-    this.stopAutoPlay();
-  }
-
   startAutoPlay = () => {
     this.stopAutoPlay();
-
     this.intervalId = setInterval(() => {
-      this.nextSlide(true);
+      this.goToNext(); // does NOT call startAutoPlay — no stacking
     }, 2000);
   };
 
@@ -51,20 +51,28 @@ class Carousel extends Component {
     clearInterval(this.intervalId);
   };
 
-  nextSlide = (restart = true) => {
+  // Pure state logic — no timer side effects
+  goToNext = () => {
     this.setState((prev) => ({
       currentIndex: (prev.currentIndex + 1) % prev.slides.length,
     }));
-
-    if (restart) this.startAutoPlay();
   };
 
-  prevSlide = () => {
+  goToPrev = () => {
     this.setState((prev) => ({
       currentIndex:
         (prev.currentIndex - 1 + prev.slides.length) % prev.slides.length,
     }));
+  };
 
+  // User interactions — reset the timer
+  nextSlide = () => {
+    this.goToNext();
+    this.startAutoPlay();
+  };
+
+  prevSlide = () => {
+    this.goToPrev();
     this.startAutoPlay();
   };
 
@@ -83,13 +91,41 @@ class Carousel extends Component {
     const currentSlide = slides[currentIndex];
 
     return (
-      <div className="carousel" onMouseEnter={this.stopAutoPlay} onMouseLeave={this.startAutoPlay}>
-        <div className="carousel-inner">
+      <div
+        className="carousel"
+        onMouseEnter={this.stopAutoPlay}
+        onMouseLeave={this.startAutoPlay}
+      >
+        <button
+          className="nav-btn left"
+          onClick={this.prevSlide}
+          aria-label="Previous"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M20 12H4M4 12L10 6M4 12L10 18"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <div className="slide">
           <div className="slide-content">
             <span className="slide-category">{currentSlide.category}</span>
             <h2 className="slide-title">{currentSlide.title}</h2>
             <p className="slide-description">{currentSlide.description}</p>
-            <button className="slide-btn"><a href={currentSlide.link}>Read Article</a></button>
+            {/* button wrapping anchor is invalid — use one or the other */}
+            <a
+              className="slide-btn"
+              href={currentSlide.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Read Article
+            </a>
           </div>
           <div className="slide-image-wrapper">
             <img
@@ -100,18 +136,29 @@ class Carousel extends Component {
           </div>
         </div>
 
-        <button className="carousel-control prev" onClick={this.prevSlide}>
-          &#10094;
-        </button>
-        <button className="carousel-control next" onClick={() => this.nextSlide(false)}>
-          &#10095;
+        <button
+          className="nav-btn right"
+          onClick={this.nextSlide}
+          aria-label="Next"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M4 12H20M20 12L14 6M20 12L14 18"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
 
-        <Pagination 
-          total={slides.length} 
-          current={currentIndex} 
-          onChange={this.handleDotClick} 
-        />
+        <div className="carousel-pagination">
+          <Pagination
+            count={slides.length}
+            activeIndex={currentIndex}
+            handleDotClick={this.handleDotClick}
+          />
+        </div>
       </div>
     );
   }
