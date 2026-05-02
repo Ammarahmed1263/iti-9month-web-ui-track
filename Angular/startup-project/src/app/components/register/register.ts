@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password')?.value;
@@ -28,7 +29,8 @@ const passwordMatchValidator: ValidatorFn = (control: AbstractControl): Validati
   styleUrl: './register.css',
 })
 export class RegisterComponent {
-  constructor(private readonly router: Router) {}
+  router = inject(Router);
+  authService = inject(AuthService);
 
   registerForm = new FormGroup(
     {
@@ -52,6 +54,25 @@ export class RegisterComponent {
       return;
     }
 
-    this.router.navigate(['/login']);
+    if (this.registerForm.errors?.['passwordMismatch']) {
+      this.registerForm.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+      return;
+    } else {
+      this.registerForm.get('confirmPassword')?.setErrors(null);
+    }
+
+    if (
+      !this.registerForm.value.email ||
+      !this.registerForm.value.password ||
+      !this.registerForm.value.userName
+    ) {
+      return;
+    }
+
+    this.authService.register({
+      userName: this.registerForm.value.userName,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password,
+    });
   }
 }

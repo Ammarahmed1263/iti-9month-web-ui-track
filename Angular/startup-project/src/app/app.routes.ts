@@ -30,7 +30,13 @@ export const routes: Routes = [
       },
       {
         path: 'add-task',
-        loadComponent: () => import('./components/inputs/inputs').then((m) => m.InputsComponent),
+        loadComponent: () =>
+          import('./components/task-form/task-form').then((m) => m.TaskFormComponent),
+      },
+      {
+        path: 'edit-task/:id',
+        loadComponent: () =>
+          import('./components/task-form/task-form').then((m) => m.TaskFormComponent),
       },
       {
         path: 'my-tasks',

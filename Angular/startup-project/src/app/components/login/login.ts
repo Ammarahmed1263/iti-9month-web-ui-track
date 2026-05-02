@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   imports: [FormsModule],
 })
 export class LoginComponent {
-  constructor(private readonly router: Router) {}
+  router = inject(Router);
+  authService = inject(AuthService);
 
   onLogin(form: NgForm) {
     if (form.invalid) {
@@ -23,7 +25,6 @@ export class LoginComponent {
       return;
     }
 
-    localStorage.setItem('user', JSON.stringify(email));
-    this.router.navigate(['/home']);
+    this.authService.login(email, form.value.password);
   }
 }
