@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Amazon, Meta join fight to end Google Pay, PhonePe dominance in India",
       "description": "Amazon and Meta are among the big companies set to lobby India’s payments body over the dominance of Walmart-owned PhonePe and Google Pay in the country’s fast-growing instant payments network.",
       "category": "FINTECH",
@@ -10,10 +10,11 @@
       "image": {
         "url": "https://techcrunch.com/wp-content/uploads/2022/06/GettyImages-1213174164.jpg?w=600",
         "alt": "Amazon Meta Google Pay India"
-      }
+      },
+      "votes": 199999
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Amazon’s cloud business is surging — and so is its capital spending",
       "description": "Amazon was one of several tech giants that on Wednesday beat Wall Street’s first-quarter earnings expectations, offering more financial evidence that the AI boom continues to reward companies that supply the picks and shovels.",
       "category": "AI",
@@ -22,10 +23,11 @@
       "image": {
         "url": "https://techcrunch.com/wp-content/uploads/2025/04/GettyImages-2201505679.jpg?w=600",
         "alt": "Amazon Cloud Business"
-      }
+      },
+      "votes": 12601
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Sources: Anthropic could raise a new $50B round at a valuation of $900B",
       "description": "The maker of the Claude AI assistant has received multiple preemptive offers to raise fresh capital of around $50 billion at a valuation in the $850 billion to $900 billion range.",
       "category": "AI",
@@ -34,10 +36,11 @@
       "image": {
         "url": "https://techcrunch.com/wp-content/uploads/2026/01/GettyImages-2256664479.jpg?w=600",
         "alt": "Anthropic Valuation"
-      }
+      },
+      "votes": 35689
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "How Medium uses AI at work: Humans first, especially in the age of AI",
       "description": "Grounding our AI use in fairness, accountability, care, transparency, and stewardship. Humans first, especially in the age of AI.",
       "category": "AI",
@@ -46,10 +49,11 @@
       "image": {
         "url": "https://miro.medium.com/v2/resize:fit:849/format:webp/1*7KNMNqBpYfKMaF9PWuFf8Q.jpeg",
         "alt": "Medium AI"
-      }
+      },
+      "votes": 12
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Transform Voices with AI: A Complete Guide to Seed-VC",
       "description": "Learn how to perform high-quality voice conversion using zero-shot learning. A complete guide to Seed-VC.",
       "category": "AI",
@@ -58,10 +62,11 @@
       "image": {
         "url": "https://miro.medium.com/v2/resize:fit:849/format:webp/1*zC54Nowum10w_pBUGu75lQ.png",
         "alt": "Voice AI Guide"
-      }
+      },
+      "votes": 800
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++",
       "description": "For any physically-intelligent mobile robot that operates autonomously in the real world, successful navigation is a critical capability.",
       "category": "Robotics",
@@ -70,7 +75,9 @@
       "image": {
         "url": "https://miro.medium.com/v2/resize:fit:456/format:webp/0*50F1yYZlahhHddcP",
         "alt": "AMR Robotics"
-      }
+      },
+      "votes": 6
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
