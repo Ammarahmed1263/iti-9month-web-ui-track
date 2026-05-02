@@ -2,42 +2,41 @@
   <div class="filters">
     <button
       type="button"
-      class="btn filter-btn"
-      (click)="handleSetFilter('all')"
-      [class.active]="filter === 'all'"
+      class="filter-btn"
+      (click)="taskState.updateFilter('all')"
+      [class.active]="taskState.filter() === 'all'"
     >
       All Tasks
     </button>
     <button
       type="button"
-      class="btn filter-btn"
-      (click)="handleSetFilter('completed')"
-      [class.active]="filter === 'completed'"
+      class="filter-btn"
+      (click)="taskState.updateFilter('completed')"
+      [class.active]="taskState.filter() === 'completed'"
     >
       Completed
     </button>
     <button
       type="button"
-      class="btn filter-btn"
-      (click)="handleSetFilter('pending')"
-      [class.active]="filter === 'pending'"
+      class="filter-btn"
+      (click)="taskState.updateFilter('pending')"
+      [class.active]="taskState.filter() === 'pending'"
     >
       Pending
     </button>
   </div>
 
   <div class="tasks-container">
-    @for (task of visibleTasks; track task.id) {
+    @for (task of taskState.visibleTasks(); track task.id) {
       <app-card
         [task]="task"
-        (deleteTaskEvent)="handleDeleteTask($event)"
-        (editTaskEvent)="handleEditTask($event)"
-        (updateTaskEvent)="handleUpdateTask($event)"
-        (showToastEvent)="handleShowToast($event)"
+        (deleteTaskEvent)="taskState.deleteTask($event)"
+        (editTaskEvent)="taskState.selectTask($event)"
+        (updateTaskEvent)="taskState.updateTask($event)"
       ></app-card>
     } @empty {
       <div class="empty-state">
-        @switch (filter) {
+        @switch (taskState.filter()) {
           @case ('all') {
             <p>Start adding tasks to appear here</p>
           }

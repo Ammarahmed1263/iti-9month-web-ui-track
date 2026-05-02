@@ -1,0 +1,89 @@
+<section class="inputs-container" [class.editing-container]="taskState.selectedTask()">
+  <h3>{{ taskState.selectedTask() ? 'Edit Task' : 'Add New Task' }}</h3>
+  @if (taskState.selectedTask()) {
+    <p class="edit-mode-text">You are editing: {{ taskState.selectedTask()?.title }}</p>
+  }
+  <div class="inputs">
+    <div class="field-group full-width">
+      <label for="task-title">Task Title:</label>
+      <input
+        type="text"
+        id="task-title"
+        name="taskTitle"
+        placeholder="Task Title"
+        [(ngModel)]="task.title"
+      />
+    </div>
+
+    <div class="field-group full-width">
+      <label for="task-description">Description:</label>
+      <textarea
+        id="task-description"
+        name="taskDescription"
+        placeholder="Task Description"
+        maxlength="150"
+        [(ngModel)]="task.description"
+      ></textarea>
+    </div>
+
+    <div class="field-group full-width">
+      <p class="field-label">Priority:</p>
+      <div class="priority-group" role="group" aria-label="Task priority">
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="task.priority === 'low'"
+          (click)="task.priority = 'low'"
+        >
+          Low
+        </button>
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="task.priority === 'medium'"
+          (click)="task.priority = 'medium'"
+        >
+          Medium
+        </button>
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="task.priority === 'high'"
+          (click)="task.priority = 'high'"
+        >
+          High
+        </button>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label for="due-date">Due Date:</label>
+        <input type="date" id="due-date" name="dueDate" [(ngModel)]="task.dueDate" />
+      </div>
+
+      <div class="field-group">
+        <label for="category">Category:</label>
+        <select id="category" name="category" [(ngModel)]="task.category">
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="study">Study</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group full-width">
+      <label for="task-tags">Tags:</label>
+      <input
+        type="text"
+        id="task-tags"
+        name="tags"
+        placeholder="Tags (e.g. urgent, team, exam)"
+        [(ngModel)]="task.tags"
+      />
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" id="add-task-btn" (click)="addTask()">
+    {{ taskState.selectedTask() ? 'Save Changes' : 'Add Task' }}
+  </button>
+</section>

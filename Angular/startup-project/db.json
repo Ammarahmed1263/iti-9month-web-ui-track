@@ -1,0 +1,84 @@
+{
+  "tasks": [
+    {
+      "id": "task1",
+      "userId": "user1",
+      "title": "Mora's Task",
+      "description": "This is a task for Mora.",
+      "priority": "high",
+      "dueDate": "2026-04-24",
+      "category": "work",
+      "tags": [
+        "urgent"
+      ],
+      "completed": false
+    },
+    {
+      "id": "task2",
+      "userId": "user2",
+      "title": "Ammar's Task",
+      "description": "This is a task for Ammar.",
+      "priority": "low",
+      "dueDate": "2026-04-25",
+      "category": "work",
+      "tags": [
+        "chore"
+      ],
+      "completed": true
+    },
+    {
+      "id": "BiJskTmQNTs",
+      "userId": "user1",
+      "title": "work",
+      "description": "",
+      "priority": "medium",
+      "dueDate": "2026-04-24",
+      "category": "work",
+      "tags": [],
+      "completed": true
+    },
+    {
+      "title": "testing",
+      "description": "",
+      "priority": "medium",
+      "dueDate": "2026-04-24",
+      "category": "work",
+      "tags": [],
+      "completed": false,
+      "userId": "DyuDlyxP5GY",
+      "id": "U6zq4at_GEM"
+    },
+    {
+      "id": "fQ_xVBIqn6I",
+      "userId": "DyuDlyxP5GY",
+      "title": "testing2",
+      "description": "",
+      "priority": "medium",
+      "dueDate": "2026-04-24",
+      "category": "work",
+      "tags": [],
+      "completed": true
+    }
+  ],
+  "users": [
+    {
+      "userName": "mora",
+      "email": "ammarahmed1263@gmail.com",
+      "password": "Sniper12",
+      "id": "user1"
+    },
+    {
+      "userName": "ammar",
+      "email": "ammar12@gmail.com",
+      "password": "Sniper126",
+      "id": "user2"
+    },
+    {
+      "userName": "test",
+      "email": "test@gmail.com",
+      "password": "Sniper12",
+      "id": "DyuDlyxP5GY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
