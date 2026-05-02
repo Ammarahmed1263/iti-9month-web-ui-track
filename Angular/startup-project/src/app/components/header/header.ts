@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Component, computed, inject, OnDestroy, OnInit, Signal, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-header',
@@ -8,21 +9,21 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   imports: [RouterLink, RouterLinkActive],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  startTime: number = 0;
-  timer: number = 0;
-  formattedTimer: string = '00:00';
-  private intervalId: number | undefined;
+  private router = inject(Router);
+  authService = inject(AuthService);
 
-  constructor(private cd: ChangeDetectorRef) {}
+  startTime: number = Date.now();
+  private intervalId: number | undefined;
+  timer = signal<number>(0);
+  formattedTimer: Signal<string> = computed(() => {
+    const minutes = Math.floor(this.timer() / 60);
+    const seconds = this.timer() % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  });
 
   ngOnInit(): void {
-    this.startTime = Date.now();
-    this.formatTimer();
-
     this.intervalId = window.setInterval(() => {
-      this.timer = Math.floor((Date.now() - this.startTime) / 1000);
-      this.formatTimer();
-      this.cd.detectChanges();
+      this.timer.set(Math.floor((Date.now() - this.startTime) / 1000));
     }, 1000);
   }
 
@@ -32,9 +33,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private formatTimer(): void {
-    const minutes = Math.floor(this.timer / 60);
-    const seconds = this.timer % 60;
-    this.formattedTimer = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  isTaskFormRoute(): boolean {
+    const url = this.router.url;
+    return url === '/add-task' || url.startsWith('/edit-task/');
+  }
+
+  getTaskTitle(): string {
+    const url = this.router.url;
+
+    if (url.startsWith('/edit-task/')) {
+      return 'Edit Task';
+    }
+
+    return 'Add Task';
   }
 }

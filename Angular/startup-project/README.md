@@ -1,5 +1,9 @@
 # Task Manager with Angular
 
+## Demo Video
+
+### [Watch the Task Video](https://drive.google.com/drive/folders/15orH6gMxMC05UMKag7tUKHSXh7NMV66U?usp=sharing)
+
 A beginner-friendly Angular project built with standalone components.
 
 This project started as a UI-focused task dashboard and now includes task workflow screens, route protection with guards, authentication forms, and toast notifications.

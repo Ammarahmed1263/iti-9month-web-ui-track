@@ -8,6 +8,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 1rem;
+  display: flex;
 }
 
 .content-container {
@@ -16,5 +17,6 @@
   gap: 1rem;
   width: 100%;
   min-width: 0;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }

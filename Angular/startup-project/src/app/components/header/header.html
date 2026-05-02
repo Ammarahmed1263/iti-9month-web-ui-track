@@ -1,19 +1,29 @@
 <header>
   <div class="container header-content">
     <div class="brand">
-      <p class="timer">{{ formattedTimer }}</p>
-      <h1>Task Manager</h1>
+      <p class="timer">{{ formattedTimer() }}</p>
+      <h1>Task Trek</h1>
     </div>
 
-    <ul class="nav-links">
-      <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-      <li><a routerLink="/add-task" routerLinkActive="active-link">Add Task</a></li>
-      <li><a routerLink="/my-tasks" routerLinkActive="active-link">My Tasks</a></li>
-    </ul>
+    @if (authService.isLoggedIn()) {
+      <ul class="nav-links">
+        <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+        <li>
+          <a routerLink="/add-task" [class.active-link]="isTaskFormRoute()">{{ getTaskTitle() }}</a>
+        </li>
+        <li><a routerLink="/my-tasks" routerLinkActive="active-link">My Tasks</a></li>
+      </ul>
+    }
 
-    <ul class="auth-links">
-      <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
-      <li><a routerLink="/register" routerLinkActive="active-link">Register</a></li>
-    </ul>
+    @if (authService.isLoggedIn()) {
+      <ul class="auth-links">
+        <li><a (click)="authService.logout()" routerLinkActive="active-link">Logout</a></li>
+      </ul>
+    } @else {
+      <ul class="auth-links">
+        <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+        <li><a routerLink="/register" routerLinkActive="active-link">Register</a></li>
+      </ul>
+    }
   </div>
 </header>

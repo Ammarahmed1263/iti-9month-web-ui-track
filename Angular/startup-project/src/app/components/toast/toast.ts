@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ToastType } from './types';
+import { Component, input, output } from '@angular/core';
+import { ToastType } from '../../models/app-types';
 
 @Component({
   selector: 'app-toast',
@@ -8,13 +8,12 @@ import { ToastType } from './types';
   styleUrl: './toast.css',
 })
 export class ToastComponent {
-  @Input() show = true;
-  @Input() message = 'Testing message';
-  @Input() type: ToastType = 'info';
-  @Output() closed = new EventEmitter<void>();
+  show = input(false);
+  message = input('Testing message');
+  type = input<ToastType>('info');
+  closed = output<void>();
 
   hideToast() {
-    this.show = false;
     this.closed.emit();
   }
 }

@@ -1,10 +1,25 @@
 .card {
-  background-color: var(--panel);
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)), var(--panel);
   border: 1px solid var(--border);
   border-left: 6px solid var(--border);
-  border-radius: 0.65rem;
-  padding: 1rem;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  border-radius: 0.9rem;
+  padding: 1.1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .card.priority-low {
@@ -20,13 +35,14 @@
 }
 
 .card.completed {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .header-content {
   display: grid;
   gap: 0.7rem;
   margin-bottom: 0.9rem;
+  width: 100%;
 }
 
 .header-row {
@@ -41,12 +57,22 @@
   justify-content: space-between;
   gap: 0.75rem;
   width: 100%;
+  min-width: 0;
 }
 
 .task-title {
   margin: 0;
   font-size: 1.08rem;
   line-height: 1.2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.task-category-inline {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .task-priority {
@@ -79,12 +105,16 @@
   color: var(--text);
   margin: 0;
   line-height: 1.45;
+  width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .task-meta {
   display: grid;
   gap: 0.4rem;
-  margin-bottom: 0.9rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--border);
 }
@@ -100,19 +130,36 @@
   margin-right: 0.2rem;
 }
 
-.task-completed.done {
-  color: var(--primary-hover);
-  font-weight: 700;
+.tags-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
 }
 
-.task-tags.muted {
-  opacity: 0.8;
+.task-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background-color: var(--panel-soft);
+  color: var(--text);
+  font-size: 0.78rem;
+  line-height: 1.1;
 }
 
 .card-actions {
   display: flex;
   gap: 0.6rem;
   justify-content: flex-end;
+  margin-top: auto;
 }
 
 button {

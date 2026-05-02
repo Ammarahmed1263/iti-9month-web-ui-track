@@ -10,9 +10,9 @@
   <app-footer></app-footer>
 
   <app-toast
-    [type]="toastMessage.type"
-    [message]="toastMessage.message"
-    [show]="toastMessage.show"
+    [type]="toastService.toastMessage().type"
+    [message]="toastService.toastMessage().message"
+    [show]="toastService.toastMessage().show"
     (closed)="onToastClosed()"
   ></app-toast>
 </div>

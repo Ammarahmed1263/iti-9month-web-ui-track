@@ -1,9 +1,9 @@
 <section
   class="card"
-  [class.priority-low]="task.priority === 'low'"
-  [class.priority-medium]="task.priority === 'medium'"
-  [class.priority-high]="task.priority === 'high'"
-  [class.completed]="task.completed === true"
+  [class.priority-low]="task().priority === 'low'"
+  [class.priority-medium]="task().priority === 'medium'"
+  [class.priority-high]="task().priority === 'high'"
+  [class.completed]="task().completed === true"
 >
   <div class="header-content">
     <div class="header-row">
@@ -11,8 +11,8 @@
         type="button"
         (click)="toggleCompleted()"
         class="btn complete-toggle-btn"
-        [class.is-completed]="task.completed === true"
-        title="{{ task.completed ? 'Mark as pending' : 'Mark as completed' }}"
+        [class.is-completed]="task().completed === true"
+        title="{{ task().completed ? 'Mark as pending' : 'Mark as completed' }}"
       >
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -25,50 +25,49 @@
         </svg>
       </button>
       <div class="card-header">
-        <h3 class="task-title">{{ task.title }}</h3>
+        <h3 class="task-title">
+          {{ task().title }} <span class="task-category-inline">({{ task().category }})</span>
+        </h3>
         <span
           class="task-priority"
-          [class.badge-low]="task.priority === 'low'"
-          [class.badge-medium]="task.priority === 'medium'"
-          [class.badge-high]="task.priority === 'high'"
+          [class.badge-low]="task().priority === 'low'"
+          [class.badge-medium]="task().priority === 'medium'"
+          [class.badge-high]="task().priority === 'high'"
         >
-          {{ task.priority }}
+          {{ task().priority }}
         </span>
       </div>
     </div>
 
     <p class="task-description">
-      {{ task.description }}
+      {{ task().description }}
     </p>
   </div>
 
   <div class="task-meta">
     <p class="meta-line">
-      <strong>Due:</strong> <span class="task-due-date">{{ task.dueDate }}</span>
+      <strong>Due:</strong> <span class="task-due-date">{{ task().dueDate }}</span>
     </p>
     <p class="meta-line">
-      <strong>Category:</strong> <span class="task-category">{{ task.category }}</span>
+      <strong>Due Status:</strong>
+      <span class="task-due-status">{{ task().dueDate | dueStatus }}</span>
     </p>
-    <p class="meta-line">
-      <strong>Status:</strong>
-      <span class="task-completed" [class.done]="task.completed">{{
-        task.completed ? 'Completed' : 'Pending'
-      }}</span>
-    </p>
-    <p class="meta-line tags-line">
-      <strong>Tags:</strong>
-      @if (task.tags.length !== 0) {
-        <span class="task-tags">{{ task.tags.join(', ') }}</span>
-      } @else {
-        <span class="task-tags muted">No tags</span>
-      }
-    </p>
+    @if (task().tags.length !== 0) {
+      <div class="meta-line tags-line">
+        <strong>Tags:</strong>
+        <div class="task-tags">
+          @for (tag of task().tags; track tag) {
+            <span class="tag-pill">{{ tag }}</span>
+          }
+        </div>
+      </div>
+    }
   </div>
 
   <div class="card-actions">
     <button
       type="button"
-      (click)="updateTask(task)"
+      (click)="updateTask(task())"
       class="btn btn-primary edit-task-btn"
       aria-label="Edit Task"
       title="Edit Task"
@@ -94,7 +93,7 @@
     </button>
     <button
       type="button"
-      (click)="deleteTask(task.id)"
+      (click)="deleteTask(task().id)"
       class="btn btn-danger delete-task-btn"
       aria-label="Delete Task"
       title="Delete Task"

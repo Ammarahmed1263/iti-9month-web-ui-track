@@ -1,5 +1,5 @@
 .not-found {
-	min-height: 100vh;
+	min-height: 70vh;
 	display: grid;
 	place-items: center;
 	text-align: center;
@@ -9,7 +9,7 @@
 
 .not-found .code {
 	margin: 0;
-	font-size: 0.875rem;
+	font-size: 1.5rem;
 	letter-spacing: 0.3em;
 	text-transform: uppercase;
 	color: #6b7280;

@@ -1,41 +1,36 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { Task, ToastEvent } from '../todo-list/types';
+import { Component, inject, input, output } from '@angular/core';
+import { Task } from '../../models/app-types';
+import { Router } from '@angular/router';
+import { DueStatusPipe } from '../../pipes/due-status-pipe';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.html',
   styleUrls: ['./card.css'],
-  imports: [],
+  imports: [DueStatusPipe],
 })
-export class CardComponent implements OnDestroy {
-  @Input() task!: Task;
-  @Output() deleteTaskEvent = new EventEmitter<number>();
-  @Output() editTaskEvent = new EventEmitter<Task>();
-  @Output() updateTaskEvent = new EventEmitter<Task>();
-  @Output() showToastEvent =  new EventEmitter<ToastEvent>();
-  private shouldNotifyDestroy = false;
+export class CardComponent {
+  router = inject(Router);
 
-  deleteTask(taskId: number): void {
-    this.shouldNotifyDestroy = true;
+  task = input.required<Task>();
+
+  deleteTaskEvent = output<string>();
+  editTaskEvent = output<Task>();
+  updateTaskEvent = output<Task>();
+
+  deleteTask(taskId: string): void {
     this.deleteTaskEvent.emit(taskId);
   }
 
   updateTask(task: Task): void {
     this.editTaskEvent.emit(task);
+    this.router.navigate(['/edit-task', task.id]);
   }
 
   toggleCompleted(): void {
     this.updateTaskEvent.emit({
-      ...this.task,
-      completed: !this.task.completed,
+      ...this.task(),
+      completed: !this.task().completed,
     });
-  }
-
-  ngOnDestroy(): void {
-    if (!this.shouldNotifyDestroy) {
-      return;
-    }
-
-    this.showToastEvent.emit({ message: `Task "${this.task.title}" deleted`, type: 'info' });
   }
 }

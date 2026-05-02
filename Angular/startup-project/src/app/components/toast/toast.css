@@ -14,7 +14,7 @@
   min-width: 90%;
   gap: 1rem;
   z-index: 1000;
-  animation: slideIn 1s ease;
+  animation: slideIn 0.5s ease;
 }
 
 .icon {
