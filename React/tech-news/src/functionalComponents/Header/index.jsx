@@ -1,8 +1,7 @@
-import React from "react";
 import SearchBar from "../SearchBar";
 import "./styles.css";
 
-const Header = () => {
+const Header = ({ searchTerm, onSearch }) => {
   return (
     <header>
       <div className="container header-content">
@@ -23,10 +22,12 @@ const Header = () => {
           </ul>
         </nav>
 
-        <h1 className="logo">INNOVATE<span className="brand-dot">.</span></h1>
+        <h1 className="logo">
+          INNOVATE<span className="brand-dot">.</span>
+        </h1>
 
         <div className="header-search">
-          <SearchBar />
+          <SearchBar searchTerm={searchTerm} onChange={onSearch} />
         </div>
       </div>
     </header>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles.css";
 
 const Pagination = ({ count, activeIndex, handleDotClick }) => {
@@ -8,9 +7,7 @@ const Pagination = ({ count, activeIndex, handleDotClick }) => {
         return (
           <span
             key={index}
-            className={
-              "dot " + (index === activeIndex ? "active" : "")
-            }
+            className={"dot " + (index === activeIndex ? "active" : "")}
             onClick={() => handleDotClick(index)}
           ></span>
         );

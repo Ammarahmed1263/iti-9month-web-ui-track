@@ -1,10 +1,7 @@
-import React, { Component } from "react";
 import VotingSection from "../VotingSection";
 import "./styles.css";
 
-class NewsCard extends Component {
-  render() {
-    const {
+const NewsCard = ({
       id,
       image,
       title,
@@ -15,7 +12,7 @@ class NewsCard extends Component {
       votes,
       userVote,
       onVote,
-    } = this.props;
+    }) => {
 
     return (
       <div className="news-card">
@@ -35,7 +32,7 @@ class NewsCard extends Component {
             />
             <div className="news-card-info">
               <span className="news-card-author">By {author}</span>
-              <a href={link} target="_blank" className="news-card-link">
+              <a href={link} className="news-card-link">
                 Read More{" "}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path
@@ -53,6 +50,5 @@ class NewsCard extends Component {
       </div>
     );
   }
-}
 
 export default NewsCard;

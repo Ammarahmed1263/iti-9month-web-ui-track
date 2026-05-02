@@ -44,6 +44,7 @@
 }
 
 .news-form input[type="text"],
+.news-form input[type="url"],
 .news-form select,
 .news-form textarea {
   width: 100%;
@@ -63,6 +64,7 @@
 }
 
 .news-form input[type="text"]:focus,
+.news-form input[type="url"]:focus,
 .news-form select:focus,
 .news-form textarea:focus {
   border-color: var(--accent);
@@ -108,6 +110,12 @@
 
 .submit-btn:hover {
   background-color: var(--accent-hover);
+}
+
+.submit-btn:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 @media (min-width: 576px) {

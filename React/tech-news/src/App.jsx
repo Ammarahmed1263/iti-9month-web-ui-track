@@ -1,33 +1,39 @@
-import "./App.css";
-import Carousel from "./components/Carousel";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import NewsList from "./components/NewsList";
-import NewsForm from "./components/NewsForm";
-import { Component } from "react";
+import Footer from "./functionalComponents/Footer";
+import Header from "./functionalComponents/Header";
+import NewsContainer from "./functionalComponents/NewsContainer";
+import { useNews } from "./hooks/useNews";
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Header />
+const App = () => {
+  const { 
+    news, 
+    allNews, 
+    searchTerm, 
+    loading, 
+    error, 
+    handleVote, 
+    handleAddNews, 
+    handleSearch 
+  } = useNews();
 
-        <main className="container content-grid">
-          <div className="area-carousel">
-            <Carousel />
-          </div>
-          <div className="area-form">
-            <NewsForm />
-          </div>
-          <div className="area-news-list">
-            <NewsList />
-          </div>
-        </main>
+  return (
+    <>
+      <Header
+        searchTerm={searchTerm}
+        onSearch={handleSearch}
+      />
 
-        <Footer />
-      </>
-    );
-  }
-}
+      <NewsContainer 
+        news={news} 
+        allNews={allNews} 
+        loading={loading} 
+        error={error} 
+        handleVote={handleVote} 
+        handleAddNews={handleAddNews} 
+      />
+
+      <Footer />
+    </>
+  );
+};
 
 export default App;
