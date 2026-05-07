@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 
 export function useNews() {
   const [news, setNews] = useState([]);
@@ -16,9 +17,12 @@ export function useNews() {
   }, [searchTerm]);
 
   useEffect(() => {
+    const controller = new AbortController();
     (async () => {
       try {
-        const response = await fetch("http://localhost:3001/articles");
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/articles`, {
+          signal: controller.signal,
+        });
         if (!response.ok) throw new Error("Failed to fetch articles");
         const data = await response.json();
 
@@ -31,10 +35,16 @@ export function useNews() {
         setNews(formattedNews);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+        if (err.name !== "AbortError") {
+          setError(err.message);
+        }
         setLoading(false);
       }
     })();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const handleVote = useCallback(
@@ -55,11 +65,14 @@ export function useNews() {
       );
 
       try {
-        const response = await fetch(`http://localhost:3001/articles/${id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ votes: newTotalVotes }),
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_URL}/articles/${id}`,
+          {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ votes: newTotalVotes }),
+          },
+        );
 
         if (!response.ok) throw new Error("Server error");
       } catch (err) {
@@ -71,7 +84,7 @@ export function useNews() {
               : item,
           ),
         );
-        alert("Failed to save your vote. Please check your connection.");
+        toast.error("Failed to save your vote. Please check your connection.");
       }
     },
     [news],
@@ -79,7 +92,7 @@ export function useNews() {
 
   const handleAddNews = useCallback(async (newArticle) => {
     try {
-      const response = await fetch("http://localhost:3001/articles", {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/articles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newArticle),
@@ -90,8 +103,9 @@ export function useNews() {
       const savedArticle = await response.json();
 
       setNews((prevNews) => [...prevNews, { ...savedArticle, userVote: 0 }]);
+      toast.success("Article published successfully!");
     } catch (err) {
-      alert("Error saving article: " + err.message);
+      toast.error("Error saving article: " + err.message);
     }
   }, []);
 
