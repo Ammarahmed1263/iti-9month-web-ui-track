@@ -72,27 +72,6 @@
   outline: none;
 }
 
-.file-input {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-main);
-}
-
-.file-input::file-selector-button {
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background-color: var(--bg-secondary);
-  color: var(--text-heading);
-  cursor: pointer;
-  margin-right: 1rem;
-  transition: all 0.2s ease;
-}
-
-.file-input::file-selector-button:hover {
-  border-color: var(--accent);
-}
-
 .submit-btn {
   width: 100%;
   padding: 14px;

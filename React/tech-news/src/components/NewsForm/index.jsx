@@ -1,26 +1,28 @@
-import { Component } from "react";
+import { useState, memo } from "react";
+import toast from "react-hot-toast";
 import "./styles.css";
 
-class NewsForm extends Component {
-  state = {
+const NewsForm = ({ onAddNews }) => {
+  const [state, setState] = useState({
     title: "",
     description: "",
     author: "",
     category: "technology",
     img: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setState((prev) => ({ ...prev, [name]: value }));
   };
 
-  handleChange = (e) => {
-    this.setState({ ...this.state, [e.target.name]: e.target.value });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { onAddNews } = this.props;
-    const { title, description, author, category, img } = this.state;
+    const { title, description, author, category, img } = state;
 
     if (!title.trim() || !description.trim() || !author.trim() || !img.trim()) {
-      alert("Please fill in all fields!");
+      toast.error("Please fill in all fields!");
       return;
     }
 
@@ -41,7 +43,7 @@ class NewsForm extends Component {
 
     onAddNews(newArticle);
 
-    this.setState({
+    setState({
       title: "",
       description: "",
       author: "",
@@ -50,88 +52,86 @@ class NewsForm extends Component {
     });
   };
 
-  render() {
-    const { title, description, author, img } = this.state;
-    const isFormInvalid =
-      !title.trim() || !description.trim() || !author.trim() || !img.trim();
+  const { title, description, author, img } = state;
+  const isFormInvalid =
+    !title.trim() || !description.trim() || !author.trim() || !img.trim();
 
-    return (
-      <div className="news-form-container">
-        <div className="news-form-header">
-          <h2>Submit Article</h2>
-          <p>Share the latest tech news with the community.</p>
-        </div>
-        <form className="news-form" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Article Title</label>
-            <input
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChange}
-              type="text"
-              id="title"
-              placeholder="Enter headline"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              value={this.state.description}
-              onChange={this.handleChange}
-              id="description"
-              placeholder="Enter description"
-            />
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="author">Author</label>
-              <input
-                name="author"
-                value={this.state.author}
-                onChange={this.handleChange}
-                type="text"
-                id="author"
-                placeholder="Your name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="category">Category</label>
-              <select
-                name="category"
-                value={this.state.category}
-                onChange={this.handleChange}
-                id="category"
-              >
-                <option value="technology">Technology</option>
-                <option value="design">Design</option>
-                <option value="business">Business</option>
-                <option value="ai">AI & ML</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="img">Cover Image</label>
-            <input
-              name="img"
-              value={this.state.img}
-              onChange={this.handleChange}
-              type="url"
-              id="img"
-              placeholder="Enter image url"
-            />
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={isFormInvalid}>
-            Publish Article
-          </button>
-        </form>
+  return (
+    <div className="news-form-container">
+      <div className="news-form-header">
+        <h2>Submit Article</h2>
+        <p>Share the latest tech news with the community.</p>
       </div>
-    );
-  }
-}
+      <form className="news-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Article Title</label>
+          <input
+            name="title"
+            value={state.title}
+            onChange={handleChange}
+            type="text"
+            id="title"
+            placeholder="Enter headline"
+          />
+        </div>
 
-export default NewsForm;
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            value={state.description}
+            onChange={handleChange}
+            id="description"
+            placeholder="Enter description"
+          />
+        </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="author">Author</label>
+            <input
+              name="author"
+              value={state.author}
+              onChange={handleChange}
+              type="text"
+              id="author"
+              placeholder="Your name"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select
+              name="category"
+              value={state.category}
+              onChange={handleChange}
+              id="category"
+            >
+              <option value="technology">Technology</option>
+              <option value="design">Design</option>
+              <option value="business">Business</option>
+              <option value="ai">AI & ML</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="img">Cover Image</label>
+          <input
+            name="img"
+            value={state.img}
+            onChange={handleChange}
+            type="url"
+            id="img"
+            placeholder="Enter image url"
+          />
+        </div>
+
+        <button type="submit" className="submit-btn" disabled={isFormInvalid}>
+          Publish Article
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default memo(NewsForm);
