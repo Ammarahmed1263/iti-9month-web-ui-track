@@ -1,39 +1,53 @@
-import Footer from "./functionalComponents/Footer";
-import Header from "./functionalComponents/Header";
-import NewsContainer from "./functionalComponents/NewsContainer";
-import { useNews } from "./hooks/useNews";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./layouts/MainLayout";
+import ProtectedLayout from "./layouts/ProtectedLayout";
+import CreateArticle from "./pages/CreateArticle";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NewsDetails from "./pages/NewsDetails";
+import Register from "./pages/Register";
+
+const router = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/news/:id",
+        element: <NewsDetails />,
+      },
+      {
+        element: <ProtectedLayout />,
+        children: [
+          {
+            path: "/create-article",
+            element: <CreateArticle />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
-  const { 
-    news, 
-    allNews, 
-    searchTerm, 
-    loading, 
-    error, 
-    handleVote, 
-    handleAddNews, 
-    handleSearch 
-  } = useNews();
-
-  return (
-    <>
-      <Header
-        searchTerm={searchTerm}
-        onSearch={handleSearch}
-      />
-
-      <NewsContainer 
-        news={news} 
-        allNews={allNews} 
-        loading={loading} 
-        error={error} 
-        handleVote={handleVote} 
-        handleAddNews={handleAddNews} 
-      />
-
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
