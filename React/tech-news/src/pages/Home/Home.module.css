@@ -1,0 +1,25 @@
+.contentGrid {
+  display: grid;
+  grid-template-areas:
+    "carousel"
+    "news-list";
+  gap: 2rem;
+  padding-block: 3rem;
+}
+
+@media (min-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "carousel carousel"
+      "news-list news-list";
+  }
+}
+
+.areaCarousel {
+  grid-area: carousel;
+}
+
+.areaNewsList {
+  grid-area: news-list;
+}

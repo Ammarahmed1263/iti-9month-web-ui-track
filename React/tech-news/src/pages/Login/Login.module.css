@@ -1,0 +1,95 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100dvh - 72px);
+}
+
+.authCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.authCard h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.authCard p.subtitle {
+  text-align: center;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+}
+
+.newsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.newsForm .formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsForm .formGroup label {
+  font-weight: 100;
+  color: var(--text-main);
+}
+
+.inputError {
+  border-color: #ef4444; 
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: -0.25rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+.submitBtn {
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  padding-block: 0.75rem;
+}
+
+.authFooter {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.authFooter a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.authFooter a:hover {
+  text-decoration: underline;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
