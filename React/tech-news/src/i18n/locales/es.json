@@ -114,10 +114,16 @@
   },
   "voting": {
     "upvote": "Votar a favor",
-    "downvote": "Votar en contra"
+    "downvote": "Votar en contra",
+    "success": "Voto registrado exitosamente!",
+    "error": "Error al registrar el voto"
   },
   "newsList": {
     "loading": "Cargando noticias...",
     "error": "Error: {{error}}"
+  },
+  "article": {
+    "published": "¡Artículo publicado exitosamente!",
+    "error": "Error al publicar el artículo"
   }
 }

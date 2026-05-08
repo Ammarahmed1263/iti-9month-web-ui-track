@@ -305,6 +305,22 @@
       },
       "content": "El nuevo sensor REV7 de Ouster captura datos de color enriquecidos junto con información de profundidad.",
       "votes": 3210
+    },
+    {
+      "id": "Cd5SkCFkkiU",
+      "title": "dfgsd",
+      "description": "sdfg",
+      "author": "sfdg",
+      "category": "TECHNOLOGY",
+      "image": {
+        "url": "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-157503102.jpg?resize=1280,828",
+        "alt": "dfgsd"
+      },
+      "link": "#",
+      "votes": 0,
+      "userVote": 0,
+      "lang": "en"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

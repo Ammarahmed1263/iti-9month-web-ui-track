@@ -111,10 +111,16 @@
   },
   "voting": {
     "upvote": "Upvote",
-    "downvote": "Downvote"
+    "downvote": "Downvote",
+    "success": "Vote recorded successfully!",
+    "error": "Failed to record vote"
   },
   "newsList": {
     "loading": "Loading news...",
     "error": "Error: {{error}}"
+  },
+  "article": {
+    "published": "Article published successfully!",
+    "error": "Error publishing article"
   }
 }

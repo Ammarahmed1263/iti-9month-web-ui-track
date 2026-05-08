@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "./styles.css";
 
 const NewsForm = ({ onAddNews }) => {
-  const { t } = useTranslation("translation", { keyPrefix: "addArticle" });
+  const { t } = useTranslation();
   const [state, setState] = useState({
     title: "",
     description: "",
@@ -24,7 +24,7 @@ const NewsForm = ({ onAddNews }) => {
     const { title, description, author, category, img } = state;
 
     if (!title.trim() || !description.trim() || !author.trim() || !img.trim()) {
-      toast.error(t("toast.error"));
+      toast.error(t("addArticle.toast.error"));
       return;
     }
 
@@ -61,47 +61,47 @@ const NewsForm = ({ onAddNews }) => {
   return (
     <div className="news-form-container">
       <div className="news-form-header">
-        <h2>{t("title")}</h2>
-        <p>{t("description")}</p>
+        <h2>{t("addArticle.title")}</h2>
+        <p>{t("addArticle.description")}</p>
       </div>
       <form className="news-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="title">{t("articleTitle")}</label>
+          <label htmlFor="title">{t("addArticle.articleTitle")}</label>
           <input
             name="title"
             value={state.title}
             onChange={handleChange}
             type="text"
             id="title"
-            placeholder={t("articleTitle-placeholder")}
+            placeholder={t("addArticle.articleTitle-placeholder")}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">{t("articleDescription")}</label>
+          <label htmlFor="description">{t("addArticle.articleDescription")}</label>
           <textarea
             name="description"
             value={state.description}
             onChange={handleChange}
             id="description"
-            placeholder={t("articleDescription-placeholder")}
+            placeholder={t("addArticle.articleDescription-placeholder")}
           />
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="author">{t("author")}</label>
+            <label htmlFor="author">{t("addArticle.author")}</label>
             <input
               name="author"
               value={state.author}
               onChange={handleChange}
               type="text"
               id="author"
-              placeholder={t("author-placeholder")}
+              placeholder={t("addArticle.author-placeholder")}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="category">{t("category")}</label>
+            <label htmlFor="category">{t("addArticle.category")}</label>
             <select
               name="category"
               value={state.category}
@@ -117,19 +117,19 @@ const NewsForm = ({ onAddNews }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="img">{t("coverImage")}</label>
+          <label htmlFor="img">{t("addArticle.coverImage")}</label>
           <input
             name="img"
             value={state.img}
             onChange={handleChange}
             type="url"
             id="img"
-            placeholder={t("coverImage-placeholder")}
+            placeholder={t("addArticle.coverImage-placeholder")}
           />
         </div>
 
         <button type="submit" className="submit-btn" disabled={isFormInvalid}>
-          {t("submit")}
+          {t("addArticle.submit")}
         </button>
       </form>
     </div>
