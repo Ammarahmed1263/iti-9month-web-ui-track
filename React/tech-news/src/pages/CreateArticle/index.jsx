@@ -1,11 +1,11 @@
-import { useNewsContext } from "../../context/NewsContext";
+import { useNews } from "../../hooks/useNews";
 import NewsForm from "../../components/NewsForm";
 import styles from "./CreateArticle.module.css";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateArticle() {
-  const { handleAddNews } = useNewsContext();
+  const { handleAddNews } = useNews();
   const navigate = useNavigate();
 
   const handleAddArticle = useCallback(

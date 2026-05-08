@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useNewsContext } from "../../context/NewsContext";
+import { useNews } from "../../hooks/useNews";
 import SearchBar from "../SearchBar";
 import { useAuthContext } from "../../context/AuthContext";
 import ThemeSwitcher from "../ThemeSwitcher";
@@ -9,7 +9,7 @@ import "./styles.css";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
-  const { searchTerm, handleSearch } = useNewsContext();
+  const { searchTerm, handleSearch } = useNews();
   const { userEmail, logout } = useAuthContext();
   const { t } = useTranslation();
 

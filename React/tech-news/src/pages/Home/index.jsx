@@ -1,10 +1,10 @@
 import Carousel from "../../components/Carousel";
 import NewsList from "../../components/NewsList";
-import { useNewsContext } from "../../context/NewsContext";
+import { useNews } from "../../hooks/useNews";
 import styles from "./Home.module.css";
 
 function Home() {
-  const { news, allNews, loading, error, handleVote } = useNewsContext();
+  const { news, allNews, loading, error, handleVote } = useNews();
 
   return (
     <main className={styles.contentGrid}>
