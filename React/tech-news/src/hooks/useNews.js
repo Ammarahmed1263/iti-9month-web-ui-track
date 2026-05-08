@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 
 export function useNews() {
+  const { i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,9 +20,10 @@ export function useNews() {
 
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
     (async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/articles`, {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/articles?lang=${i18n.language}`, {
           signal: controller.signal,
         });
         if (!response.ok) throw new Error("Failed to fetch articles");
@@ -37,15 +40,15 @@ export function useNews() {
       } catch (err) {
         if (err.name !== "AbortError") {
           setError(err.message);
+          setLoading(false);
         }
-        setLoading(false);
       }
     })();
 
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [i18n.language]);
 
   const handleVote = useCallback(
     async (id, type) => {
@@ -92,10 +95,11 @@ export function useNews() {
 
   const handleAddNews = useCallback(async (newArticle) => {
     try {
+      const articleWithLang = { ...newArticle, lang: i18n.language };
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/articles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newArticle),
+        body: JSON.stringify(articleWithLang),
       });
 
       if (!response.ok) throw new Error("Failed to save article");
@@ -107,7 +111,7 @@ export function useNews() {
     } catch (err) {
       toast.error("Error saving article: " + err.message);
     }
-  }, []);
+  }, [i18n.language]);
 
   const handleSearch = useCallback((term) => {
     setSearchTerm(term);
