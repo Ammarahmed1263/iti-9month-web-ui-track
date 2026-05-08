@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -123,6 +124,10 @@
     width: 100%;
     margin-top: 0.5rem;
   }
+  .nav-list{
+    justify-content: center;
+  }
+
   .header-actions {
     flex-grow: 1;
     justify-content: center;

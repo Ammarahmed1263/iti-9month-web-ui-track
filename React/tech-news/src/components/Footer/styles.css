@@ -54,7 +54,6 @@
 
 .newsletter-form button:hover {
   background-color: var(--accent);
-  /* color: var(--text-main); */
 }
 
 .footer-content {
@@ -129,4 +128,12 @@
 
 .footer-bottom .terms a:hover {
   color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
 }
