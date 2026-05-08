@@ -1,17 +1,20 @@
 import { memo } from "react";
 import SocialIcon from "../SocialIcon";
 import "./styles.css";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <footer>
       <div className="footer container">
         <div className="footer-newsletter">
-          <h2>Subscribe to our newsletter</h2>
+          <h2>{t("footer.subscribe")}</h2>
           <form className="newsletter-form">
             <input
               type="email"
-              placeholder="Enter Your Email"
+              placeholder={t("footer.email-placeholder")}
               name="email"
               required
             />
@@ -34,21 +37,22 @@ const Footer = () => {
         </div>
         <div className="footer-content">
           <h1 className="footer-logo">
-            INNOVATE<span className="brand-dot">.</span>
+            {t("brand")}
+            <span className="brand-dot">.</span>
           </h1>
           <nav>
             <ul className="footer-nav">
               <li>
-                <a href="#">About</a>
+                <a href="#">{t("footer.about")}</a>
               </li>
               <li>
-                <a href="#">Features</a>
+                <a href="#">{t("footer.features")}</a>
               </li>
               <li>
-                <a href="#">Categories</a>
+                <a href="#">{t("footer.categories")}</a>
               </li>
               <li>
-                <a href="#">Support</a>
+                <a href="#">{t("footer.support")}</a>
               </li>
             </ul>
           </nav>
@@ -59,10 +63,16 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2026 INNOVATE. All rights reserved.</p>
+          <p>
+            {t("footer.copyright", {
+              year: new Date().toLocaleDateString(i18n.language === "ar" ? "ar-u-nu-arab" : i18n.language, {
+                year: "numeric",
+              }),
+            })}
+          </p>
           <div className="terms">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
+            <a href="#">{t("footer.privacy-policy")}</a>
+            <a href="#">{t("footer.terms-conditions")}</a>
           </div>
         </div>
       </div>

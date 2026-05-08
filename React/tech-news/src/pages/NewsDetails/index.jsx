@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import styles from "./NewsDetails.module.css";
 
 function NewsDetails() {
@@ -8,6 +9,8 @@ function NewsDetails() {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t, i18n } = useTranslation("translation", { keyPrefix: "newsDetails" });
+  const { t: tRoot } = useTranslation();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,6 +42,7 @@ function NewsDetails() {
   if (loading) {
     return (
       <div className={styles.stateContainer}>
+        <p className={styles.loadingText}>{t("loading")}</p>
         <div className={styles.skeleton}>
           <div className={styles.skeletonCategory} />
           <div className={styles.skeletonTitle} />
@@ -54,10 +58,10 @@ function NewsDetails() {
       <div className={styles.stateContainer}>
         <div className={styles.errorBox}>
           <span className={styles.errorIcon}>⚠</span>
-          <h2>Failed to load article</h2>
+          <h2>{t("failed")}</h2>
           <p>{error.message}</p>
           <button onClick={() => navigate(-1)} className={`btn ${styles.backBtn}`}>
-            ← Go Back
+            ← {t("goBack")}
           </button>
         </div>
       </div>
@@ -68,8 +72,8 @@ function NewsDetails() {
     return (
       <div className={styles.stateContainer}>
         <div className={styles.errorBox}>
-          <h2>Article not found</h2>
-          <Link to="/" className={`btn ${styles.backBtn}`}>← Back to Home</Link>
+          <h2>{t("notFound")}</h2>
+          <Link to="/" className={`btn ${styles.backBtn}`}>← {t("backToHome")}</Link>
         </div>
       </div>
     );
@@ -81,19 +85,19 @@ function NewsDetails() {
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
         </svg>
-        Back
+        {t("back")}
       </button>
 
       <header className={styles.articleHeader}>
-        <span className={styles.articleCategory}>{article.category}</span>
+        <span className={styles.articleCategory}>{tRoot(`categories.${article.category.toLowerCase()}`)}</span>
         <h1 className={styles.articleTitle}>{article.title}</h1>
 
         <div className={styles.articleMeta}>
-          <span>By <strong>{article.author}</strong></span>
+          <span>{t("by-prefix")} <strong><bdi>{article.author}</bdi></strong></span>
           {article.date && <span className={styles.dot}>•</span>}
           {article.date && <span>{article.date}</span>}
           {article.readTime && <span className={styles.dot}>•</span>}
-          {article.readTime && <span>{article.readTime} min read</span>}
+          {article.readTime && <span>{t("readTime", { count: article.readTime })}</span>}
         </div>
       </header>
 
@@ -120,7 +124,7 @@ function NewsDetails() {
             rel="noopener noreferrer"
             className={`btn ${styles.readOriginal}`}
           >
-            Read Full Article
+            {t("readFull")}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>

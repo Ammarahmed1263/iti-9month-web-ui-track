@@ -8,7 +8,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--text-secondary);
+  color: var(--text-main);
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
@@ -22,6 +22,10 @@
 
 .backLink:hover {
   color: var(--accent);
+}
+
+:global([dir="rtl"]) .backLink svg {
+  transform: scaleX(-1);
 }
 
 .articleHeader {

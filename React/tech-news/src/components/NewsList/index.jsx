@@ -1,11 +1,13 @@
 import NewsCard from "../NewsCard";
+import { useTranslation } from "react-i18next";
 import "./styles.css";
 
 const NewsList = ({ news, loading, error, handleVote }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "newsList" });
   if (loading) {
     return (
       <div className="news-list-status">
-        <p>Loading news...</p>
+        <p>{t("loading")}</p>
       </div>
     );
   }
@@ -13,7 +15,7 @@ const NewsList = ({ news, loading, error, handleVote }) => {
   if (error) {
     return (
       <div className="news-list-status">
-        <p>Error: {error}</p>
+        <p>{t("error", { error })}</p>
       </div>
     );
   }

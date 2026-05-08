@@ -1,6 +1,6 @@
 import "./styles.css";
 
-const SearchBar = ({ searchTerm, onChange }) => {
+const SearchBar = ({ searchTerm, onChange, ...props }) => {
   return (
     <div className="search-bar">
       <button type="submit" aria-label="Search">
@@ -19,9 +19,9 @@ const SearchBar = ({ searchTerm, onChange }) => {
       </button>
       <input
         type="text"
-        placeholder="Search..."
         value={searchTerm}
         onChange={(e) => onChange(e.target.value)}
+        {...props}
       />
     </div>
   );

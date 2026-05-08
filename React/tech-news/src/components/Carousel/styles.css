@@ -124,7 +124,7 @@
   padding: 12px;
   cursor: pointer;
   border-radius: 50%;
-  background-color: var(--text-main);
+  background-color: var(--accent);
   color: var(--bg-main);
   transition: all 0.3s ease-in-out;
   display: inline-flex;
@@ -133,7 +133,7 @@
 }
 
 .nav-btn:hover {
-  background-color: var(--accent);
+  background-color: var(--accent-hover);
 }
 
 .nav-btn.left {
@@ -208,7 +208,7 @@
   .carousel-pagination {
     position: absolute;
     bottom: 1.5rem;
-    right: 2rem;
+    inset-inline-end: 2rem;
     padding: 0;
     width: auto;
     z-index: 10;

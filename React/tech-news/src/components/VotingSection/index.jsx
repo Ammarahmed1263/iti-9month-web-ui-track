@@ -1,13 +1,15 @@
 import { formatVotes } from "../../utils/formatVotes";
+import { useTranslation } from "react-i18next";
 import styles from "./styles.module.css";
 
 const VotingSection = ({ votes, userVote, upvote, downvote }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "voting" });
   return (
     <div className={styles.votingSection}>
       <button
         className={`${styles.voteBtn} ${userVote === 1 ? styles.activeUp : ""}`}
         onClick={upvote}
-        aria-label="Upvote"
+        aria-label={t("upvote")}
       >
         <svg
           fill="currentColor"
@@ -31,7 +33,7 @@ const VotingSection = ({ votes, userVote, upvote, downvote }) => {
           userVote === -1 ? styles.activeDown : ""
         }`}
         onClick={downvote}
-        aria-label="Downvote"
+        aria-label={t("downvote")}
       >
         <svg
           fill="currentColor"

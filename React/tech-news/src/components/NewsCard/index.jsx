@@ -1,5 +1,6 @@
 import VotingSection from "../VotingSection";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./styles.css";
 
 const NewsCard = ({
@@ -14,12 +15,15 @@ const NewsCard = ({
   userVote,
   onVote,
 }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "newsCard" });
+  const { t: tRoot } = useTranslation();
+
   return (
     <div className="news-card">
       <Link to={`/news/${id}`} className="news-card-image-link">
         <div className="news-card-image">
           <img src={image?.url} alt={image?.alt} />
-          <span className="news-card-category">{category}</span>
+          <span className="news-card-category">{tRoot(`categories.${category.toLowerCase()}`)}</span>
         </div>
       </Link>
       <div className="news-card-content">
@@ -35,9 +39,9 @@ const NewsCard = ({
             downvote={() => onVote(id, -1)}
           />
           <div className="news-card-info">
-            <span className="news-card-author">By {author}</span>
+            <span className="news-card-author">{t("by-prefix")} <bdi>{author}</bdi></span>
             <a href={link} className="news-card-link">
-              Read More
+              {t("readMore")}
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M4 12H20M20 12L14 6M20 12L14 18"

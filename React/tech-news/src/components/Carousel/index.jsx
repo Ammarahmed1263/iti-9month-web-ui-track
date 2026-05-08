@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Pagination from "../Pagination";
 import "./styles.css";
 
 const Carousel = ({ news, loading, error }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "carousel" });
+  const { t: tRoot } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -41,8 +44,8 @@ const Carousel = ({ news, loading, error }) => {
     setCurrentIndex(index);
   };
 
-  if (loading) return <div className="carousel loading">Loading...</div>;
-  if (error) return <div className="carousel error">Error: {error}</div>;
+  if (loading) return <div className="carousel loading">{t("loading")}</div>;
+  if (error) return <div className="carousel error">{t("error", { error })}</div>;
   if (slidesCount === 0) return null;
 
   const currentSlide = slides[currentIndex];
@@ -56,7 +59,7 @@ const Carousel = ({ news, loading, error }) => {
       <button
         className="nav-btn left"
         onClick={prevSlide}
-        aria-label="Previous"
+        aria-label={t("previous")}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -71,7 +74,7 @@ const Carousel = ({ news, loading, error }) => {
 
       <div className="slide">
         <div className="slide-content">
-          <span className="slide-category">{currentSlide.category}</span>
+          <span className="slide-category">{tRoot(`categories.${currentSlide.category.toLowerCase()}`)}</span>
           <h2 className="slide-title">{currentSlide.title}</h2>
           <p className="slide-description">{currentSlide.description}</p>
           <a
@@ -80,7 +83,7 @@ const Carousel = ({ news, loading, error }) => {
             target="_blank"
             rel="noreferrer"
           >
-            Read Article
+            {t("readArticle")}
           </a>
         </div>
         <div className="slide-image-wrapper">
@@ -92,7 +95,7 @@ const Carousel = ({ news, loading, error }) => {
         </div>
       </div>
 
-      <button className="nav-btn right" onClick={nextSlide} aria-label="Next">
+      <button className="nav-btn right" onClick={nextSlide} aria-label={t("next")}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
             d="M4 12H20M20 12L14 6M20 12L14 18"
