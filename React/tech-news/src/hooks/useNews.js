@@ -3,14 +3,12 @@ import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchNews,
   addArticle,
-  syncVotes,
-  setSearchTerm,
-  setDebouncedTerm,
   optimisticVote,
   rollbackVote,
   selectFilteredNews,
+  setSearchTerm,
+  syncVotes
 } from "../store/slices/newsSlice";
 
 export function useNews() {
