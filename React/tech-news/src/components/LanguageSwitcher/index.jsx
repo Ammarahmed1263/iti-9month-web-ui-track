@@ -11,14 +11,14 @@ const LanguageSwitcher = () => {
   return (
     <div className="language-switcher">
       <button
-        className={`lang-btn ${i18n.language === "en" ? "active" : ""}`}
+        className={`lang-btn ${i18n.language.startsWith("en") ? "active" : ""}`}
         onClick={() => changeLanguage("en")}
         title="English"
       >
         EN
       </button>
       <button
-        className={`lang-btn ${i18n.language === "ar" ? "active" : ""}`}
+        className={`lang-btn ${i18n.language.startsWith("ar") ? "active" : ""}`}
         onClick={() => changeLanguage("ar")}
         title="Arabic"
         dir="rtl"
@@ -26,7 +26,7 @@ const LanguageSwitcher = () => {
        ع
       </button>
       <button
-        className={`lang-btn ${i18n.language === "es" ? "active" : ""}`}
+        className={`lang-btn ${i18n.language.startsWith("es") ? "active" : ""}`}
         onClick={() => changeLanguage("es")}
         title="Spanish"
       >

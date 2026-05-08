@@ -64,7 +64,8 @@ const App = () => {
   }, [searchTerm, dispatch]);
 
   useEffect(() => {
-    const promise = dispatch(fetchNews(i18n.language));
+    const langCode = i18n.language?.split("-")[0] || "en";
+    const promise = dispatch(fetchNews(langCode));
     return () => promise.abort();
   }, [i18n.language, dispatch]);
 
