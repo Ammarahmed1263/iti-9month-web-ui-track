@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import toast from "react-hot-toast";
 
@@ -13,20 +14,21 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const { t } = useTranslation('translation', {keyPrefix: 'login'});
 
   const validateForm = () => {
     const newErrors = {};
 
     if (!email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("email-required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("email-invalid");
     }
 
     if (!password) {
-      newErrors.password = "Password is required";
+      newErrors.password = t("password-required");
     } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = t("password-too-short");
     }
 
     setErrors(newErrors);
@@ -40,7 +42,7 @@ const Login = () => {
     if (!validateForm()) return;
 
     login(email);
-    toast.success(`Welcome back, ${email.split('@')[0]}!`);
+    toast.success(t("success", { name: email.split("@")[0] }));
     navigate("/");
   };
 
@@ -54,17 +56,16 @@ const Login = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
-        <h1>Welcome Back</h1>
-        <p className={styles.subtitle}>Sign in to continue to Innovate.</p>
+        <h1>{t("title")}</h1>
+        <p className={styles.subtitle}>{t("description")}</p>
 
         <form className={styles.newsForm} onSubmit={handleSubmit} noValidate>
-
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("email")}</label>
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
+              placeholder={t("email-placeholder")}
               value={email}
               className={errors.email ? styles.inputError : ""}
               onChange={handleInputChange(setEmail, "email")}
@@ -75,11 +76,11 @@ const Login = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("password")}</label>
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder={t("password-placeholder")}
               value={password}
               className={errors.password ? styles.inputError : ""}
               onChange={handleInputChange(setPassword, "password")}
@@ -90,13 +91,13 @@ const Login = () => {
           </div>
 
           <button type="submit" className={`${styles.submitBtn} btn`}>
-            Login
+            {t("submit")}
           </button>
         </form>
 
         <div className={styles.authFooter}>
           <p>
-            Don't have an account? <Link to="/register">Register here</Link>
+            {t("dontHaveAccount")} <Link to="/register">{t("signUp")}</Link>
           </p>
         </div>
       </div>

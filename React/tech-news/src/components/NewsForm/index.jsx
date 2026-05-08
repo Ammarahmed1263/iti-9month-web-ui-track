@@ -1,8 +1,10 @@
 import { useState, memo } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import "./styles.css";
 
 const NewsForm = ({ onAddNews }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "addArticle" });
   const [state, setState] = useState({
     title: "",
     description: "",
@@ -22,7 +24,7 @@ const NewsForm = ({ onAddNews }) => {
     const { title, description, author, category, img } = state;
 
     if (!title.trim() || !description.trim() || !author.trim() || !img.trim()) {
-      toast.error("Please fill in all fields!");
+      toast.error(t("toast.error"));
       return;
     }
 
@@ -59,75 +61,75 @@ const NewsForm = ({ onAddNews }) => {
   return (
     <div className="news-form-container">
       <div className="news-form-header">
-        <h2>Submit Article</h2>
-        <p>Share the latest tech news with the community.</p>
+        <h2>{t("title")}</h2>
+        <p>{t("description")}</p>
       </div>
       <form className="news-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="title">Article Title</label>
+          <label htmlFor="title">{t("articleTitle")}</label>
           <input
             name="title"
             value={state.title}
             onChange={handleChange}
             type="text"
             id="title"
-            placeholder="Enter headline"
+            placeholder={t("articleTitle-placeholder")}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">{t("articleDescription")}</label>
           <textarea
             name="description"
             value={state.description}
             onChange={handleChange}
             id="description"
-            placeholder="Enter description"
+            placeholder={t("articleDescription-placeholder")}
           />
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="author">Author</label>
+            <label htmlFor="author">{t("author")}</label>
             <input
               name="author"
               value={state.author}
               onChange={handleChange}
               type="text"
               id="author"
-              placeholder="Your name"
+              placeholder={t("author-placeholder")}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">{t("category")}</label>
             <select
               name="category"
               value={state.category}
               onChange={handleChange}
               id="category"
             >
-              <option value="technology">Technology</option>
-              <option value="design">Design</option>
-              <option value="business">Business</option>
-              <option value="ai">AI & ML</option>
+              <option value="technology">{t("categories.technology")}</option>
+              <option value="design">{t("categories.design")}</option>
+              <option value="business">{t("categories.business")}</option>
+              <option value="ai">{t("categories.ai")}</option>
             </select>
           </div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="img">Cover Image</label>
+          <label htmlFor="img">{t("coverImage")}</label>
           <input
             name="img"
             value={state.img}
             onChange={handleChange}
             type="url"
             id="img"
-            placeholder="Enter image url"
+            placeholder={t("coverImage-placeholder")}
           />
         </div>
 
         <button type="submit" className="submit-btn" disabled={isFormInvalid}>
-          Publish Article
+          {t("submit")}
         </button>
       </form>
     </div>

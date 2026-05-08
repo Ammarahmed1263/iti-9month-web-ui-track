@@ -3,10 +3,12 @@ import styles from "./Register.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const { login } = useAuthContext();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "register" });
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -29,23 +31,23 @@ const Register = () => {
     const newErrors = {};
 
     if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full Name is required";
+      newErrors.fullName = t("fullName-required");
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("email-required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("email-invalid");
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = t("password-required");
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = t("password-too-short");
     }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
+      newErrors.confirmPassword = t("confirmPassword-mismatch");
     }
 
     setErrors(newErrors);
@@ -56,28 +58,28 @@ const Register = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error("Please fix the errors in the form");
+      toast.error(t("form-error"));
       return;
     }
 
     login(formData.email);
-    toast.success(`Account created! Welcome, ${formData.fullName.split(" ")[0]}!`);
+    toast.success(t("success", { name: formData.fullName.split(" ")[0] }));
     navigate("/");
   };
 
   return (
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
-        <h1>Create Account</h1>
-        <p className={styles.subtitle}>Join Innovate to start publishing news.</p>
+        <h1>{t("title")}</h1>
+        <p className={styles.subtitle}>{t("description")}</p>
 
         <form className={styles.newsForm} onSubmit={handleSubmit} noValidate>
           <div className={styles.formGroup}>
-            <label htmlFor="fullName">Full Name</label>
+            <label htmlFor="fullName">{t("fullName")}</label>
             <input
               type="text"
               id="fullName"
-              placeholder="Enter your full name"
+              placeholder={t("fullName-placeholder")}
               value={formData.fullName}
               className={errors.fullName ? styles.inputError : ""}
               onChange={handleInputChange}
@@ -86,11 +88,11 @@ const Register = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("email")}</label>
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
+              placeholder={t("email-placeholder")}
               value={formData.email}
               className={errors.email ? styles.inputError : ""}
               onChange={handleInputChange}
@@ -99,11 +101,11 @@ const Register = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("password")}</label>
             <input
               type="password"
               id="password"
-              placeholder="Create a password"
+              placeholder={t("password-placeholder")}
               value={formData.password}
               className={errors.password ? styles.inputError : ""}
               onChange={handleInputChange}
@@ -112,11 +114,11 @@ const Register = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">{t("confirmPassword")}</label>
             <input
               type="password"
               id="confirmPassword"
-              placeholder="Confirm your password"
+              placeholder={t("confirmPassword-placeholder")}
               value={formData.confirmPassword}
               className={errors.confirmPassword ? styles.inputError : ""}
               onChange={handleInputChange}
@@ -127,13 +129,13 @@ const Register = () => {
           </div>
 
           <button type="submit" className={`${styles.submitBtn} btn`}>
-            Sign Up
+            {t("submit")}
           </button>
         </form>
 
         <div className={styles.authFooter}>
           <p>
-            Already have an account? <Link to="/login">Login here</Link>
+            {t("alreadyHaveAccount")} <Link to="/login">{t("login")}</Link>
           </p>
         </div>
       </div>
