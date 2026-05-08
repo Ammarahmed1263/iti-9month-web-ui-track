@@ -1,0 +1,120 @@
+{
+  "brand": "INNOVATE",
+  "header": {
+    "home": "Home",
+    "categories": "Categories",
+    "about": "About",
+    "write": "Write",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "logout-success": "See you next time!",
+    "searchPlaceholder": "Search articles..."
+  },
+  "footer": {
+    "subscribe": "Subscribe to our newsletter",
+    "email-placeholder": "Enter Your Email",
+    "about": "About",
+    "features": "Features",
+    "categories": "Categories",
+    "support": "Support",
+    "copyright": "© {{year}} $t(brand). All rights reserved.",
+    "privacy-policy": "Privacy Policy",
+    "terms-conditions": "Terms & Conditions"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "description": "To keep connected with us please login with your personal info",
+    "email": "Email Address",
+    "email-placeholder": "example@gmail.com",
+    "password": "Password",
+    "password-placeholder": "••••••••",
+    "submit": "Login",
+    "email-required": "Email is required",
+    "email-invalid": "Please enter a valid email address",
+    "password-required": "Password is required",
+    "password-too-short": "Password must be at least 6 characters",
+    "success": "Welcome back, {{name}}!",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+  },
+  "register": {
+    "title": "Create Account",
+    "description": "Join Innovate to start publishing news.",
+    "fullName": "Full Name",
+    "email": "Email",
+    "email-placeholder": "Enter your email",
+    "password": "Password",
+    "password-placeholder": "Create a password",
+    "confirmPassword": "Confirm Password",
+    "confirmPassword-placeholder": "Confirm your password",
+    "submit": "Sign Up",
+    "fullName-required": "Full Name is required",
+    "email-required": "Email is required",
+    "email-invalid": "Please enter a valid email address",
+    "password-required": "Password is required",
+    "password-too-short": "Password must be at least 6 characters",
+    "confirmPassword-required": "Confirm Password is required",
+    "confirmPassword-mismatch": "Passwords do not match",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login here"
+  },
+  "addArticle": {
+    "title": "Submit Article",
+    "description": "Share the latest tech news with the community.",
+    "articleTitle": "Article Title",
+    "articleTitle-placeholder": "e.g., The Future of AI in 2026",
+    "articleDescription": "Description",
+    "articleDescription-placeholder": "Briefly summarize the news article...",
+    "author": "Author",
+    "author-placeholder": "e.g., Jane Doe",
+    "category": "Category",
+    "coverImage": "Cover Image",
+    "coverImage-placeholder": "https://example.com/image.jpg",
+    "submit": "Publish Article",
+    "toast": {
+      "error": "Please fill in all fields!",
+      "success": "Article added successfully!"
+    }
+  },
+  "categories": {
+    "technology": "Technology",
+    "design": "Design",
+    "business": "Business",
+    "ai": "AI & ML",
+    "fintech": "Fintech",
+    "robotics": "Robotics",
+    "transportation": "Transportation",
+    "startups": "Startups"
+  },
+  "newsCard": {
+    "readMore": "Read More",
+    "by-prefix": "By"
+  },
+  "newsDetails": {
+    "loading": "Loading article...",
+    "failed": "Failed to load article",
+    "goBack": "Go Back",
+    "notFound": "Article not found",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "by-prefix": "By",
+    "readTime": "{{count}} min read",
+    "readFull": "Read Full Article"
+  },
+  "carousel": {
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "previous": "Previous",
+    "next": "Next",
+    "readArticle": "Read Article"
+  },
+  "voting": {
+    "upvote": "Upvote",
+    "downvote": "Downvote"
+  },
+  "newsList": {
+    "loading": "Loading news...",
+    "error": "Error: {{error}}"
+  }
+}

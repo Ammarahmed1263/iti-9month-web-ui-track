@@ -1,0 +1,123 @@
+{
+  "brand": "ابتكر",
+  "header": {
+    "home": "الرئيسية",
+    "categories": "التصنيفات",
+    "about": "من نحن",
+    "write": "اكتب",
+    "login": "تسجيل",
+    "register": "حساب جديد",
+    "logout": "تسجيل الخروج",
+    "logout-success": "إلى اللقاء في المرة القادمة!",
+    "searchPlaceholder": "ابحث في المقالات..."
+  },
+  "footer": {
+    "subscribe": "اشترك في النشرة الإخبارية",
+    "email-placeholder": "أدخل بريدك الإلكتروني",
+    "about": "من نحن",
+    "features": "المميزات",
+    "categories": "التصنيفات",
+    "support": "الدعم",
+    "copyright": "© {{year}} $t(brand). جميع الحقوق محفوظة.",
+    "privacy-policy": "سياسة الخصوصية",
+    "terms-conditions": "الشروط والأحكام"
+  },
+  "login": {
+    "title": "مرحبا بعودتك",
+    "description": "للبقاء على اتصال بنا يرجى تسجيل الدخول بمعلوماتك الشخصية",
+    "email": "البريد الإلكتروني",
+    "email-placeholder": "ادخل بريدك الالكتروني",
+    "password": "كلمة المرور",
+    "password-placeholder": "••••••••",
+    "submit": "تسجيل الدخول",
+    "email-required": "البريد الإلكتروني مطلوب",
+    "email-invalid": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+    "password-required": "كلمة المرور مطلوبة",
+    "password-too-short": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+    "success": "مرحباً بعودتك، {{name}}!",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "signUp": "إنشاء حساب"
+  },
+  "register": {
+    "title": "إنشاء حساب",
+    "description": "انضم إلى 'ابتكر' وابدأ في نشر الأخبار.",
+    "fullName": "الاسم الكامل",
+    "fullName-placeholder": "أدخل اسمك الكامل",
+    "email": "البريد الإلكتروني",
+    "email-placeholder": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "password-placeholder": "أنشئ كلمة مرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPassword-placeholder": "أكد كلمة المرور الخاصة بك",
+    "submit": "إنشاء حساب",
+    "fullName-required": "الاسم الكامل مطلوب",
+    "email-required": "البريد الإلكتروني مطلوب",
+    "email-invalid": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+    "password-required": "كلمة المرور مطلوبة",
+    "password-too-short": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+    "confirmPassword-required": "تأكيد كلمة المرور مطلوب",
+    "confirmPassword-mismatch": "كلمات المرور غير متطابقة",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "login": "سجل دخولك هنا",
+    "form-error": "يرجى تصحيح الأخطاء في النموذج",
+    "success": "تم إنشاء الحساب! أهلاً بك، {{name}}!"
+  },
+  "addArticle": {
+    "title": "نشر مقال",
+    "description": "شارك أحدث أخبار التكنولوجيا مع المجتمع.",
+    "articleTitle": "عنوان المقال",
+    "articleTitle-placeholder": "مثال: مستقبل الذكاء الاصطناعي في ٢٠٢٦",
+    "articleDescription": "الوصف",
+    "articleDescription-placeholder": "لخص النقاط الرئيسية للخبر باختصار...",
+    "author": "الكاتب",
+    "author-placeholder": "مثال: أحمد محمد",
+    "category": "الفئة",
+    "coverImage": "صورة الغلاف",
+    "coverImage-placeholder": "https://example.com/image.jpg",
+    "submit": "نشر المقال",
+    "toast": {
+      "error": "يرجى ملء جميع الحقول!",
+      "success": "تمت إضافة المقال بنجاح!"
+    }
+  },
+  "categories": {
+    "technology": "تكنولوجيا",
+    "design": "تصميم",
+    "business": "أعمال",
+    "ai": "الذكاء الاصطناعي",
+    "fintech": "التكنولوجيا المالية",
+    "robotics": "الروبوتات",
+    "transportation": "النقل",
+    "startups": "الشركات الناشئة"
+  },
+  "newsCard": {
+    "readMore": "اقرأ المزيد",
+    "by-prefix": "بقلم"
+  },
+  "newsDetails": {
+    "loading": "جاري تحميل المقال...",
+    "failed": "فشل تحميل المقال",
+    "goBack": "الرجوع",
+    "notFound": "المقال غير موجود",
+    "backToHome": "العودة للرئيسية",
+    "back": "رجوع",
+    "by-prefix": "بقلم",
+    "readTime": "قراءة {{count}} دقائق",
+    "readFull": "اقرأ المقال كاملاً"
+  },
+  "carousel": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ: {{error}}",
+    "previous": "السابق",
+    "next": "التالي",
+    "readArticle": "اقرأ المقال"
+  },
+  "voting": {
+    "upvote": "تصويت بالإيجاب",
+    "downvote": "تصويت بالسلب"
+  },
+  "newsList": {
+    "loading": "جاري تحميل الأخبار...",
+    "error": "خطأ: {{error}}"
+  }
+}

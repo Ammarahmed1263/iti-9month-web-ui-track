@@ -1,0 +1,123 @@
+{
+  "brand": "INNOVAR",
+  "header": {
+    "home": "Casa",
+    "categories": "Categorias",
+    "about": "Sobre",
+    "write": "Escribir",
+    "login": "Iniciar",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "logout-success": "¡Hasta la próxima!",
+    "searchPlaceholder": "Buscar artículos..."
+  },
+  "footer": {
+    "subscribe": "Suscríbete a nuestro boletín",
+    "email-placeholder": "Ingresa tu correo electrónico",
+    "about": "Sobre",
+    "features": "Características",
+    "categories": "Categorias",
+    "support": "Soporte",
+    "copyright": "© {{year}} $t(brand). Todos los derechos reservados.",
+    "privacy-policy": "Política de privacidad",
+    "terms-conditions": "Términos y Condiciones"
+  },
+  "login": {
+    "title": "Bienvenido de nuevo",
+    "description": "Para mantenerse conectado con nosotros, inicie sesión con su información personal",
+    "email": "Dirección de correo electrónico",
+    "email-placeholder": "ejemplo@gmail.com",
+    "password": "Contraseña",
+    "password-placeholder": "••••••••",
+    "submit": "Iniciar sesión",
+    "email-required": "Email is required",
+    "email-invalid": "Please enter a valid email address",
+    "password-required": "Password is required",
+    "password-too-short": "Password must be at least 6 characters",
+    "success": "¡Bienvenido de nuevo, {{name}}!",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "signUp": "Registrarse"
+  },
+  "register": {
+    "title": "Crear cuenta",
+    "description": "Únete a Innovate para empezar a publicar noticias.",
+    "fullName": "Nombre completo",
+    "fullName-placeholder": "Ingresa tu nombre completo",
+    "email": "Correo electrónico",
+    "email-placeholder": "Ingresa tu correo electrónico",
+    "password": "Contraseña",
+    "password-placeholder": "Crea una contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPassword-placeholder": "Confirma tu contraseña",
+    "submit": "Registrarse",
+    "fullName-required": "El nombre completo es obligatorio",
+    "email-required": "El correo electrónico es obligatorio",
+    "email-invalid": "Por favor, introduce una dirección de correo electrónico válida",
+    "password-required": "La contraseña es obligatoria",
+    "password-too-short": "La contraseña debe tener al menos 6 caracteres",
+    "confirmPassword-required": "Confirmar contraseña es obligatorio",
+    "confirmPassword-mismatch": "Las contraseñas no coinciden",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Inicia sesión aquí",
+    "form-error": "Por favor, corrija los errores en el formulario",
+    "success": "¡Cuenta creada! ¡Bienvenido, {{name}}!"
+  },
+  "addArticle": {
+    "title": "Enviar artículo",
+    "description": "Comparte las últimas noticias tecnológicas con la comunidad.",
+    "articleTitle": "Título del artículo",
+    "articleTitle-placeholder": "p. ej., El futuro de la IA en 2026",
+    "articleDescription": "Descripción",
+    "articleDescription-placeholder": "Resume brevemente la noticia...",
+    "author": "Autor",
+    "author-placeholder": "p. ej., Juan Pérez",
+    "category": "Categoría",
+    "coverImage": "Imagen de portada",
+    "coverImage-placeholder": "https://example.com/image.jpg",
+    "submit": "Publicar artículo",
+    "toast": {
+      "error": "¡Por favor complete todos los campos!",
+      "success": "¡Artículo añadido con éxito!"
+    }
+  },
+  "categories": {
+    "technology": "Tecnología",
+    "design": "Diseño",
+    "business": "Negocios",
+    "ai": "IA y ML",
+    "fintech": "Tecnología financiera",
+    "robotics": "Robótica",
+    "transportation": "Transporte",
+    "startups": "nuevas empresas"
+  },
+  "newsCard": {
+    "readMore": "Leer más",
+    "by-prefix": "Por"
+  },
+  "newsDetails": {
+    "loading": "Cargando artículo...",
+    "failed": "Error al cargar el artículo",
+    "goBack": "Regresar",
+    "notFound": "Artículo no encontrado",
+    "backToHome": "Volver al inicio",
+    "back": "Atrás",
+    "by-prefix": "Por",
+    "readTime": "{{count}} min de lectura",
+    "readFull": "Leer artículo completo"
+  },
+  "carousel": {
+    "loading": "Cargando...",
+    "error": "Error: {{error}}",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "readArticle": "Leer artículo"
+  },
+  "voting": {
+    "upvote": "Votar a favor",
+    "downvote": "Votar en contra"
+  },
+  "newsList": {
+    "loading": "Cargando noticias...",
+    "error": "Error: {{error}}"
+  }
+}
