@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mocha Tests</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body>
+    <form id="testForm" novalidate>
+      <label>Name: <input id="textInput" name="textInput" type="text" placeholder="John Doe" /></label>
+      <label
+        >Age: <input id="numberInput" name="numberInput" type="number" placeholder="45"
+      /></label>
+
+      <button type="submit">Submit</button>
+      <div id="errorMessages"></div>
+    </form>
+    <div id="mocha"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.7/chai.min.js"></script>
+
+    <script>
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+
+      const expect = chai.expect;
+      const assert = chai.assert;
+      chai.should();
+    </script>
+
+    <script src="./src/index.js"></script>
+
+    <script src="./test/index.test.js"></script>
+
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

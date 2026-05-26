@@ -1,0 +1,17 @@
+{
+  "name": "chai-mocha",
+  "version": "1.0.0",
+  "author": "",
+  "main": "src/index.js",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha"
+  },
+  "type": "module",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.6"
+  }
+}
