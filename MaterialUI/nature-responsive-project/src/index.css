@@ -1,0 +1,26 @@
+:root {
+  --bg: #f9fbf9;
+  --surface: #ffffff;
+  --btn-primary: #083a2d;
+  --btn-accent: #ffb637;
+  --text-main: #083a2d;
+  --text-muted: #135e4b;
+  --text-light: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
