@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workcation - Tailwind</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
+    </script>
+  </head>
+  <body
+    class="font-sans antialiased bg-white dark:bg-gray-900 transition-colors duration-300"
+  >
+    <main>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="fixed top-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+        aria-label="Toggle dark mode"
+      >
+        <svg
+          class="block dark:hidden h-6 w-6 text-gray-700"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          />
+        </svg>
+
+        <svg
+          class="hidden dark:block h-6 w-6 text-gray-300"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          />
+        </svg>
+      </button>
+
+      <section
+        class="flex flex-col md:flex-row items-stretch max-w-7xl lg:max-w-full mx-auto pt-8 pb-12 md:py-0 px-8 md:pe-0 lg:ps-6 gap-10"
+      >
+        <div
+          class="order-2 md:order-1 md:w-1/2 lg:w-2/5 flex flex-col justify-center py-4 md:py-6 lg:py-14 lg:ps-12"
+        >
+          <svg
+            viewBox="0 0 185 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="hidden md:block h-8 w-auto self-start mb-6 text-sky-500 fill-current"
+          >
+            <path
+              d="M121.09 28.336c2.352 0 4.392-1.248 5.424-3.12l-2.688-1.536c-.48.984-1.512 1.584-2.76 1.584-1.848 0-3.216-1.368-3.216-3.264 0-1.92 1.368-3.288 3.216-3.288 1.224 0 2.256.624 2.736 1.608l2.664-1.56c-.984-1.848-3.024-3.096-5.376-3.096-3.648 0-6.336 2.76-6.336 6.336 0 3.576 2.688 6.336 6.336 6.336zM137.084 16v1.416c-.864-1.08-2.16-1.752-3.912-1.752-3.192 0-5.832 2.76-5.832 6.336 0 3.576 2.64 6.336 5.832 6.336 1.752 0 3.048-.672 3.912-1.752V28h3.096V16h-3.096zm-3.336 9.384c-1.896 0-3.312-1.368-3.312-3.384s1.416-3.384 3.312-3.384c1.92 0 3.336 1.368 3.336 3.384s-1.416 3.384-3.336 3.384zM149.851 18.976V16h-2.712v-3.36l-3.096.936V16h-2.088v2.976h2.088v4.992c0 3.24 1.464 4.512 5.808 4.032v-2.808c-1.776.096-2.712.072-2.712-1.224v-4.992h2.712zM153.57 14.56c1.056 0 1.92-.864 1.92-1.896s-.864-1.92-1.92-1.92c-1.032 0-1.896.888-1.896 1.92s.864 1.896 1.896 1.896zM152.034 28h3.096V16h-3.096v12zM163.676 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM178.886 15.664c-1.608 0-2.856.6-3.576 1.68V16h-3.096v12h3.096v-6.48c0-2.088 1.128-2.976 2.64-2.976 1.392 0 2.376.84 2.376 2.472V28h3.096v-7.368c0-3.192-1.992-4.968-4.536-4.968z"
+              class="fill-sky-500 dark:fill-sky-400"
+            />
+            <path
+              d="M61.063 28h3.768l3.144-11.088L71.143 28h3.768l4.704-16.8h-3.48L72.92 23.656 69.391 11.2H66.56l-3.504 12.456L59.84 11.2h-3.48L61.063 28zM85.674 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM97.308 18.064V16h-3.096v12h3.096v-5.736c0-2.52 2.04-3.24 3.648-3.048V15.76c-1.512 0-3.024.672-3.648 2.304zM113.831 28l-4.968-6.072L113.687 16h-3.696l-4.128 5.28V11.2h-3.096V28h3.096v-5.448L110.231 28h3.6z"
+              class="fill-gray-900 dark:fill-gray-50"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M43.911 12.604L36.213 8.16v20.645h9v2h-44v-2h4v-12.72l-3.728.933L1 15.078l21.09-5.273h3.122a9.552 9.552 0 0 0-.68 2.559l-.483 3.975 5.164-2.982v15.448h5V8.161l-7.696 4.444a7.502 7.502 0 0 1 2.565-4.8h-4.12a7.489 7.489 0 0 1 6.646-2.973l-5.591-3.228a7.488 7.488 0 0 1 6.696.402c1.039.6 1.88 1.41 2.5 2.347a7.461 7.461 0 0 1 2.5-2.347 7.49 7.49 0 0 1 6.698-.402l-5.593 3.228a7.488 7.488 0 0 1 6.646 2.973h-4.12a7.498 7.498 0 0 1 2.567 4.8zM25.213 28.805v-10h-6v10h6zm-11-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+              class="fill-sky-500 dark:fill-sky-400"
+            />
+          </svg>
+          <h1
+            class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight leading-tight mb-4"
+          >
+            You can work from anywhere.
+            <span class="text-sky-500 dark:text-sky-400 block mt-1"
+              >Take advantage of it.</span
+            >
+          </h1>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-base mb-8 leading-relaxed"
+          >
+            Workcation helps you find work-friendly rentals in beautiful
+            locations so you can enjoy some nice weather even when you're not on
+            vacation.
+          </p>
+          <button
+            type="button"
+            class="bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold uppercase tracking-wider py-3 px-6 rounded-lg shadow-lg self-start transition-all duration-300 hover:scale-105"
+          >
+            Book your escape
+          </button>
+        </div>
+
+        <div class="order-1 md:order-2 md:w-1/2 lg:w-3/5 relative min-h-72">
+          <img
+            class="absolute inset-0 w-full h-full object-cover rounded-xl md:rounded-none shadow-xl transition-all duration-300 dark:brightness-75"
+            src="../images/beach-work.jpg"
+            alt="Hero image"
+          />
+        </div>
+      </section>
+
+      <div class="bg-gray-100 dark:bg-gray-800">
+        <section class="max-w-5xl mx-auto py-12 px-8 lg:px-6">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+              Popular destinations
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mt-1">
+              A selection of great work-friendly cities with lots to see and
+              explore.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/toronto.jpg"
+                alt="Toronto city skyline at sunset"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Toronto
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $120 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                >
+                  Explore 76 properties
+                </a>
+              </div>
+            </article>
+
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/malibu.jpg"
+                alt="Malibu coastline"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Malibu
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $215 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                  >Explore 43 properties</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/chicago.jpg"
+                alt="Chicago skyline"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Chicago
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $130 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                  >Explore 115 properties</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/seattle.jpg"
+                alt="Seattle skyline"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Seattle
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $135 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                  >Explore 63 properties</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/colorado.jpg"
+                alt="Colorado mountains"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Colorado
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $85 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                  >Explore 47 properties</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
+            >
+              <img
+                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                src="../images/miami.jpg"
+                alt="Miami beach"
+              />
+              <div class="w-2/3 p-4 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+                  >
+                    Miami
+                  </h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                    $115 / night average
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                  >Explore 86 properties</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const themeToggle = document.getElementById("theme-toggle");
+
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.theme = "dark";
+        } else {
+          localStorage.theme = "light";
+        }
+      });
+    </script>
+  </body>
+</html>
