@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Workcation - Tailwind</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
     <link href="./output.css" rel="stylesheet" />
 
     <script>
@@ -23,68 +21,379 @@
     class="font-sans antialiased bg-white dark:bg-gray-900 transition-colors duration-300"
   >
     <main>
-      <button
-        type="button"
-        id="theme-toggle"
-        class="fixed top-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-        aria-label="Toggle dark mode"
-      >
-        <svg
-          class="block dark:hidden h-6 w-6 text-gray-700"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <header class="bg-white dark:bg-gray-900">
+        <nav
+          aria-label="Global"
+          class="mx-auto flex max-w-7xl items-center justify-between p-6 py-4 lg:px-8"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
+          <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Workcation</span>
+              <svg
+                viewBox="0 0 185 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="hidden md:block h-8 w-auto self-start text-sky-500 fill-current"
+              >
+                <path
+                  d="M121.09 28.336c2.352 0 4.392-1.248 5.424-3.12l-2.688-1.536c-.48.984-1.512 1.584-2.76 1.584-1.848 0-3.216-1.368-3.216-3.264 0-1.92 1.368-3.288 3.216-3.288 1.224 0 2.256.624 2.736 1.608l2.664-1.56c-.984-1.848-3.024-3.096-5.376-3.096-3.648 0-6.336 2.76-6.336 6.336 0 3.576 2.688 6.336 6.336 6.336zM137.084 16v1.416c-.864-1.08-2.16-1.752-3.912-1.752-3.192 0-5.832 2.76-5.832 6.336 0 3.576 2.64 6.336 5.832 6.336 1.752 0 3.048-.672 3.912-1.752V28h3.096V16h-3.096zm-3.336 9.384c-1.896 0-3.312-1.368-3.312-3.384s1.416-3.384 3.312-3.384c1.92 0 3.336 1.368 3.336 3.384s-1.416 3.384-3.336 3.384zM149.851 18.976V16h-2.712v-3.36l-3.096.936V16h-2.088v2.976h2.088v4.992c0 3.24 1.464 4.512 5.808 4.032v-2.808c-1.776.096-2.712.072-2.712-1.224v-4.992h2.712zM153.57 14.56c1.056 0 1.92-.864 1.92-1.896s-.864-1.92-1.92-1.92c-1.032 0-1.896.888-1.896 1.92s.864 1.896 1.896 1.896zM152.034 28h3.096V16h-3.096v12zM163.676 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM178.886 15.664c-1.608 0-2.856.6-3.576 1.68V16h-3.096v12h3.096v-6.48c0-2.088 1.128-2.976 2.64-2.976 1.392 0 2.376.84 2.376 2.472V28h3.096v-7.368c0-3.192-1.992-4.968-4.536-4.968z"
+                  class="fill-sky-500 dark:fill-sky-400"
+                />
+                <path
+                  d="M61.063 28h3.768l3.144-11.088L71.143 28h3.768l4.704-16.8h-3.48L72.92 23.656 69.391 11.2H66.56l-3.504 12.456L59.84 11.2h-3.48L61.063 28zM85.674 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM97.308 18.064V16h-3.096v12h3.096v-5.736c0-2.52 2.04-3.24 3.648-3.048V15.76c-1.512 0-3.024.672-3.648 2.304zM113.831 28l-4.968-6.072L113.687 16h-3.696l-4.128 5.28V11.2h-3.096V28h3.096v-5.448L110.231 28h3.6z"
+                  class="fill-gray-900 dark:fill-gray-50"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M43.911 12.604L36.213 8.16v20.645h9v2h-44v-2h4v-12.72l-3.728.933L1 15.078l21.09-5.273h3.122a9.552 9.552 0 0 0-.68 2.559l-.483 3.975 5.164-2.982v15.448h5V8.161l-7.696 4.444a7.502 7.502 0 0 1 2.565-4.8h-4.12a7.489 7.489 0 0 1 6.646-2.973l-5.591-3.228a7.488 7.488 0 0 1 6.696.402c1.039.6 1.88 1.41 2.5 2.347a7.461 7.461 0 0 1 2.5-2.347 7.49 7.49 0 0 1 6.698-.402l-5.593 3.228a7.488 7.488 0 0 1 6.646 2.973h-4.12a7.498 7.498 0 0 1 2.567 4.8zM25.213 28.805v-10h-6v10h6zm-11-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                  class="fill-sky-500 dark:fill-sky-400"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="flex lg:hidden">
+            <button
+              type="button"
+              command="show-modal"
+              commandfor="mobile-menu"
+              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                data-slot="icon"
+                aria-hidden="true"
+                class="size-6"
+              >
+                <path
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <el-popover-group class="hidden lg:flex lg:gap-x-12">
+            <a
+              href="#"
+              class="text-sm/6 font-semibold text-gray-900 dark:text-white"
+              >Products</a
+            >
+            <a
+              href="#"
+              class="text-sm/6 font-semibold text-gray-900 dark:text-white"
+              >Features</a
+            >
+            <a
+              href="#"
+              class="text-sm/6 font-semibold text-gray-900 dark:text-white"
+              >Marketplace</a
+            >
+            <a
+              href="#"
+              class="text-sm/6 font-semibold text-gray-900 dark:text-white"
+              >Company</a
+            >
+          </el-popover-group>
+          <div
+            class="hidden lg:flex lg:flex-1 items-center gap-4 lg:justify-end"
+          >
+            <button
+              type="button"
+              command="show-modal"
+              commandfor="register-form"
+              class="bg-sky-500 hover:bg-sky-400 dark:bg-sky-400 dark:hover:bg-sky-600 text-white text-sm/6 font-semibold py-1 px-4 rounded-lg shadow-lg self-start transition-all duration-300 hover:scale-105"
+            >
+              Register
+            </button>
 
-        <svg
-          class="hidden dark:block h-6 w-6 text-gray-300"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-          />
-        </svg>
-      </button>
+            <button
+              type="button"
+              id="theme-toggle"
+              class="p-1 rounded-full focus:outline-hidden focus:ring-2 focus:ring-sky-500 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+              aria-label="Toggle dark mode"
+            >
+              <svg
+                class="block dark:hidden h-6 w-6 text-gray-700"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+
+              <svg
+                class="hidden dark:block h-6 w-6 text-gray-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+        <el-dialog>
+          <dialog
+            id="register-form"
+            aria-labelledby="dialog-title"
+            class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent"
+          >
+            <el-dialog-backdrop
+              class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in dark:bg-gray-900/50"
+            ></el-dialog-backdrop>
+
+            <div
+              tabindex="0"
+              class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0"
+            >
+              <el-dialog-panel
+                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95 dark:bg-gray-800 dark:outline dark:-outline-offset-1 dark:outline-white/10"
+              >
+                <div
+                  class="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8"
+                >
+                  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <svg
+                      viewBox="0 0 185 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-auto mx-auto block text-sky-500 fill-current"
+                    >
+                      <path
+                        d="M121.09 28.336c2.352 0 4.392-1.248 5.424-3.12l-2.688-1.536c-.48.984-1.512 1.584-2.76 1.584-1.848 0-3.216-1.368-3.216-3.264 0-1.92 1.368-3.288 3.216-3.288 1.224 0 2.256.624 2.736 1.608l2.664-1.56c-.984-1.848-3.024-3.096-5.376-3.096-3.648 0-6.336 2.76-6.336 6.336 0 3.576 2.688 6.336 6.336 6.336zM137.084 16v1.416c-.864-1.08-2.16-1.752-3.912-1.752-3.192 0-5.832 2.76-5.832 6.336 0 3.576 2.64 6.336 5.832 6.336 1.752 0 3.048-.672 3.912-1.752V28h3.096V16h-3.096zm-3.336 9.384c-1.896 0-3.312-1.368-3.312-3.384s1.416-3.384 3.312-3.384c1.92 0 3.336 1.368 3.336 3.384s-1.416 3.384-3.336 3.384zM149.851 18.976V16h-2.712v-3.36l-3.096.936V16h-2.088v2.976h2.088v4.992c0 3.24 1.464 4.512 5.808 4.032v-2.808c-1.776.096-2.712.072-2.712-1.224v-4.992h2.712zM153.57 14.56c1.056 0 1.92-.864 1.92-1.896s-.864-1.92-1.92-1.92c-1.032 0-1.896.888-1.896 1.92s.864 1.896 1.896 1.896zM152.034 28h3.096V16h-3.096v12zM163.676 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM178.886 15.664c-1.608 0-2.856.6-3.576 1.68V16h-3.096v12h3.096v-6.48c0-2.088 1.128-2.976 2.64-2.976 1.392 0 2.376.84 2.376 2.472V28h3.096v-7.368c0-3.192-1.992-4.968-4.536-4.968z"
+                        class="fill-sky-500 dark:fill-sky-400 transition-colors duration-300"
+                      />
+                      <path
+                        d="M61.063 28h3.768l3.144-11.088L71.143 28h3.768l4.704-16.8h-3.48L72.92 23.656 69.391 11.2H66.56l-3.504 12.456L59.84 11.2h-3.48L61.063 28zM85.674 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM97.308 18.064V16h-3.096v12h3.096v-5.736c0-2.52 2.04-3.24 3.648-3.048V15.76c-1.512 0-3.024.672-3.648 2.304zM113.831 28l-4.968-6.072L113.687 16h-3.696l-4.128 5.28V11.2h-3.096V28h3.096v-5.448L110.231 28h3.6z"
+                        class="fill-gray-900 dark:fill-gray-50 transition-colors duration-300"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M43.911 12.604L36.213 8.16v20.645h9v2h-44v-2h4v-12.72l-3.728.933L1 15.078l21.09-5.273h3.122a9.552 9.552 0 0 0-.68 2.559l-.483 3.975 5.164-2.982v15.448h5V8.161l-7.696 4.444a7.502 7.502 0 0 1 2.565-4.8h-4.12a7.489 7.489 0 0 1 6.646-2.973l-5.591-3.228a7.488 7.488 0 0 1 6.696.402c1.039.6 1.88 1.41 2.5 2.347a7.461 7.461 0 0 1 2.5-2.347 7.49 7.49 0 0 1 6.698-.402l-5.593 3.228a7.488 7.488 0 0 1 6.646 2.973h-4.12a7.498 7.498 0 0 1 2.567 4.8zM25.213 28.805v-10h-6v10h6zm-11-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                        class="fill-sky-500 dark:fill-sky-400 transition-colors duration-300"
+                      />
+                    </svg>
+                    <h2
+                      class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Join our community today!
+                    </h2>
+                  </div>
+
+                  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <form action="#" method="POST" class="space-y-6">
+                      <div>
+                        <label
+                          for="email"
+                          class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+                          >Email address</label
+                        >
+                        <div class="mt-2">
+                          <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            required
+                            autocomplete="email"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-sky-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <label
+                            for="password"
+                            class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+                            >Password</label
+                          >
+                          <div class="text-sm">
+                            <a
+                              href="#"
+                              class="font-semibold text-sky-600 hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300"
+                              >Forgot password?</a
+                            >
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-sky-500"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <label
+                            for="confirm-password"
+                            class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+                            >Confirm Password</label
+                          >
+                        </div>
+                        <div class="mt-2">
+                          <input
+                            id="confirm-password"
+                            type="password"
+                            name="confirm-password"
+                            required
+                            autocomplete="current-password"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-sky-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <button
+                          type="submit"
+                          class="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 dark:bg-sky-500 dark:shadow-none dark:hover:bg-sky-400 dark:focus-visible:outline-sky-500"
+                        >
+                          Join us
+                        </button>
+                      </div>
+                    </form>
+
+                    <p
+                      class="mt-10 text-center text-sm/6 text-gray-500 dark:text-gray-400"
+                    >
+                      Already a member?
+                      <a
+                        href="#"
+                        class="font-semibold text-sky-600 hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300"
+                        >Complete where you left off</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </el-dialog-panel>
+            </div>
+          </dialog>
+        </el-dialog>
+
+        <el-dialog>
+          <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
+            <div tabindex="0" class="fixed inset-0 focus:outline-none">
+              <el-dialog-panel
+                class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:sm:ring-white/10 transition-colors duration-300"
+              >
+                <div class="flex items-center justify-between">
+                  <a href="#" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Workcation</span>
+                    <svg
+                      viewBox="0 0 185 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-auto self-start text-sky-500 fill-current"
+                    >
+                      <path
+                        d="M121.09 28.336c2.352 0 4.392-1.248 5.424-3.12l-2.688-1.536c-.48.984-1.512 1.584-2.76 1.584-1.848 0-3.216-1.368-3.216-3.264 0-1.92 1.368-3.288 3.216-3.288 1.224 0 2.256.624 2.736 1.608l2.664-1.56c-.984-1.848-3.024-3.096-5.376-3.096-3.648 0-6.336 2.76-6.336 6.336 0 3.576 2.688 6.336 6.336 6.336zM137.084 16v1.416c-.864-1.08-2.16-1.752-3.912-1.752-3.192 0-5.832 2.76-5.832 6.336 0 3.576 2.64 6.336 5.832 6.336 1.752 0 3.048-.672 3.912-1.752V28h3.096V16h-3.096zm-3.336 9.384c-1.896 0-3.312-1.368-3.312-3.384s1.416-3.384 3.312-3.384c1.92 0 3.336 1.368 3.336 3.384s-1.416 3.384-3.336 3.384zM149.851 18.976V16h-2.712v-3.36l-3.096.936V16h-2.088v2.976h2.088v4.992c0 3.24 1.464 4.512 5.808 4.032v-2.808c-1.776.096-2.712.072-2.712-1.224v-4.992h2.712zM153.57 14.56c1.056 0 1.92-.864 1.92-1.896s-.864-1.92-1.92-1.92c-1.032 0-1.896.888-1.896 1.92s.864 1.896 1.896 1.896zM152.034 28h3.096V16h-3.096v12zM163.676 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM178.886 15.664c-1.608 0-2.856.6-3.576 1.68V16h-3.096v12h3.096v-6.48c0-2.088 1.128-2.976 2.64-2.976 1.392 0 2.376.84 2.376 2.472V28h3.096v-7.368c0-3.192-1.992-4.968-4.536-4.968z"
+                        class="fill-sky-500 dark:fill-sky-400 transition-colors duration-300"
+                      />
+                      <path
+                        d="M61.063 28h3.768l3.144-11.088L71.143 28h3.768l4.704-16.8h-3.48L72.92 23.656 69.391 11.2H66.56l-3.504 12.456L59.84 11.2h-3.48L61.063 28zM85.674 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM97.308 18.064V16h-3.096v12h3.096v-5.736c0-2.52 2.04-3.24 3.648-3.048V15.76c-1.512 0-3.024.672-3.648 2.304zM113.831 28l-4.968-6.072L113.687 16h-3.696l-4.128 5.28V11.2h-3.096V28h3.096v-5.448L110.231 28h3.6z"
+                        class="fill-gray-900 dark:fill-gray-50 transition-colors duration-300"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M43.911 12.604L36.213 8.16v20.645h9v2h-44v-2h4v-12.72l-3.728.933L1 15.078l21.09-5.273h3.122a9.552 9.552 0 0 0-.68 2.559l-.483 3.975 5.164-2.982v15.448h5V8.161l-7.696 4.444a7.502 7.502 0 0 1 2.565-4.8h-4.12a7.489 7.489 0 0 1 6.646-2.973l-5.591-3.228a7.488 7.488 0 0 1 6.696.402c1.039.6 1.88 1.41 2.5 2.347a7.461 7.461 0 0 1 2.5-2.347 7.49 7.49 0 0 1 6.698-.402l-5.593 3.228a7.488 7.488 0 0 1 6.646 2.973h-4.12a7.498 7.498 0 0 1 2.567 4.8zM25.213 28.805v-10h-6v10h6zm-11-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                        class="fill-sky-500 dark:fill-sky-400 transition-colors duration-300"
+                      />
+                    </svg>
+                  </a>
+                  <button
+                    type="button"
+                    command="close"
+                    commandfor="mobile-menu"
+                    class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400 transition-colors duration-300"
+                  >
+                    <span class="sr-only">Close menu</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      data-slot="icon"
+                      aria-hidden="true"
+                      class="size-6"
+                    >
+                      <path
+                        d="M6 18 18 6M6 6l12 12"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="mt-6 flow-root">
+                  <div
+                    class="-my-6 divide-y divide-gray-200 dark:divide-white/10 transition-colors duration-300"
+                  >
+                    <div class="space-y-2 py-6">
+                      <a
+                        href="#"
+                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300"
+                        >Products</a
+                      >
+                      <a
+                        href="#"
+                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300"
+                        >Features</a
+                      >
+                      <a
+                        href="#"
+                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300"
+                        >Marketplace</a
+                      >
+                      <a
+                        href="#"
+                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300"
+                        >Company</a
+                      >
+                    </div>
+                    <div class="py-6">
+                      <button
+                        type="button"
+                        command="show-modal"
+                        commandfor="register-form"
+                        class="w-full text-start -mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-300"
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </el-dialog-panel>
+            </div>
+          </dialog>
+        </el-dialog>
+      </header>
 
       <section
-        class="flex flex-col md:flex-row items-stretch max-w-7xl lg:max-w-full mx-auto pt-8 pb-12 md:py-0 px-8 md:pe-0 lg:ps-6 gap-10"
+        class="flex flex-col md:flex-row items-stretch max-w-7xl lg:max-w-full mx-auto pt-2 pb-12 md:py-0 px-8 md:pe-0 lg:ps-6 gap-10"
       >
         <div
           class="order-2 md:order-1 md:w-1/2 lg:w-2/5 flex flex-col justify-center py-4 md:py-6 lg:py-14 lg:ps-12"
         >
-          <svg
-            viewBox="0 0 185 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="hidden md:block h-8 w-auto self-start mb-6 text-sky-500 fill-current"
-          >
-            <path
-              d="M121.09 28.336c2.352 0 4.392-1.248 5.424-3.12l-2.688-1.536c-.48.984-1.512 1.584-2.76 1.584-1.848 0-3.216-1.368-3.216-3.264 0-1.92 1.368-3.288 3.216-3.288 1.224 0 2.256.624 2.736 1.608l2.664-1.56c-.984-1.848-3.024-3.096-5.376-3.096-3.648 0-6.336 2.76-6.336 6.336 0 3.576 2.688 6.336 6.336 6.336zM137.084 16v1.416c-.864-1.08-2.16-1.752-3.912-1.752-3.192 0-5.832 2.76-5.832 6.336 0 3.576 2.64 6.336 5.832 6.336 1.752 0 3.048-.672 3.912-1.752V28h3.096V16h-3.096zm-3.336 9.384c-1.896 0-3.312-1.368-3.312-3.384s1.416-3.384 3.312-3.384c1.92 0 3.336 1.368 3.336 3.384s-1.416 3.384-3.336 3.384zM149.851 18.976V16h-2.712v-3.36l-3.096.936V16h-2.088v2.976h2.088v4.992c0 3.24 1.464 4.512 5.808 4.032v-2.808c-1.776.096-2.712.072-2.712-1.224v-4.992h2.712zM153.57 14.56c1.056 0 1.92-.864 1.92-1.896s-.864-1.92-1.92-1.92c-1.032 0-1.896.888-1.896 1.92s.864 1.896 1.896 1.896zM152.034 28h3.096V16h-3.096v12zM163.676 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM178.886 15.664c-1.608 0-2.856.6-3.576 1.68V16h-3.096v12h3.096v-6.48c0-2.088 1.128-2.976 2.64-2.976 1.392 0 2.376.84 2.376 2.472V28h3.096v-7.368c0-3.192-1.992-4.968-4.536-4.968z"
-              class="fill-sky-500 dark:fill-sky-400"
-            />
-            <path
-              d="M61.063 28h3.768l3.144-11.088L71.143 28h3.768l4.704-16.8h-3.48L72.92 23.656 69.391 11.2H66.56l-3.504 12.456L59.84 11.2h-3.48L61.063 28zM85.674 28.336c3.528 0 6.36-2.76 6.36-6.336 0-3.576-2.832-6.336-6.36-6.336-3.528 0-6.336 2.76-6.336 6.336 0 3.576 2.808 6.336 6.336 6.336zm0-3.024c-1.824 0-3.24-1.368-3.24-3.312 0-1.944 1.416-3.312 3.24-3.312 1.848 0 3.264 1.368 3.264 3.312 0 1.944-1.416 3.312-3.264 3.312zM97.308 18.064V16h-3.096v12h3.096v-5.736c0-2.52 2.04-3.24 3.648-3.048V15.76c-1.512 0-3.024.672-3.648 2.304zM113.831 28l-4.968-6.072L113.687 16h-3.696l-4.128 5.28V11.2h-3.096V28h3.096v-5.448L110.231 28h3.6z"
-              class="fill-gray-900 dark:fill-gray-50"
-            />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M43.911 12.604L36.213 8.16v20.645h9v2h-44v-2h4v-12.72l-3.728.933L1 15.078l21.09-5.273h3.122a9.552 9.552 0 0 0-.68 2.559l-.483 3.975 5.164-2.982v15.448h5V8.161l-7.696 4.444a7.502 7.502 0 0 1 2.565-4.8h-4.12a7.489 7.489 0 0 1 6.646-2.973l-5.591-3.228a7.488 7.488 0 0 1 6.696.402c1.039.6 1.88 1.41 2.5 2.347a7.461 7.461 0 0 1 2.5-2.347 7.49 7.49 0 0 1 6.698-.402l-5.593 3.228a7.488 7.488 0 0 1 6.646 2.973h-4.12a7.498 7.498 0 0 1 2.567 4.8zM25.213 28.805v-10h-6v10h6zm-11-8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
-              class="fill-sky-500 dark:fill-sky-400"
-            />
-          </svg>
           <h1
             class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-50 tracking-tight leading-tight mb-4"
           >
@@ -102,7 +411,7 @@
           </p>
           <button
             type="button"
-            class="bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold uppercase tracking-wider py-3 px-6 rounded-lg shadow-lg self-start transition-all duration-300 hover:scale-105"
+            class="bg-sky-500 hover:bg-sky-400 dark:bg-sky-400 dark:hover:bg-sky-600 text-white text-sm font-semibold uppercase tracking-wider py-3 px-6 rounded-lg shadow-lg self-start transition-all duration-300 hover:scale-105"
           >
             Book your escape
           </button>
@@ -130,166 +439,97 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/toronto.jpg"
                 alt="Toronto city skyline at sunset"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Toronto
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $120 / night average
-                  </p>
+                  <h3 class="destination-title">Toronto</h3>
+                  <p class="destination-price">$120 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
-                >
+                <a href="#" class="destination-action">
                   Explore 76 properties
                 </a>
               </div>
             </article>
 
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/malibu.jpg"
                 alt="Malibu coastline"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Malibu
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $215 / night average
-                  </p>
+                  <h3 class="destination-title">Malibu</h3>
+                  <p class="destination-price">$215 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
-                  >Explore 43 properties</a
-                >
+                <a href="#" class="destination-action">Explore 43 properties</a>
               </div>
             </article>
 
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/chicago.jpg"
                 alt="Chicago skyline"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Chicago
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $130 / night average
-                  </p>
+                  <h3 class="destination-title">Chicago</h3>
+                  <p class="destination-price">$130 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
+                <a href="#" class="destination-action"
                   >Explore 115 properties</a
                 >
               </div>
             </article>
 
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/seattle.jpg"
                 alt="Seattle skyline"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Seattle
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $135 / night average
-                  </p>
+                  <h3 class="destination-title">Seattle</h3>
+                  <p class="destination-price">$135 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
-                  >Explore 63 properties</a
-                >
+                <a href="#" class="destination-action">Explore 63 properties</a>
               </div>
             </article>
 
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/colorado.jpg"
                 alt="Colorado mountains"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Colorado
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $85 / night average
-                  </p>
+                  <h3 class="destination-title">Colorado</h3>
+                  <p class="destination-price">$85 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
-                  >Explore 47 properties</a
-                >
+                <a href="#" class="destination-action">Explore 47 properties</a>
               </div>
             </article>
 
-            <article
-              class="flex rounded-lg overflow-hidden bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-600 hover:scale-105 transition-all duration-500 ease-in-out"
-            >
+            <article class="destination-card">
               <img
-                class="w-1/3 object-cover aspect-square transition-all duration-300 dark:brightness-75"
+                class="destination-image"
                 src="../images/miami.jpg"
                 alt="Miami beach"
               />
-              <div class="w-2/3 p-4 flex flex-col justify-between">
+              <div class="destination-content">
                 <div>
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-gray-50"
-                  >
-                    Miami
-                  </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                    $115 / night average
-                  </p>
+                  <h3 class="destination-title">Miami</h3>
+                  <p class="destination-price">$115 / night average</p>
                 </div>
-                <a
-                  href="#"
-                  class="text-sm font-semibold text-sky-500 hover:text-sky-600 mt-4"
-                  >Explore 86 properties</a
-                >
+                <a href="#" class="destination-action">Explore 86 properties</a>
               </div>
             </article>
           </div>
