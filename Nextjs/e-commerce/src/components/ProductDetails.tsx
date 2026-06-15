@@ -1,18 +1,51 @@
-import { ProductDetailsProp } from "@/pages/products/[id]";
+import { Product } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useSWR from "swr";
+import { toast } from "sonner";
 
-function ProductDetailsScreen({ product }: ProductDetailsProp) {
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+function ProductDetailsScreen() {
   const router = useRouter();
+  const { id } = router.query;
 
-  if (router.isFallback || !product) {
+  const {
+    data: product,
+    error,
+    isLoading,
+  } = useSWR<Product>(id ? `/api/products/${id}` : null, fetcher);
+
+  const handleDelete = async () => {
+    if (!window.confirm("Are you sure you want to delete this product?")) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/products/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        toast.error(errorData.error || "Failed to delete product");
+        return;
+      }
+
+      toast.success("Product deleted successfully");
+      router.push("/products");
+    } catch (error) {
+      console.log(error);
+      toast.error("An unexpected error occurred while deleting.");
+    }
+  };
+
+  if (isLoading)
+    return <div className='p-8 text-center'>Loading product details...</div>;
+  if (error || !product)
     return (
-      <div className='min-h-screen flex items-center justify-center text-primary text-2xl font-semibold'>
-        Loading...
-      </div>
+      <div className='p-8 text-center text-red-500'>Product not found.</div>
     );
-  }
 
   const originalPrice = product.discountPercentage
     ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
@@ -69,12 +102,27 @@ function ProductDetailsScreen({ product }: ProductDetailsProp) {
             )}
           </div>
 
-          <button
-            type='button'
-            className='w-full md:w-auto bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-4 px-12 rounded-full transition-colors text-lg mb-14 shadow-lg shadow-primary/20'
-          >
-            Add to Cart
-          </button>
+          <div className='flex flex-wrap gap-4 items-center mb-14'>
+            <button
+              type='button'
+              className='flex-1 md:flex-initial bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-4 px-12 rounded-full transition-colors text-lg shadow-lg shadow-primary/20'
+            >
+              Add to Cart
+            </button>
+            <Link
+              href={`/products/${id}/edit`}
+              className='flex-1 md:flex-initial text-center border border-border hover:bg-foreground/5 text-foreground font-bold py-4 px-8 rounded-full transition-colors text-lg'
+            >
+              Edit
+            </Link>
+            <button
+              type='button'
+              onClick={handleDelete}
+              className='flex-1 md:flex-initial border border-destructive/30 hover:bg-destructive/10 text-destructive font-bold py-4 px-8 rounded-full transition-colors text-lg'
+            >
+              Delete
+            </button>
+          </div>
 
           <div className='space-y-10'>
             <div>

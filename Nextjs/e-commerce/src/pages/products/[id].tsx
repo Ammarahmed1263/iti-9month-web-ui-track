@@ -1,16 +1,13 @@
 import Navbar from "@/components/Navbar";
 import ProductDetailsScreen from "@/components/ProductDetails";
 import { ReactElement } from "react";
-import { Product } from ".";
 
-export interface ProductDetailsProp {
-  product: Product;
-}
+// export interface ProductDetailsProp {
+//   product: Product;
+// }
 
-function ProductDetails({ product }: ProductDetailsProp) {
-
-
-  return <ProductDetailsScreen product={product} />;
+function ProductDetails() {
+  return <ProductDetailsScreen />;
 }
 
 export default ProductDetails;
@@ -24,24 +21,24 @@ ProductDetails.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export async function getStaticPaths() {
-  const res = await fetch("https://dummyjson.com/products?limit=9");
-  const data = await res.json();
+// export async function getStaticPaths() {
+//   const res = await fetch("https://dummyjson.com/products?limit=9");
+//   const data = await res.json();
 
-  const paths = data.products
-    .map((product: { id: number }) => ({
-      params: { id: product.id.toString() },
-    }))
-    .slice(0, 3);
+//   const paths = data.products
+//     .map((product: { id: number }) => ({
+//       params: { id: product.id.toString() },
+//     }))
+//     .slice(0, 3);
 
-  return { paths, fallback: false };
-}
+//   return { paths, fallback: false };
+// }
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  const res = await fetch(`https://dummyjson.com/products/${params.id}`);
-  const product = await res.json();
+// export async function getStaticProps({ params }: { params: { id: string } }) {
+//   const res = await fetch(`https://dummyjson.com/products/${params.id}`);
+//   const product = await res.json();
 
-  return {
-    props: { product },
-  };
-}
+//   return {
+//     props: { product },
+//   };
+// }
