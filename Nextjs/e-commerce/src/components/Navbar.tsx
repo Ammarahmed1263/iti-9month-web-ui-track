@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const router = useRouter();
 
   return (
-    <header className='flex items-center justify-between gap-4 bg-card p-4 px-12 shadow-sm'>
+    <header className='flex items-center justify-between gap-4 bg-card p-4 px-12'>
       <p className='text-xl font-bold text-primary tracking-tight'>
         Essentials<span className='text-foreground'>.</span>
       </p>
@@ -27,6 +28,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+      <ThemeToggle />
     </header>
   );
 };
