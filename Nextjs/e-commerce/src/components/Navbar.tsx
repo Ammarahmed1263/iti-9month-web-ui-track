@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <header className='flex items-center justify-between gap-4 bg-card p-4 px-12'>
-      <p className='text-xl font-bold text-primary tracking-tight'>
+      <p className='text-xl font-serif font-bold text-primary tracking-tight'>
         Essentials<span className='text-foreground'>.</span>
       </p>
       <ul className='flex space-x-6 text-foreground font-medium'>

@@ -3,29 +3,29 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  --background: #fffdecff;
-  --foreground: #242424ff;
-  --primary: #44b58fff;
-  --primary-hover: #379a5dff;
+  --background: #faf8f5;
+  --foreground: #1a1612;
+  --primary: #c5a880;
+  --primary-hover: #b5976e;
   --primary-foreground: #ffffff;
 
-  --muted: #f2efe4;
-  --muted-foreground: #737373;
-  --border: #e5e0d4;
+  --muted: #f4efe9;
+  --muted-foreground: #7d756b;
+  --border: #eadecf;
   --card: #ffffff;
 }
 
 :root[data-theme="dark"] {
-  --background: #211b1d;
-  --foreground: #f7efec;
-  --primary: #59c281ff;
-  --primary-hover: #8fdda4ff;
-  --primary-foreground: #211b1d;
+  --background: #13110f;
+  --foreground: #f5f2eb;
+  --primary: #d9c2a3;
+  --primary-hover: #e8d6bd;
+  --primary-foreground: #13110f;
 
-  --muted: #30292b;
-  --muted-foreground: #a39c9a;
-  --border: #3d3437;
-  --card: #2a2325;
+  --muted: #211d1a;
+  --muted-foreground: #a69b8f;
+  --border: #36302b;
+  --card: #1a1714;
 }
 
 @theme inline {
@@ -38,12 +38,23 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-card: var(--card);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-family: var(--font-sans);
+  }
 }

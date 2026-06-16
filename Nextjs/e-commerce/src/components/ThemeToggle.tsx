@@ -11,11 +11,11 @@ function ThemeToggle() {
     <button
       type='button'
       onClick={toggleTheme}
-      className='p-1 rounded-full focus:outline-hidden focus:ring-2 focus:ring-primary transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+      className='p-2 rounded-none border border-border focus:outline-hidden focus:ring-1 focus:ring-primary transition-colors duration-300 hover:bg-muted text-foreground'
       aria-label='Toggle dark mode'
     >
       <svg
-        className='block dark:hidden h-6 w-6 text-gray-700'
+        className='block dark:hidden h-6 w-6 text-foreground'
         fill='none'
         viewBox='0 0 24 24'
         stroke='currentColor'
@@ -29,7 +29,7 @@ function ThemeToggle() {
       </svg>
 
       <svg
-        className='hidden dark:block h-6 w-6 text-gray-300'
+        className='hidden dark:block h-6 w-6 text-foreground'
         fill='none'
         viewBox='0 0 24 24'
         stroke='currentColor'
