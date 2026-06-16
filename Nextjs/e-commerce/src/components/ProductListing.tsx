@@ -71,40 +71,71 @@ function ProductListingScreen() {
   };
 
   return (
-    <div className='container mx-auto p-4 md:p-8 bg-background text-foreground min-h-screen'>
-      <div className='flex items-center justify-between mb-12'>
-        <input
-          type='text'
-          value={localSearch}
-          onChange={handleSearchChange}
-          placeholder='Search products'
-          className='border border-border rounded-md p-2'
-        />
-        <select
-          value={sort || ""}
-          onChange={handleSortChange}
-          className='border border-border rounded-md p-2'
-          title='Filter Options'
-        >
-          <option value=''>Filter</option>
-          <option value='price'>Price</option>
-          <option value='rating'>Rating</option>
-        </select>
-      </div>
+    <div className='container mx-auto px-8 p-4 md:p-8 bg-background text-foreground min-h-screen'>
+      {/* Premium Curated Header */}
+      <div className='border-b border-border pb-8 mb-12'>
+        <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8'>
+          <div>
+            <h1 className='text-4xl md:text-5xl font-serif font-medium text-foreground tracking-tight'>
+              All Products
+            </h1>
+            <p className='text-xs font-semibold text-primary uppercase tracking-widest mt-2'>
+              Curated Collection &bull;{" "}
+              {products ? `${products.length} items` : "Loading..."}
+            </p>
+          </div>
 
-      <div className='flex items-center justify-between mb-12'>
-        <div>
-          <h1 className='text-3xl font-bold text-foreground'>All Products</h1>
-          <p className='text-muted-foreground text-base font-medium mt-1'>
-            {products ? `${products.length} items` : "Loading..."}
-          </p>
+          <Link
+            href='/products/new'
+            className='self-start md:self-auto bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-3 px-6 rounded-none transition-colors text-sm tracking-wider uppercase shadow-lg shadow-primary/20'
+          >
+            + Add Product
+          </Link>
         </div>
-        <Link
-          href='/products/new'
-          className='bg-primary hover:bg-primary/95 text-primary-foreground font-semibold py-3 px-6 rounded-full transition-colors text-sm shadow-md'
-        >
-          + Add Product
-        </Link>
+
+        {/* Filters & Search Row */}
+        <div className='flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between mt-6 pt-6 border-t border-border/50'>
+          <div className='relative w-full max-w-md'>
+            <input
+              type='text'
+              value={localSearch}
+              onChange={handleSearchChange}
+              placeholder='Search collection...'
+              className='bg-card text-foreground border border-border rounded-none pl-4 pr-10 py-3 outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm w-full'
+            />
+            <span className='absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none'>
+              <svg
+                className='h-4 w-4'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                />
+              </svg>
+            </span>
+          </div>
+
+          <div className='flex items-center gap-3'>
+            <span className='text-xs font-bold text-muted-foreground uppercase tracking-wider hidden sm:inline'>
+              Sort By:
+            </span>
+            <select
+              value={sort || ""}
+              onChange={handleSortChange}
+              className='bg-card text-foreground border border-border rounded-none px-4 py-3 outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm cursor-pointer min-w-35'
+              title='Filter Options'
+            >
+              <option value=''>Sort By</option>
+              <option value='price'>Price</option>
+              <option value='rating'>Rating</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       {isLoading && !products ? (
@@ -127,7 +158,7 @@ function ProductListingScreen() {
               key={product._id}
               className='group flex flex-col'
             >
-              <div className='relative w-full aspect-4/5 bg-foreground/5 rounded-2xl overflow-hidden mb-4'>
+              <div className='relative w-full aspect-4/5 bg-foreground/5 rounded-none overflow-hidden mb-4'>
                 {product.thumbnail && (
                   <Image
                     src={product.thumbnail}
@@ -138,7 +169,7 @@ function ProductListingScreen() {
                   />
                 )}
                 {product.discountPercentage > 0 && (
-                  <div className='absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-md'>
+                  <div className='absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-none'>
                     -{Math.round(product.discountPercentage)}%
                   </div>
                 )}

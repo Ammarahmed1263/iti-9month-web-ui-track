@@ -63,7 +63,7 @@ function ProductDetailsScreen() {
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 max-w-7xl mx-auto'>
         <div className='w-full'>
-          <div className='relative w-full aspect-4/5 bg-foreground/5 rounded-3xl overflow-hidden'>
+          <div className='relative w-full aspect-4/5 bg-foreground/5 rounded-none overflow-hidden'>
             {product.thumbnail && (
               <Image
                 src={product.thumbnail}
@@ -96,32 +96,34 @@ function ProductDetailsScreen() {
               </p>
             )}
             {product.discountPercentage > 0 && (
-              <span className='text-sm font-bold text-red-600 bg-red-50 dark:bg-red-900/20 px-2.5 py-1 rounded-md'>
+              <span className='text-sm font-bold bg-primary text-primary-foreground px-2.5 py-1 rounded-none'>
                 {Math.round(product.discountPercentage)}% OFF
               </span>
             )}
           </div>
 
-          <div className='flex flex-wrap gap-4 items-center mb-14'>
+          <div className='flex flex-col xl:flex-row gap-4 items-stretch xl:items-center mb-14'>
             <button
               type='button'
-              className='flex-1 md:flex-initial bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-4 px-12 rounded-full transition-colors text-lg shadow-lg shadow-primary/20'
+              className='w-full xl:w-auto bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-4 px-12 rounded-none transition-colors text-lg shadow-lg shadow-primary/20'
             >
               Add to Cart
             </button>
-            <Link
-              href={`/products/${id}/edit`}
-              className='flex-1 md:flex-initial text-center border border-border hover:bg-foreground/5 text-foreground font-bold py-4 px-8 rounded-full transition-colors text-lg'
-            >
-              Edit
-            </Link>
-            <button
-              type='button'
-              onClick={handleDelete}
-              className='flex-1 md:flex-initial border border-destructive/30 hover:bg-destructive/10 text-destructive font-bold py-4 px-8 rounded-full transition-colors text-lg'
-            >
-              Delete
-            </button>
+            <div className='flex gap-4 w-full xl:w-auto'>
+              <Link
+                href={`/products/${id}/edit`}
+                className='flex-1 xl:flex-initial text-center border border-border hover:bg-foreground/5 text-foreground font-bold py-4 px-8 rounded-none transition-colors text-lg'
+              >
+                Edit
+              </Link>
+              <button
+                type='button'
+                onClick={handleDelete}
+                className='flex-1 xl:flex-initial border border-destructive/30 hover:bg-destructive/10 text-destructive font-bold py-4 px-8 rounded-none transition-colors text-lg'
+              >
+                Delete
+              </button>
+            </div>
           </div>
 
           <div className='space-y-10'>

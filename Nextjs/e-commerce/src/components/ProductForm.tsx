@@ -70,10 +70,10 @@ function ProductForm({ initialData }: Props) {
   return (
     <form
       action={formAction}
-      className='flex flex-col gap-6 max-w-2xl mx-auto bg-foreground/5 p-8 rounded-2xl'
+      className='flex flex-col gap-6 max-w-2xl mx-auto bg-card p-8 rounded-none border border-border'
     >
       {state.error && (
-        <div className='bg-red-500/10 text-red-500 p-4 rounded-lg text-sm font-medium'>
+        <div className='bg-red-500/10 text-red-500 p-4 rounded-none border border-red-500/20 text-sm font-medium'>
           {state.error}
         </div>
       )}
@@ -88,7 +88,7 @@ function ProductForm({ initialData }: Props) {
           name='title'
           defaultValue={initialData?.title}
           required
-          className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+          className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
         />
       </div>
 
@@ -102,7 +102,7 @@ function ProductForm({ initialData }: Props) {
           defaultValue={initialData?.description}
           required
           rows={4}
-          className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+          className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
         />
       </div>
 
@@ -118,7 +118,7 @@ function ProductForm({ initialData }: Props) {
             step='any'
             defaultValue={initialData?.price}
             required
-            className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+            className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
           />
         </div>
         <div className='flex flex-col gap-2'>
@@ -131,7 +131,7 @@ function ProductForm({ initialData }: Props) {
             name='discountPercentage'
             step='any'
             defaultValue={initialData?.discountPercentage || 0}
-            className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+            className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
           />
         </div>
       </div>
@@ -147,7 +147,7 @@ function ProductForm({ initialData }: Props) {
             name='brand'
             defaultValue={initialData?.brand || ""}
             required
-            className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+            className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
           />
         </div>
         <div className='flex flex-col gap-2'>
@@ -160,7 +160,7 @@ function ProductForm({ initialData }: Props) {
             name='stock'
             defaultValue={initialData?.stock ?? 10}
             required
-            className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+            className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
           />
         </div>
       </div>
@@ -175,7 +175,7 @@ function ProductForm({ initialData }: Props) {
           name='category'
           defaultValue={initialData?.category}
           required
-          className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+          className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
         />
       </div>
       <div className='flex flex-col gap-2'>
@@ -187,14 +187,14 @@ function ProductForm({ initialData }: Props) {
           id='thumbnail'
           name='thumbnail'
           defaultValue={initialData?.thumbnail}
-          className='border p-3 rounded-lg dark:bg-zinc-800 dark:border-zinc-700'
+          className='bg-transparent border border-border p-3 rounded-none focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary text-foreground transition-all duration-300'
         />
       </div>
 
       <button
         type='submit'
         disabled={isPending}
-        className='mt-4 bg-primary text-background font-bold py-4 rounded-lg hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+        className='mt-4 bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-4 rounded-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20'
       >
         {isPending
           ? "Saving..."
