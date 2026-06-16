@@ -21,8 +21,8 @@ export default function NewsManager({
     fetcher,
     {
       fallbackData: initialNews,
-      refreshInterval: 15000,
-      dedupingInterval: 15000,
+      refreshInterval: 1000 * 30,
+      dedupingInterval: 1000 * 30,
     },
   );
 
