@@ -2,6 +2,7 @@
 import useSWR from "swr";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 interface News {
   id: number;
@@ -16,8 +17,9 @@ export default function NewsManager({
 }: {
   initialNews: News | null;
 }) {
+  const { data: session } = useSession();
   const { data: news } = useSWR(
-    "https://dummyjson.com/quotes/random",
+    session ? "https://dummyjson.com/quotes/random" : null,
     fetcher,
     {
       fallbackData: initialNews,

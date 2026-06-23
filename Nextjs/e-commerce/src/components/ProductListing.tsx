@@ -1,5 +1,6 @@
 import { useDebounce } from "@/hooks/useDebounce";
 import { Product } from "@/types/product";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -45,11 +46,12 @@ function ProductListingScreen() {
   const queryString = params.toString();
   const apiUrl = queryString ? `/api/products?${queryString}` : "/api/products";
 
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = useSWR<Product[]>(apiUrl, fetcher, { keepPreviousData: true });
+  const { data, error, isLoading } = useSWR<Product[]>(apiUrl, fetcher, {
+    keepPreviousData: true,
+  });
+  const { data: session } = useSession();
+  console.log(session);
+  const products = session ? data : data?.slice(0, 4);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocalSearch(e.target.value);
@@ -85,12 +87,14 @@ function ProductListingScreen() {
             </p>
           </div>
 
-          <Link
-            href='/products/new'
-            className='self-start md:self-auto bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-3 px-6 rounded-none transition-colors text-sm tracking-wider uppercase shadow-lg shadow-primary/20'
-          >
-            + Add Product
-          </Link>
+          {session && (
+            <Link
+              href='/products/new'
+              className='self-start md:self-auto bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-3 px-6 rounded-none transition-colors text-sm tracking-wider uppercase shadow-lg shadow-primary/20'
+            >
+              + Add Product
+            </Link>
+          )}
         </div>
 
         {/* Filters & Search Row */}
@@ -199,6 +203,22 @@ function ProductListingScreen() {
               </div>
             </Link>
           ))}
+        </div>
+      )}
+      {!session && (
+        <div className='mt-8 p-8 border border-border bg-card text-center rounded-none'>
+          <h3 className='text-xl font-serif font-bold text-foreground mb-2'>
+            Want to see more of our collection?
+          </h3>
+          <p className='text-muted-foreground mb-6 text-sm'>
+            Log in or create an account to view all premium products.
+          </p>
+          <Link
+            href='/auth/login'
+            className='inline-block bg-primary text-primary-foreground font-bold py-2.5 px-8 rounded-none transition-colors hover:bg-primary/90 text-sm'
+          >
+            Sign In
+          </Link>
         </div>
       )}
     </div>

@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 function ProductDetailsScreen() {
   const router = useRouter();
   const { id } = router.query;
+  const { data: session } = useSession();
 
   const {
     data: product,
@@ -109,21 +111,23 @@ function ProductDetailsScreen() {
             >
               Add to Cart
             </button>
-            <div className='flex gap-4 w-full xl:w-auto'>
-              <Link
-                href={`/products/${id}/edit`}
-                className='flex-1 xl:flex-initial text-center border border-border hover:bg-foreground/5 text-foreground font-bold py-4 px-8 rounded-none transition-colors text-lg'
-              >
-                Edit
-              </Link>
-              <button
-                type='button'
-                onClick={handleDelete}
-                className='flex-1 xl:flex-initial border border-destructive/30 hover:bg-destructive/10 text-destructive font-bold py-4 px-8 rounded-none transition-colors text-lg'
-              >
-                Delete
-              </button>
-            </div>
+            {session && (
+              <div className='flex gap-4 w-full xl:w-auto'>
+                <Link
+                  href={`/products/${id}/edit`}
+                  className='flex-1 xl:flex-initial text-center border border-border hover:bg-foreground/5 text-foreground font-bold py-4 px-8 rounded-none transition-colors text-lg'
+                >
+                  Edit
+                </Link>
+                <button
+                  type='button'
+                  onClick={handleDelete}
+                  className='flex-1 xl:flex-initial border border-destructive/30 hover:bg-destructive/10 text-destructive font-bold py-4 px-8 rounded-none transition-colors text-lg'
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
 
           <div className='space-y-10'>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 function HomeScreen() {
   return (
@@ -39,23 +38,3 @@ function HomeScreen() {
 }
 
 export default HomeScreen;
-
-export async function getServerSideProps() {
-  try {
-    const res = await fetch("https://dummyjson.com/quotes/random");
-    const initialNews = await res.json();
-
-    return {
-      props: {
-        initialNews,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: {
-        initialNews: null,
-      },
-    };
-  }
-}
