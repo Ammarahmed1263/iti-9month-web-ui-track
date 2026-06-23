@@ -1,0 +1,58 @@
+export const users = [
+    {
+        id: 1,
+        name: "Ahmed",
+        age: 25,
+        gender: "Male",
+        role: "Admin",
+        email: "Ahmed@example.com",
+        profilePicture: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+        status: "Active",
+    },
+    {
+        id: 2,
+        name: "Sarah",
+        age: 22,
+        gender: "Female",
+        role: "User",
+        email: "Sarah@example.com",
+        profilePicture: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+        status: "Active",
+    },
+    {
+        id: 3,
+        name: "Mohamed",
+        age: 28,
+        gender: "Male",
+        role: "User",
+        email: "Mohamed@example.com",
+        profilePicture: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+        status: "Inactive",
+    },
+];
+export const posts = [
+    {
+        id: 1,
+        title: "Post 1",
+        content: "Content 1",
+        authorId: 1,
+        createdAt: "2022-01-01",
+        updatedAt: "2022-01-01",
+    },
+    {
+        id: 2,
+        title: "Post 2",
+        content: "Content 2",
+        authorId: 2,
+        createdAt: "2022-01-01",
+        updatedAt: "2022-01-01",
+    },
+    {
+        id: 3,
+        title: "Post 3",
+        content: "Content 3",
+        authorId: 3,
+        createdAt: "2022-01-01",
+        updatedAt: "2022-01-01",
+    },
+];
