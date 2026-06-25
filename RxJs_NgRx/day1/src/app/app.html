@@ -1,0 +1,119 @@
+<div class="container">
+  <h1>RxJS Lab - Angular</h1>
+
+  <div class="tabs">
+    <button type="button" [disabled]="currentTask === 1" class="tab-button" (click)="selectTask(1)">
+      Task 1
+    </button>
+    <button type="button" [disabled]="currentTask === 2" class="tab-button" (click)="selectTask(2)">
+      Task 2
+    </button>
+    <button type="button" [disabled]="currentTask === 3" class="tab-button" (click)="selectTask(3)">
+      Task 3
+    </button>
+    <button type="button" [disabled]="currentTask === 4" class="tab-button" (click)="selectTask(4)">
+      Task 4
+    </button>
+  </div>
+
+  @if (currentTask === 1) {
+    <div>
+      <h2>Live Products from Multiple Warehouses</h2>
+
+      @if (isLoading()) {
+        <p>Loading products from warehouses...</p>
+      }
+
+      <div class="products-list">
+        @for (product of products(); track product.id) {
+          <div class="product-card">
+            <div>
+              <img [src]="product.thumbnail" alt="{{ product.title }}" />
+            </div>
+            <h3>{{ product.title }}</h3>
+            <p><strong>Price:</strong> ${{ product.price }}</p>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (currentTask === 2) {
+    <div>
+      <h2>Airport Dashboard</h2>
+
+      @if (isDashboardLoading()) {
+        <p>Loading airport dashboard...</p>
+      } @else if (dashboardError()) {
+        <p style="color: red">Error loading dashboard data</p>
+      } @else if (dashboardData(); as data) {
+        <div class="dashboard">
+          <h3>Dashboard Ready!</h3>
+
+          <div class="dashboard-grid">
+            <div class="info-card">
+              <h4>Flight Status</h4>
+              <p><strong>Flight:</strong> {{ data.flight.flightNo }}</p>
+              <p><strong>Status:</strong> {{ data.flight.status }}</p>
+              <p><strong>Arrival:</strong> {{ data.flight.estimatedArrival }}</p>
+            </div>
+
+            <div class="info-card">
+              <h4>Weather Information</h4>
+              <p><strong>Temperature:</strong> {{ data.weather.temperature }}°C</p>
+              <p><strong>Wind Speed:</strong> {{ data.weather.windspeed }} km/h</p>
+            </div>
+
+            <div class="info-card">
+              <h4>Gate Information</h4>
+              <p><strong>Gate:</strong> {{ data.gate.gate }}</p>
+              <p><strong>Terminal:</strong> {{ data.gate.terminal }}</p>
+              <p><strong>Status:</strong> {{ data.gate.status }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (currentTask === 3) {
+    <div>
+      <h2>City Operations - Live Sensors</h2>
+      <p><strong>Monitoring live sensor data...</strong></p>
+
+      @if (sensorData()) {
+        <div class="sensor-card">
+          <p><strong>Temperature:</strong> {{ sensorData().temperature }}°C</p>
+          <p><strong>Traffic Level:</strong> {{ sensorData().traffic }}%</p>
+        </div>
+      }
+    </div>
+  }
+
+  @if (currentTask === 4) {
+    <div>
+      <h2>Online Learning Platform</h2>
+
+      <div class="actions">
+        @if (!isLoggedIn()) {
+          <button type="button" class="action-button" (click)="login()">Login</button>
+        } @else {
+          <button type="button" class="action-button" (click)="logout()">Logout</button>
+          <button type="button" class="action-button" (click)="enroll()">Enroll in Course</button>
+        }
+      </div>
+
+      <div class="feed-section">
+        <h3>Activity Feed (Live)</h3>
+        <ul class="activity-list">
+          @for (activity of activityFeed(); track $index) {
+            <li>{{ activity }}</li>
+          } @empty {
+            <li>No activities yet. Log in to start!</li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+</div>
