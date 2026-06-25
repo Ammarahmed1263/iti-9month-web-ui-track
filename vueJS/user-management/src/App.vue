@@ -1,22 +1,22 @@
 <template>
-  <div class="container">
+  <!-- <div class="container">
     <div class="header">
       <nav>
         <button
-          :class="{ active: activeTab === 'form' }"
-          @click="activeTab = 'form'"
+          :class="{ active: activeTab === 'FormComponent' }"
+          @click="activeTab = 'FormComponent'"
         >
           Add Account
         </button>
         <button
-          :class="{ active: activeTab === 'users' }"
-          @click="activeTab = 'users'"
+          :class="{ active: activeTab === 'UsersComponent' }"
+          @click="activeTab = 'UsersComponent'"
         >
           User Directory
         </button>
         <button
-          :class="{ active: activeTab === 'admins' }"
-          @click="activeTab = 'admins'"
+          :class="{ active: activeTab === 'AdminsComponent' }"
+          @click="activeTab = 'AdminsComponent'"
         >
           Admin Directory
         </button>
@@ -32,6 +32,13 @@
     </p>
 
     <div>
+      <Component
+        :is="activeTab"
+        :users="users"
+        :admins="admins"
+        @add-user="addUser"
+        @delete-user="deleteUser"
+      />
       <FormComponent v-if="activeTab === 'form'" @add-user="addUser" />
       <UsersComponent
         v-if="activeTab === 'users'"
@@ -44,24 +51,17 @@
         @delete-user="deleteUser"
       />
     </div>
-  </div>
+
+  </div> -->
+  <router-view />
 </template>
 
 <script>
-import FormComponent from "./components/FormComponent.vue";
-import UsersComponent from "./components/UsersComponent.vue";
-import AdminsComponent from "./components/AdminsComponent.vue";
-
 export default {
   name: "App",
-  components: {
-    FormComponent,
-    UsersComponent,
-    AdminsComponent,
-  },
   data() {
     return {
-      activeTab: "form",
+      activeTab: "FormComponent",
       accounts: [],
       theme: "light",
       successMessage: "",
@@ -82,9 +82,9 @@ export default {
       this.accounts.push(newUser);
 
       if (user.role === "user") {
-        this.activeTab = "users";
+        this.activeTab = "UsersComponent";
       } else if (user.role === "admin") {
-        this.activeTab = "admins";
+        this.activeTab = "AdminsComponent";
       }
 
       this.successMessage = `Account for ${user.name} has been successfully created.`;
@@ -118,6 +118,10 @@ export default {
   --text-color: #ffffff;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -140,9 +144,41 @@ body {
 }
 
 .container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
 }
 
 .header {
@@ -151,7 +187,8 @@ body {
   align-items: center;
   background-color: var(--background-color);
   color: var(--text-color);
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
@@ -161,7 +198,7 @@ body {
 }
 
 button {
-  margin: 10px;
+  margin: 10px 0;
   padding: 10px 20px;
   font-size: 16px;
   border: 1px solid currentColor;
