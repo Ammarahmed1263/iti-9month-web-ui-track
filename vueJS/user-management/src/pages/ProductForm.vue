@@ -1,16 +1,34 @@
 <template>
   <div class="product-form-container">
-    <h1 class="form-title">{{ isEditing ? "Edit Product" : "Add New Product" }}</h1>
+    <h1 class="form-title">
+      {{ isEditing ? "Edit Product" : "Add New Product" }}
+    </h1>
 
     <form @submit.prevent="handleSubmit">
       <label for="title">Product Name</label>
-      <input id="title" type="text" v-model.trim="product.title" placeholder="e.g. Essence Mascara" required />
+      <input
+        id="title"
+        type="text"
+        v-model.trim="product.title"
+        placeholder="e.g. Essence Mascara"
+        required
+      />
 
       <label for="brand">Brand</label>
-      <input id="brand" type="text" v-model.trim="product.brand" placeholder="e.g. Essence" />
+      <input
+        id="brand"
+        type="text"
+        v-model.trim="product.brand"
+        placeholder="e.g. Essence"
+      />
 
       <label for="category">Category</label>
-      <input id="category" type="text" v-model.trim="product.category" placeholder="e.g. Beauty" />
+      <input
+        id="category"
+        type="text"
+        v-model.trim="product.category"
+        placeholder="e.g. Beauty"
+      />
 
       <label for="thumbnail">Image URL</label>
       <input
@@ -69,7 +87,13 @@
 
         <div class="form-group">
           <label for="stock">Stock Quantity</label>
-          <input id="stock" type="number" min="0" v-model.number="product.stock" required />
+          <input
+            id="stock"
+            type="number"
+            min="0"
+            v-model.number="product.stock"
+            required
+          />
         </div>
       </div>
 
@@ -80,71 +104,71 @@
   </div>
 </template>
 
-<script>
-import axios from "axios";
-import { productMixin } from "@/mixins/productMixin";
+<script setup>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+import { useRouter, useRoute } from "vue-router";
 
-export default {
-  name: "ProductForm",
-  mixins: [productMixin],
-  data() {
-    return {
-      product: {
-        title: "",
-        brand: "",
-        category: "",
-        thumbnail: "",
-        description: "",
-        price: 0,
-        discountPercentage: 0,
-        rating: 0,
-        stock: 0,
-      },
-      isEditing: false,
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      // Ensure defaults if fields are empty
-      if (!this.product.brand) this.product.brand = "";
-      if (!this.product.category) this.product.category = "";
-      if (!this.product.rating) this.product.rating = 0;
-      if (!this.product.discountPercentage) this.product.discountPercentage = 0;
+const store = useStore();
+const router = useRouter();
+const route = useRoute();
 
-      const thumbnailVal = this.product.thumbnail || "https://cdn.dummyjson.com/public/qr-code.png";
-      const finalProduct = {
-        ...this.product,
-        thumbnail: thumbnailVal,
-        images: [thumbnailVal],
-      };
+const product = ref({
+  title: "",
+  brand: "",
+  category: "",
+  thumbnail: "",
+  description: "",
+  price: 0,
+  discountPercentage: 0,
+  rating: 0,
+  stock: 0,
+});
 
-      if (this.isEditing) {
-        await this.updateProduct(this.product.id, finalProduct);
-      } else {
-        await axios.post(this.baseUrl, finalProduct);
-      }
+const isEditing = ref(false);
 
-      this.$router.push("/products");
-    },
-  },
-  async mounted() {
-    const productId = this.$route.params.id;
-    console.log(productId);
+const handleSubmit = async () => {
+  if (!product.value.brand) product.value.brand = "";
+  if (!product.value.category) product.value.category = "";
+  if (!product.value.rating) product.value.rating = 0;
+  if (!product.value.discountPercentage) product.value.discountPercentage = 0;
 
-    if (productId) {
-      this.isEditing = true;
+  const thumbnailVal =
+    product.value.thumbnail || "https://cdn.dummyjson.com/public/qr-code.png";
+  const finalProduct = {
+    ...product.value,
+    thumbnail: thumbnailVal,
+    images: [thumbnailVal],
+  };
 
-      const existingProduct = await this.getProductById(productId);
+  if (isEditing.value) {
+    await store.dispatch("updateProduct", {
+      id: product.value.id,
+      updatedProduct: finalProduct,
+    });
+  } else {
+    await store.dispatch("addProduct", finalProduct);
+  }
 
-      if (existingProduct) {
-        this.product = {
-          thumbnail: "",
-          ...existingProduct,
-        };
-      }
-    }
-  },
+  router.push("/products");
 };
+
+onMounted(async () => {
+  const productId = route.params.id;
+
+  if (productId) {
+    isEditing.value = true;
+
+    const existingProduct = await store.dispatch("getProductById", productId);
+
+    if (existingProduct) {
+      product.value = {
+        thumbnail: "",
+        ...existingProduct,
+      };
+    }
+  }
+});
 </script>
 
 <style scoped>

@@ -79,37 +79,20 @@
 </template>
 
 <script>
-import axios from "axios";
-import { productMixin } from "@/mixins/productMixin";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "HomePage",
-  mixins: [productMixin],
-  data() {
-    return {
-      productsCount: 0,
-      categoriesCount: 0,
-      stockCount: 0,
-      loading: true,
-    };
+  computed: {
+    ...mapState(["loading", "products"]),
+    ...mapGetters(["productsCount", "categoriesCount", "stockCount"])
+  },
+  methods: {
+    ...mapActions(["fetchProducts"])
   },
   async mounted() {
-    try {
-      const response = await axios.get(this.baseUrl);
-      const products = response.data;
-
-      this.productsCount = products.length;
-
-      const categories = new Set(
-        products.map((p) => p.category).filter(Boolean),
-      );
-      this.categoriesCount = categories.size;
-
-      this.stockCount = products.reduce((acc, p) => acc + (p.stock || 0), 0);
-    } catch (err) {
-      console.error("Failed to load catalog stats:", err);
-    } finally {
-      this.loading = false;
+    if (this.products.length === 0) {
+      await this.fetchProducts();
     }
   },
 };

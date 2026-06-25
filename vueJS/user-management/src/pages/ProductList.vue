@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>Product Directory</h1>
+    <h1>Product Directory<span v-if="productsCount > 0 && !loading"> - ({{ productsCount }})</span></h1>
 
     <div v-if="loading" class="loading-state">
       Loading product directory...
     </div>
 
-    <div v-else-if="!products.length && !loading" class="empty-state">
+    <div v-else-if="!productsCount && !loading" class="empty-state">
       No products found
     </div>
 
-    <div v-else-if="products.length" class="products-list">
+    <div v-else-if="productsCount" class="products-list">
       <div v-for="product in products" :key="product.id" class="product-item">
         <span v-if="product.category" class="category-pill">{{
           product.category
@@ -70,53 +70,45 @@
   </div>
 </template>
 
-<script>
-import axios from "axios";
-import { productMixin } from "@/mixins/productMixin";
+<script setup>
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { formatPrice, getDiscountedPrice } from '@/utils/helpers';
 
-export default {
-  name: "ProductList",
-  mixins: [productMixin],
-  data() {
-    return {
-      products: [],
-      loading: true,
-    };
-  },
-  methods: {
-    async getProducts() {
-      try {
-        const response = await axios.get(this.baseUrl);
-        this.products = response.data;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.loading = false;
-      }
-    },
-    async handleDelete(id) {
-      try {
-        if (
-          window.confirm(
-            "Are you sure you want to permanently delete this product? This action cannot be undone.",
-          )
-        ) {
-          await this.deleteProduct(id);
-          this.products = this.products.filter((product) => product.id !== id);
-        }
-      } catch (error) {
-        console.error("Failed to delete product:", error);
-        alert("Could not delete the product. Please try again.");
-      }
-    },
-    editProduct(id) {
-      this.$router.push(`/products/edit/${id}`);
-    },
-  },
-  mounted() {
-    this.getProducts();
-  },
+const store = useStore();
+const router = useRouter();
+
+const products = computed(() => store.state.products);
+const loading = computed(() => store.state.loading);
+const productsCount = computed(() => store.getters.productsCount);
+
+const getProducts = async () => {
+  await store.dispatch('fetchProducts');
 };
+
+const handleDelete = async (id) => {
+  try {
+    if (
+      window.confirm(
+        "Are you sure you want to permanently delete this product? This action cannot be undone."
+      )
+    ) {
+      await store.dispatch('deleteProduct', id);
+    }
+  } catch (error) {
+    console.error("Failed to delete product:", error);
+    alert("Could not delete the product. Please try again.");
+  }
+};
+
+const editProduct = (id) => {
+  router.push(`/products/edit/${id}`);
+};
+
+onMounted(() => {
+  getProducts();
+});
 </script>
 
 <style scoped>

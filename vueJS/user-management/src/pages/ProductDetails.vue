@@ -96,11 +96,11 @@
 </template>
 
 <script>
-import { productMixin } from "@/mixins/productMixin";
+import { mapActions } from "vuex";
+import { formatPrice } from "@/utils/helpers";
 
 export default {
   name: "ProductDetails",
-  mixins: [productMixin],
   data() {
     return {
       product: null,
@@ -109,6 +109,8 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["getProductById", "deleteProduct"]),
+    formatPrice,
     editProduct() {
       this.$router.push(`/products/edit/${this.product.id}`);
     },
@@ -116,7 +118,7 @@ export default {
       try {
         if (
           window.confirm(
-            "Are you sure you want to permanently delete this product? This action cannot be undone.",
+            "Are you sure you want to permanently delete this product? This action cannot be undone."
           )
         ) {
           await this.deleteProduct(this.product.id);
